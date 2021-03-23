@@ -1,0 +1,19 @@
+.dropdown-icon{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown-card{
+    position: absolute;
+    top: 40px;
+    height: 100px !important;
+    width: 80px !important;
+}
+.drop-noborder{
+    border: none !important;
+
+}
+.drop-noborder > button:hover{
+    background-color: unset !important;
+}

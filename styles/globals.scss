@@ -1,0 +1,11 @@
+@import 'navbar';
+@import 'drop';
+@import 'buttons';
+@import 'index';
+@import 'layout';
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+.child-flex > p{
+ display: flex;
+}

@@ -1,7 +1,15 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
+import { GeistProvider, CssBaseline } from '@geist-ui/react'
+import Layout from '../components/Layout'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const MyApp = ({ Component, pageProps }) => {
+  return(
+    <GeistProvider>
+    <CssBaseline /> 
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+    </GeistProvider>
+    )
 }
-
 export default MyApp
