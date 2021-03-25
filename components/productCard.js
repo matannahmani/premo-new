@@ -6,7 +6,7 @@ const ProductCard = (props) => {
             <Text className="product-card-title">{props.title}</Text>
             <Text className="product-card-description">{props.description}</Text>
             <Button className="learnbtn btn-md" auto size="large">Learn More</Button>
-            <Image className="product-card-icon" src={props.icon}/>
+            <Image className={`product-card-icon ${props.icon == "./king-i.svg" && 'icon-fix'}`} src={props.icon}/>
         </div>
     )
 }

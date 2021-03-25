@@ -33,14 +33,20 @@ export default function Home() {
         </Grid>
       </Grid.Container>
       <Grid.Container alignItems="center" justify="center" className="product-section">
-        <Grid direction="column" xs={24} md={12} lg={12}>
+        {/* {app.mobile ?} */}
+      <div className="product-one-shape-1"></div>
+      <div className="product-one-shape-2"></div>
+      <div className="product-one-shape-3"></div>
+      <div className="product-one-shape-4"></div>
+
+        <Grid style={{zIndex: 2}} direction="column" xs={24} md={12} lg={12}>
           <Text className={`product-header text-left`} h2>The easiest way to become a Super Host</Text>
           <Text className={`product-description text-left`} h3>Premo is a smart accommodation management platform that supports convenient management
           of rental accommodation such as Airbnb. Interested in hosting your home?
           You can easily manage your accommodation with a monthly subscription.</Text>
-          <Grid className="product-cardbox" xs={24}>
+          <Grid direction="row" className="product-cardbox" xs={24}>
           <ProductCard title="Standard" description="24,900 won per month / 1 year" icon="./king-i.svg"/>
-
+          <ProductCard title="Premium" description="44,900 won per month / 2 years" icon="./diamond-i.svg"/>
         </Grid>
         </Grid>
 
