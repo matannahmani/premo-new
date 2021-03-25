@@ -5,6 +5,8 @@ import { AppContext } from '../context/appcontext';
 import { ChevronsDown } from '@geist-ui/react-icons'
 import Partners from '../components/partners';
 import ProductCard from '../components/productCard';
+import HeroCarousel from '../components/HeroCarousel';
+import AppVideo from '../components/AppVideo';
 
 export default function Home() {
   const [app,] = useContext(AppContext);
@@ -15,9 +17,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Grid.Container className="main-hero">
+        {!app.mobile &&
         <Grid xs={0} md={14} lg={14}>
-          <Image src="/home-bg.png" className="w-100" style={{objectFit: 'cover'}}/>
+          <HeroCarousel/>
         </Grid>
+        }
         <Grid xs={24} md={10} lg={10} justify="center" alignItems={app.mobile ? 'center' : "flex-start"} className="main-center">
           <Text b className={"hero-title"} h1>Perfect preparation to become Super Host</Text>
           <Text className={"hero-description"} p>Premo is an integrated package of smart home devices and a accommodation management platform.</Text>
@@ -29,6 +33,7 @@ export default function Home() {
       </Grid.Container>
       <Grid.Container alignItems="center" justify="center" className="section-partners">
         <Grid className="partners-box">
+          <Text h4>Our Trusted Partners.</Text>
           <Partners/>
         </Grid>
       </Grid.Container>
@@ -49,7 +54,13 @@ export default function Home() {
           <ProductCard title="Premium" description="44,900 won per month / 2 years" icon="./diamond-i.svg"/>
         </Grid>
         </Grid>
-
+      </Grid.Container>
+      <Grid.Container >
+        <Grid alignItems="center" direction="column" justify="center" xs={24} md={24} lg={24} className="app-video-section">
+          <AppVideo title="You don't have to tell the guest the password or pass the key directly." img={'app/0.png'} icon="icons/key.svg" />
+          <AppVideo title="Five-star hotel level cleaning services and supply management on a one-click basis." img={'app/1.png'} icon="icons/stars.svg" flip={true} />
+          <AppVideo title="Use real-time monitoring to reduce costs wasted on management." icon="icons/cash.svg" hide={true} />
+        </Grid>
       </Grid.Container>
       </div>
   )

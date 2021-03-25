@@ -3,10 +3,14 @@
     background: #3D5582;
     position: relative;
     color: white;
+    height: calc(100vh - 70px);
     .image{
         border-radius: 0px !important;
         max-height: calc( 100vh - 70px);
         min-height: 400px;
+    }
+    .awssld{
+        height: calc(100vh - 70px);
     }
 }
 .main-center{
@@ -16,8 +20,13 @@
     justify-content: center;
     text-align: left;
 }
+.hero-panel{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 .hero-title{
-    font-family: Roboto;
+    font-family: "Roboto",sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 49px;
@@ -27,7 +36,7 @@
     text-shadow: 0px 0px 30px rgba(51, 51, 51, 0.7);
 }
 .hero-description{
-    font-family: Roboto;
+    font-family: "Roboto",sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -37,7 +46,7 @@
     text-shadow: 0px 0px 30px rgba(51, 51, 51, 0.7);
 }
 .hero-btn{
-    margin: 0px 24px;
+    margin: 40px 24px;
 }
 
 @media (max-width: 900px){

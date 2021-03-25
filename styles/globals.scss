@@ -6,15 +6,29 @@
 @import 'portal';
 @import 'partners';
 @import 'product';
+@import 'appvideo';
 // fonts
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 *{
     font-family: 'Roboto', sans-serif;
 }
+.awssld__timer--run{
+    // display: none !important;
+}
+.flicking{
+    z-index: 1;
+}
 .child-flex > p{
  display: flex;
 }
 .w-100{
     width: 100% !important;
+    // img{ // blocks user select for images inside carousel
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        pointer-events: none;
+
+    // }
 }

@@ -3,6 +3,7 @@ import { GeistProvider, CssBaseline } from '@geist-ui/react'
 import Layout from '../components/Layout'
 import {AppContext} from '../context/appcontext'
 import {useEffect, useState} from 'react'
+import 'react-awesome-slider/dist/styles.css';
 
 const MyApp = ({ Component, pageProps }) => {
   const [app,setApp] = useState({mobile: false})
