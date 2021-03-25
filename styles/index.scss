@@ -1,31 +1,50 @@
 .main-hero{
-    height: 750px;
     // width: 100vw;
     background: #3D5582;
     position: relative;
+    color: white;
+    .image{
+        border-radius: 0px !important;
+        max-height: calc( 100vh - 70px);
+        min-height: 400px;
+    }
 }
 .main-center{
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-    padding: 24px;
-    font-weight: bold;
+    text-align: left;
 }
+.hero-title{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 49px;
+    line-height: 57px;
+    z-index: 10;
+    padding: 0px 24px;
+    text-shadow: 0px 0px 30px rgba(51, 51, 51, 0.7);
+}
+.hero-description{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    z-index: 10;
+    padding: 0px 24px;
+    text-shadow: 0px 0px 30px rgba(51, 51, 51, 0.7);
+}
+.hero-btn{
+    margin: 0px 24px;
+}
+
 @media (max-width: 900px){
     .main-hero{
-        // .overlay{
-        //     background-image: url('../public/test.png');
-        //     z-index: 1;
-        //     position: absolute;
-        //     opacity: 0.5;
-        //     top: 0;
-        //     width: 100%;
-        //     height: 100%;
-        // }
-        
-        color: white;
+        background: rgba(61, 85, 130, 0.85);
+        position: relative;
+        height: calc(100vh - 70px);
     }
     .main-hero:before {
         content: ' ';
@@ -36,10 +55,37 @@
         width: 100%;
         height: 100%;
         opacity: 0.5;
-        background: linear-gradient(0deg, rgba(61, 85, 130, 0.5), rgba(61, 85, 130, 0.5)), url('../public/test.png');
+        background: url('../public/test.png');
         background-repeat: no-repeat;
         background-position: 50% 0;
-        background-size: cover;
+        background-size: cover; 
       }
-      
+      .hero-title{
+        font-size: 26px;
+        line-height: 30px;
+        line-height: 30px;
+      }
+      .hero-description{
+        font-size: 18px;
+        line-height: 21px;
+        text-shadow: 0px 0px 30px rgba(51, 51, 51, 0.7);
+      }
+      .hero-btn{
+        margin: 0px;
+    }
+      .hero-hover{
+          color: white;
+          width: 48px;
+          height: 48px;
+          z-index: 5;
+          position: absolute;
+          bottom: 16px;
+          animation: hover-bottom 1.25s infinite;
+      }
 }
+@keyframes hover-bottom {
+    0% {bottom: 24px;}
+    50% {bottom: 16px;}
+    100% {bottom: 24px;}
+
+  }

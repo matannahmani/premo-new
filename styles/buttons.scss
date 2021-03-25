@@ -7,6 +7,7 @@
     line-height: 15px !important;
     background: #F1F3F6 !important;
     mix-blend-mode: normal !important;
+    width: 140px !important;
     border: 1px solid #D5D6D5 !important;
     box-sizing: border-box !important;
     border-radius: 6px !important;
@@ -17,12 +18,16 @@
     font-family: 'Montserrat', sans-serif !important;
     font-style: normal !important;
     font-weight: 600 !important;
-    font-size: 24px !important;
+    font-size: 18px !important;
     line-height: 15px !important;
     background: #F3A875 !important;
     mix-blend-mode: normal !important;
-    border: 1px solid #D5D6D5 !important;
+    border: unset !important;
     box-sizing: border-box !important;
     border-radius: 38px !important;
     color: white !important;
+}
+.btn-md{
+    width: 180px;
+    height: 50px;
 }

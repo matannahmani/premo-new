@@ -1,9 +1,11 @@
-// #page-wrap{
-//     margin-top: 50px;
-// }
+#page-wrap{
+    width: 100vw;
+    overflow-x: hidden;
+    margin-top: 70px;
+}
 
 @media (max-width: 900px){
     #page-wrap{
-        margin-top: 50px;
+        margin-top: 70px;
     }
 }

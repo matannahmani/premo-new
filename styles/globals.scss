@@ -3,9 +3,18 @@
 @import 'buttons';
 @import 'index';
 @import 'layout';
+@import 'portal';
+@import 'partners';
+@import 'product';
 // fonts
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+*{
+    font-family: 'Roboto', sans-serif;
+}
 .child-flex > p{
  display: flex;
+}
+.w-100{
+    width: 100% !important;
 }

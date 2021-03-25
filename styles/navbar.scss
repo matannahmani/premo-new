@@ -2,31 +2,41 @@
     width: 100%;
     display: flex;
     align-items: center;
+    height: 70px;
+    background: white;
+    position: fixed;
+    z-index: 998;
 
 }
 .navbar-desktop{
-    height: 70px;
     flex-direction: row;
+}
+.nav-sticky{
+    
 }
 .navbar-icon{
     display: flex;
     justify-content: flex-start;
-    margin: 0px 80px;
+    margin: 0px 40px;
     width: 120px;
+    height: 100%;
 }
 .navbar-content{
+    height: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-    margin-right: 40px;
+    margin-right: 24px;
     > :nth-child(1n){
         margin: 0px 24px;
+    }
+    > :last-child{
+        margin: 0px;
     }
 }
 .navbar-mobile{
     position: fixed;
-    height: 50px;
     top: 0px;
     z-index: 999;
     flex-direction: row-reverse;
@@ -49,7 +59,7 @@ width: 24px;
 
 /* Color/shape of close button cross */
 .bm-cross {
-background: #bdc3c7;
+background: black;
 }
 
 /*
@@ -64,7 +74,7 @@ top: 0;
 
 /* General sidebar styles */
 .bm-menu {
-background: #373a47;
+background: #ECF3F6;
 padding: 2.5em 1.5em 0;
 font-size: 1.15em;
 }
@@ -78,12 +88,29 @@ fill: #373a47;
 .bm-item-list {
 color: #b8b7ad;
 padding: 0.8em;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 50px 24px;
+ > :nth-child(1n){
+     margin: 12px 0px;
+ }
 }
 /* Individual item */
 .bm-item {
 display: inline-block;
-}
+font-family: Roboto;
+font-style: normal;
+font-size: 26px;
+line-height: 30px;
 
+/* Ninja */
+
+color: #333333;
+}
+.bm-item-active{
+font-weight: bold;
+}
 /* Styling of overlay */
 .bm-overlay {
     top: 0;
