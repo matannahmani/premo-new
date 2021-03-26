@@ -3,6 +3,7 @@ import {useContext, useEffect,useState} from 'react'
 import {AppContext} from '../context/appcontext';
 import NavbarM from './Navbarm'
 import NavbarD from './Navbard'
+import Footer from './Footer';
 
 const Layout = (props) => {
     const [app,setApp] = useContext(AppContext);
@@ -14,6 +15,7 @@ const Layout = (props) => {
 
           {props.children}
           </div>
+          <Footer/>
         </Grid.Container>
     )
 }

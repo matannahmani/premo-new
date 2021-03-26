@@ -1,4 +1,4 @@
-import { Row, Text, Col,Button, Grid, Spacer } from '@geist-ui/react'
+import { Row, Text, Col,Button, Grid, Spacer, Card, Image } from '@geist-ui/react'
 import Head from 'next/head'
 import { useContext } from 'react'
 import { AppContext } from '../context/appcontext';
@@ -69,10 +69,20 @@ export default function Home() {
         <Grid alignItems="center" direction="column" justify="center" xs={24} md={24} lg={24}>
           <AppVideo style={{margin:'unset'}} title="Use real-time monitoring to reduce costs wasted on management." icon="icons/cash.svg" hide={true} />
           {/* <Text h3>Get The Premo App</Text> */}
-          <Spacer/>
-          <Button shadow size="large" type="secondary">Play Store</Button>
-          <Spacer/>
-          <Button shadow size="large" type="secondary">App Store</Button>
+            <Spacer/>
+            <Button className="appstore-btn" icon={<Image src="./icons/playstore-logo.png" width={16} height={16}/>} shadow type="secondary">Play Store</Button>
+            <Spacer/>
+            <Button className="appstore-btn" icon={<Image src="./icons/apple-logo.png" width={16} height={16}/>} shadow type="secondary">App Store</Button>
+            <Spacer/>
+          <Card shadow hoverable className="index-cta">
+            <Image className="index-cta-background" src="./app/3.png" height={155} width={255} scale="100%" style={{objectFit: 'cover'}}/>
+            <Image className="index-cta-background-p" src="./app/2.png"/>
+            <Text className="index-cta-background-description" p>
+              Register a host-certified hot place in the app or set up security mode so you can move on without anxiety.
+              The diverse smart home environment creates high guest satisfaction.
+            </Text>
+            <Button className="learnbtn btn-md">CTA</Button>
+          </Card>
           <Spacer/>
         </Grid>
       </Grid.Container>

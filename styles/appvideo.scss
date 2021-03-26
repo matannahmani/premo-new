@@ -86,7 +86,9 @@
     box-sizing: border-box;
     border-radius: 15px;
 }
-
+.ytp-title, .ytp-title-channel{
+    display: none !important;
+}
 @media (min-width: 900px){
     .app-video-margin{
         margin-top: 330px !important;

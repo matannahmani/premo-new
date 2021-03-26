@@ -1,0 +1,19 @@
+.footer
+    {
+        background: #ECF3F6;
+        background: linear-gradient(0deg, rgba(236, 243, 246,0.5) 0%, rgba(236,243,246,0) 100%);
+
+    > div{
+        margin: 0px;
+        margin-left: 16px;
+    }
+}
+.footer-links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-text{
+    font-weight: bold;
+    font-family: 'Montserrat',sans-serif;
+}
