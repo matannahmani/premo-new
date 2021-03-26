@@ -52,7 +52,8 @@
 .app-video-img{
     position: absolute !important;
     bottom: 0px;
-    left: -8px;
+    left: -48px;
+    z-index: -1;
 }
 .app-video-icon{
     background: #FFFFFF;
@@ -79,8 +80,8 @@
 }
 
 .app-video-container{
-    height: 300px;
-    width: 168px;
+    height: 392px;
+    width: 220px;
     background: #C4C4C4;
     border: 2px solid #FFFFFF;
     box-sizing: border-box;

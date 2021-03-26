@@ -48,6 +48,14 @@
 .hero-btn{
     margin: 40px 24px;
 }
+@media (min-width: 900px) {
+    .hero-description,.hero-title{
+        padding: 0px 64px;
+    }
+    .hero-btn{
+        margin: 40px 64px;
+    }
+}
 @media (max-width: 300px){
     .hero-title{
         font-size: 48px !important;
@@ -59,20 +67,28 @@
     }
 }
 .index-cta{
-    width: 255px !important;
+    width: 295px !important;
     height: 420px;
     display: flex;
     position: relative;
     align-items: center;
+    justify-content: center !important;
     flex-direction: column;
+    border-radius: 16px !important;
+    > .content {
+        display: flex;
+        flex-direction: column;
+    }
 }
 .index-cta-background{
     border-radius: unset !important;
+    border-top-right-radius: 16px !important;
+    border-top-left-radius: 16px !important;
     height: 100% !important;
 }
 .index-cta-background-p{
     position: absolute !important;
-    top: 80px;
+    top: 120px;
 }
 .index-cta-description{
     font-family: 'Roboto',sans-serif;

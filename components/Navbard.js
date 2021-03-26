@@ -50,16 +50,24 @@ const NavbarD = () => {
     )
     return (
         <div className={`navbar navbar-desktop ${sticky ? 'nav-sticky' : ''}`}>
-        <div className="navbar-icon">
+        <div className="nav-item navbar-icon">
+          <Link href="/">
             <Image src="/logo-main.svg" width="120px" height="80px"/>
+          </Link>
         </div>
         <div className="navbar-content">
-            <Button size="small" className="bookbtn">Book Consulation</Button>
-            <Text>Pricing</Text>
-            <Text>Consulting</Text>
-            <Text>Devices</Text>
-            <Popover className="child-flex" content={content2}><Text>Protoflio<ChevronDown/></Text></Popover>
-            <Popover portalClassName="portal-lg" className="child-flex" content={content}>
+            <Button size="small" className="nav-item bookbtn">Book Consulation</Button>
+            <Link href="/price">
+            <Text className="nav-item">Pricing</Text>
+            </Link>
+            <Link href="/">
+            <Text className="nav-item">Consulting</Text>
+            </Link>
+            <Link href="/">
+            <Text className="nav-item">Devices</Text>
+            </Link>
+            <Popover className="child-flex nav-item" content={content2}><Text>Protoflio<ChevronDown/></Text></Popover>
+            <Popover portalClassName="portal-lg" className="child-flex nav-item" content={content}>
             <IoPersonCircleSharp style={{width:"30px",height:"30px"}} />
             <ChevronDown/>
             </Popover>

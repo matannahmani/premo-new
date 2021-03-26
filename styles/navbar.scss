@@ -11,8 +11,15 @@
 .navbar-desktop{
     flex-direction: row;
 }
-.nav-sticky{
-    
+.nav-item{
+    cursor: pointer;
+    font-family: 'Roboto',sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    align-items: center;
+    color: #333333 !important;
 }
 .navbar-icon{
     display: flex;
@@ -75,7 +82,7 @@ top: 0;
 /* General sidebar styles */
 .bm-menu {
 background: #ECF3F6;
-padding: 2.5em 1.5em 0;
+// padding: 1.5em 1.5em 0;
 font-size: 1.15em;
 }
 
@@ -87,22 +94,23 @@ fill: #373a47;
 /* Wrapper for item list */
 .bm-item-list {
 color: #b8b7ad;
-padding: 0.8em;
 display: flex;
 flex-direction: column;
-justify-content: center;
-padding: 50px 24px;
+padding: 0px 24px;
+> :first-child{
+    margin-top: 40px;
+}
  > :nth-child(1n){
-     margin: 12px 0px;
+    //  margin: 0 24px;
  }
 }
 /* Individual item */
 .bm-item {
 display: inline-block;
-font-family: Roboto;
+font-family: 'Roboto';
 font-style: normal;
-font-size: 26px;
-line-height: 30px;
+font-size: 18px;
+line-height: 24px;
 
 /* Ninja */
 
