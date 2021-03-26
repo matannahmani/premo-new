@@ -59,8 +59,8 @@ const NavbarD = () => {
             <Text>Consulting</Text>
             <Text>Devices</Text>
             <Popover className="child-flex" content={content2}><Text>Protoflio<ChevronDown/></Text></Popover>
-            <Popover className="child-flex" content={content}>
-            <IoPersonCircleSharp portalClassName="portal-lg" style={{width:"30px",height:"30px"}} />
+            <Popover portalClassName="portal-lg" className="child-flex" content={content}>
+            <IoPersonCircleSharp style={{width:"30px",height:"30px"}} />
             <ChevronDown/>
             </Popover>
         </div>

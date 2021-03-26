@@ -1,4 +1,4 @@
-import { Row, Text, Col,Image,Button, Grid } from '@geist-ui/react'
+import { Row, Text, Col,Button, Grid, Spacer } from '@geist-ui/react'
 import Head from 'next/head'
 import { useContext } from 'react'
 import { AppContext } from '../context/appcontext';
@@ -7,6 +7,7 @@ import Partners from '../components/partners';
 import ProductCard from '../components/productCard';
 import HeroCarousel from '../components/HeroCarousel';
 import AppVideo from '../components/AppVideo';
+import Line from '../components/Line';
 
 export default function Home() {
   const [app,] = useContext(AppContext);
@@ -55,11 +56,24 @@ export default function Home() {
         </Grid>
         </Grid>
       </Grid.Container>
-      <Grid.Container >
-        <Grid alignItems="center" direction="column" justify="center" xs={24} md={24} lg={24} className="app-video-section">
+      <Grid.Container className="app-video-section" >
+        <Grid alignItems="center" direction={app.mobile ? "column" : 'row'} justify="center" xs={24} md={24} lg={24}>
+          <div className="app-video-sectionbox">
           <AppVideo title="You don't have to tell the guest the password or pass the key directly." img={'app/0.png'} icon="icons/key.svg" />
+          {!app.mobile && <Line className="app-video-line" /> }
           <AppVideo title="Five-star hotel level cleaning services and supply management on a one-click basis." img={'app/1.png'} icon="icons/stars.svg" flip={true} />
-          <AppVideo title="Use real-time monitoring to reduce costs wasted on management." icon="icons/cash.svg" hide={true} />
+          {!app.mobile && <Line className="app-video-line line-2" /> }
+          </div>
+        </Grid>
+          {/* <Spacer y="1.5"/> */}
+        <Grid alignItems="center" direction="column" justify="center" xs={24} md={24} lg={24}>
+          <AppVideo style={{margin:'unset'}} title="Use real-time monitoring to reduce costs wasted on management." icon="icons/cash.svg" hide={true} />
+          {/* <Text h3>Get The Premo App</Text> */}
+          <Spacer/>
+          <Button shadow size="large" type="secondary">Play Store</Button>
+          <Spacer/>
+          <Button shadow size="large" type="secondary">App Store</Button>
+          <Spacer/>
         </Grid>
       </Grid.Container>
       </div>
