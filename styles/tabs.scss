@@ -1,3 +1,33 @@
+.tabs {
+    width: 300px !important;
+    height: 100px;
+    header {
+        justify-content: space-evenly;
+        padding: 16px;
+        .tab {
+            width: 136px;
+            height: 50px;
+            border-radius: 11px;
+            background: rgba(136, 136, 136,0.2);
+            color: rgba(136, 136, 136,0.9);
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            line-height: 19px;
+            justify-content: center;
+        }
+        .tab:after{content:none;}
+        .active{
+            background: #E8EFF9;
+            color: #333333;
+            box-shadow: 5px 2px 20px rgba(61, 85, 130, 0.15), inset 0px -1px 1px rgba(61, 85, 130, 0.25);
+            opacity: 1;
+        }
+    }
+}
+.price-section{
+    background: #ECF3F6;
+    min-height: calc(100vh - 280px);
+}
 // .tabs {
 //     width: ;
 // }
