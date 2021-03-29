@@ -13,7 +13,9 @@
     border-radius: 6px !important;
     color: #56ADE8 !important;
 }
-
+.btn > div {
+    top: 0px !important;
+}
 .learnbtn{
     font-family: 'Montserrat', sans-serif !important;
     font-style: normal !important;
@@ -28,8 +30,8 @@
     color: white !important;
 }
 .btn-md{
-    width: 180px;
-    height: 50px;
+    width: 180px !important;
+    height: 50px !important;
 }
 .appstore-btn{
     border-radius: 26px !important;

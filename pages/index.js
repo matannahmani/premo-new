@@ -28,7 +28,7 @@ export default function Home() {
         </Grid>
         }
         <Grid xs={24} md={10} lg={10} justify="center" alignItems={app.mobile ? 'center' : "flex-start"} className="main-center">
-          <Text b className={"hero-title"} h1>슈퍼 호스트가 되기 위한 완벽한 준비</Text>
+          <Text className={"hero-title"} h1>슈퍼 호스트가 되기 위한 완벽한 준비</Text>
           <Text className={"hero-description"} p>스마트홈 디바이스와 숙소 관리플랫폼 통합 패키지.</Text>
           <Button onClick={scrollTo} className="learnbtn btn-md hero-btn" auto size="large">더 알아보기</Button>
           {app.mobile &&

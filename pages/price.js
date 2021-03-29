@@ -1,4 +1,5 @@
-import { Grid, Spacer, Tabs, Text } from "@geist-ui/react";
+import { Grid, Spacer, Text } from "@geist-ui/react";
+import Tabs from "../components/Tabs";
 
 const Pricing = () => {
 
@@ -9,10 +10,10 @@ const Pricing = () => {
                 <Text h1 b>Saves you time and money while creating high guest satisfaction.</Text>
             </Grid>
             <Grid xs justify="center">
-            <Tabs className="tabs" initialValue="1">
-            <Tabs.Item label="Standard" value="1">The Evil Rabbit Jumped over the Fence.</Tabs.Item>
-            <Tabs.Item label="Premium" value="2">The Fence Jumped over The Evil Rabbit.</Tabs.Item>
-            </Tabs>
+                <Tabs title="test">
+                    <Tabs.Body>
+                        <div>Hello world</div></Tabs.Body>
+                </Tabs>
             </Grid>
         </Grid.Container>
     )
