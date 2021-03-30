@@ -5,7 +5,7 @@ import {IoPersonCircleSharp} from 'react-icons/io5'
 import { ChevronDown } from '@geist-ui/react-icons'
 import Link from 'next/link'
 
-const NavbarD = () => {
+const NavbarD = (props) => {
   // ghost navbar in future
   const [sticky,setSticky] = useState(false);
   useEffect(() => {
@@ -56,7 +56,7 @@ const NavbarD = () => {
           </Link>
         </div>
         <div className="navbar-content">
-            <Button size="small" className="nav-item bookbtn">Book Consulation</Button>
+            <Button size="small" onClick={props.setCalendly} className="nav-item bookbtn">Book Consulation</Button>
             <Link href="/price">
             <Text className="nav-item">Pricing</Text>
             </Link>

@@ -1,5 +1,4 @@
-import Flicking from "@egjs/react-flicking";
-import React, { createRef } from "react";
+import React from "react";
 import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
 

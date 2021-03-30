@@ -1,0 +1,43 @@
+.product-modal-content{
+    display: flex;
+    align-items: center;
+}
+.product-modal-slider{
+    width: 300px;
+    height: 100%;
+    .image.jsx-3202321724{
+        width: 300px !important;
+        height: 200px !important;
+    }
+}
+.product-modal-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.product-modal-sub,.product-modal-text{
+    margin: 0 auto !important;
+    text-align: left !important;
+    font-family: "Roboto",sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+}
+.product-modal-title{
+    font-family: "Roboto",sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    color: #333333;
+}
+@media (max-width: 900px){
+    .product-modal-content{
+        flex-wrap: wrap;
+    }
+    .product-modal-slider{
+        height: 100%;
+    }
+    .product-modal-buttons > button{
+        margin: 8px 0px;
+    }
+}

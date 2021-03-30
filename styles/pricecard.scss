@@ -1,3 +1,19 @@
+.price-section-title{
+    font-family: "Roboto",sans-serif;
+    font-weight: bold;
+    font-size: 39px;
+    line-height: 45px;
+    color: #333333;
+    width: 600px;
+    margin: 0 auto;
+}
+@media (max-width: 900px){
+    .price-section-title{
+        font-size: 26px;
+        line-height: 30px;
+        width: 300px;
+    }
+}
 .price-card{
     max-width: 300px;
     background: #FFFFFF;
@@ -21,6 +37,9 @@
         background: #F3F3F3;
     }
 }
+.price-card-section-item:nth-child(odd) {
+    background: #ECF3F6;
+}
 .price-card-section-item{
     display: flex;
     align-items: center;
@@ -41,7 +60,8 @@
     }
 }
 .price-card-header{
-    padding: 24px 0px 0px 16px;
+    padding: 24px 0px 0px 24px;
+    text-align: left;
     span{
         color: #888888 !important;
     }

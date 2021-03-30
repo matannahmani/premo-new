@@ -3,7 +3,7 @@ import {Card,Button, Link, Text} from '@geist-ui/react'
 import { Menu as MenuIcon } from '@geist-ui/react-icons'
 import Image from 'next/image'
 
-const Navbarm = () => {
+const Navbarm = (props) => {
 
     return (
         <div className="navbar navbar-mobile">
@@ -34,7 +34,7 @@ const Navbarm = () => {
         <Text>Logout</Text>
         </Link>
         </Menu>
-        <Button size="small" className="bookbtn">Book Consulation</Button>
+        <Button size="small" onClick={props.setCalendly} className="bookbtn">Book Consulation</Button>
         <Link href="/">
         <Image src="/logo-short.svg" width="40px" height="40px"/>
         </Link>

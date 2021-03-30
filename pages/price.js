@@ -7,11 +7,9 @@ const Pricing = () => {
 
     return (
         <Grid.Container className="price-section">
-            {/* <Spacer y={3}/> */}
-            {/* <Grid xs justify="center">
-                <Text h3 b>Saves you time and money while creating high guest satisfaction.</Text>
-            </Grid> */}
-            <Grid xs justify="center">
+            <Grid xs style={{minHeight: '940px'}} align="center" direction="column">
+            <Spacer y={3}/>
+                <Text className="price-section-title" h1>호스트의 시간과 비용을 절약해주고 게스트에게는 높은 만족을 줍니다.</Text>
             <div>
                 <Tabs/>
             </div>
