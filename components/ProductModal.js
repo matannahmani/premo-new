@@ -4,6 +4,8 @@ import { AppContext } from "../context/appcontext"
 import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/styles.css';
+import { Minimize2 } from '@geist-ui/react-icons'
+
 
 const ProductModal = ({modal, setModal,info}) => {
     const [mobile,] = useContext(AppContext);
@@ -15,6 +17,7 @@ const ProductModal = ({modal, setModal,info}) => {
     return (
     <>
       <Modal wrapClassName="product-modal" width={mobile.mobile ? '90vw' : '840px'} open={modal} onClose={closeHandler}>
+        <Minimize2 onClick={closeHandler} className="product-modal-close"/>
         <Modal.Title className="product-modal-title">{info.title}</Modal.Title>
         <Modal.Subtitle className="product-modal-sub">
                 Size : {info.size}<br/>
@@ -26,7 +29,7 @@ const ProductModal = ({modal, setModal,info}) => {
             <AutoplaySlider
             play={true}
             cancelOnInteraction={false} // should stop playing on user interaction
-            organicArrows={true}
+            organicArrows={mobile ? false : true}
             interval={6000}
             bullets={false}
             className="product-modal-slider"

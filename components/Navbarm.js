@@ -14,7 +14,7 @@ const Navbarm = (props) => {
         <Link href="/consult">
         <Text>Consulting</Text>
         </Link>
-        <Link href="/devices">
+        <Link href="/device">
         <Text>Devices</Text>
         </Link>
         <Link href="/lookbook">

@@ -10,6 +10,12 @@
         height: 200px !important;
     }
 }
+.product-modal-close{
+    z-index: 2;
+    position: absolute;
+    top: 16px;
+    right: 16px
+}
 .product-modal-buttons{
     display: flex;
     align-items: center;

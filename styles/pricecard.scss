@@ -1,3 +1,10 @@
+.price-section{
+    background: #ECF3F6;
+    position: relative;
+    :nth-child(1n){
+        z-index: 2;
+    }
+}
 .price-section-title{
     font-family: "Roboto",sans-serif;
     font-weight: bold;
@@ -6,21 +13,61 @@
     color: #333333;
     width: 600px;
     margin: 0 auto;
+    text-align: center;
 }
+.product-one-shape-5{
+    background: #EDE6E0;
+    box-shadow: 0px 20px 40px 0px rgba(237, 230, 224, 0.8);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40% !important;
+    width: 85px;
+    height: 85px;
+    top: 20%;
+    right: 12%;
+    animation-duration: 12s;
+    perspective: 85px; 
+    z-index: 0;
+  }
+  .right{
+      right: 20%;   
+  }
+  .left{
+      left: 20%;
+  }
+  .bottom{
+      top: unset;
+      bottom: 30%;
+  }
+  .top{
+      top: 10%;
+      bottom: unset;
+  }
 @media (max-width: 900px){
     .price-section-title{
         font-size: 26px;
         line-height: 30px;
         width: 300px;
     }
+    .right{
+        right: 100px;   
+    }
+    .left{
+        left: 100px;
+    }
+    .bottom{
+        bottom: 300px;
+    }
+    .top{
+        top: 5%;
+    }
 }
 .price-card{
     max-width: 300px;
     background: #FFFFFF;
-    box-shadow: 0px 5px 20px rgba(13, 32, 119, 0.05);
+    box-shadow: 0px 5px 20px rgba(13, 32, 119, 0.05) !important;
     border-radius: 16px;
     position: relative;
-    padding: 8px 0px;
+    padding: 16px 0px;
+    min-width: 275px;
     p,span,h2{
         font-family: "Roboto",sans-serif;
     }
@@ -35,6 +82,8 @@
     h3{
         padding: 16px;
         background: #F3F3F3;
+        height: 50px;
+        margin: 0;
     }
 }
 .price-card-section-item:nth-child(odd) {

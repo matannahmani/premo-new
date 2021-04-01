@@ -63,7 +63,7 @@ const NavbarD = (props) => {
             <Link href="/">
             <Text className="nav-item">Consulting</Text>
             </Link>
-            <Link href="/">
+            <Link href="/device">
             <Text className="nav-item">Devices</Text>
             </Link>
             <Popover className="child-flex nav-item" content={content2}><Text>Protoflio<ChevronDown/></Text></Popover>

@@ -2,14 +2,17 @@ import { Button, Image, Text } from "@geist-ui/react";
 import React, { useState } from 'react';
 import ProductModal from './ProductModal';
 
-const Pricecard = ({icon, title, oprice, price, children}) => {
+const Pricecard = ({icon, title, oprice, price, children,head = true}) => {
     const [modal, setModal] = useState(false)
     const [info,setInfo] = useState({photo: []});
     const pitem = React.Children.map(children, child => child.type.displayName === 'PItem' ? 
+    <>
+    {child.props.subtitle !== undefined &&  <Text h3>{child.props.subtitle}</Text>}
     <div style={child.props.style} className="price-card-section-item">
-    <Text p>{child.props.title}</Text>
+    <Text p className={child}>{child.props.title}</Text>
     <Text onClick={() => {setModal(true);setInfo({...child.props})}} span >Read Detalis</Text>
     </div> 
+    </>
     : null);
     const uitem = React.Children.map(children, child => child.type.displayName === 'UItem' ? 
     <div className="price-card-section-item">
@@ -21,14 +24,18 @@ const Pricecard = ({icon, title, oprice, price, children}) => {
     return (
 
         <div className="price-card">
-            <Image className={`price-card-icon ${icon == "./king-i.svg" && 'icon-fix'}`} src={icon}/>
+            {head && (
+                <>
+                <Image className={`price-card-icon ${icon == "./king-i.svg" && 'icon-fix'}`} src={icon}/>
             <div className="price-card-header">
                 <Text h2 className="price-card-header-title">{title}</Text>
                 <Text p className="price-card-header-price"><span style={{textDecorationLine: 'line-through'}}>{oprice}</span><br/>{price}</Text>
                 <Button className="learnbtn btn-md" auto size="large">구매하기</Button>
             </div>
+            </>
+            )}
             <div className="price-card-section">
-                <Text h3>패키지 구성</Text>
+            {head && <Text h3>'패키지 구성'</Text>}
                 {pitem}
             </div>
             <div className="price-card-section">
