@@ -16,9 +16,9 @@ const Partners = () => {
             interval={6000}
             bullets={false}
           >
-        {[...Array(5).keys()].map((e) => (
+        {[...Array(3).keys()].map((e) => (
             <div className="hero-panel">
-                <Image src={`/hero/home${e}.png`} className="partner-icon" style={{objectFit: 'cover'}}/>
+                <Image src={`/hero/h${e}.png`} className="partner-icon" style={{objectFit: 'cover'}}/>
             </div>
         ))
         }

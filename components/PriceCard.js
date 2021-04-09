@@ -9,7 +9,7 @@ const Pricecard = ({icon, title, oprice, price, children,head = true}) => {
     <>
     {child.props.subtitle !== undefined &&  <Text h3>{child.props.subtitle}</Text>}
     <div style={child.props.style} className="price-card-section-item">
-    <Text p className={child}>{child.props.title}</Text>
+    <Text p style={{maxWidth: '70%'}}>{child.props.title}</Text>
     <Text onClick={() => {setModal(true);setInfo({...child.props})}} span >Read Detalis</Text>
     </div> 
     </>
@@ -39,7 +39,7 @@ const Pricecard = ({icon, title, oprice, price, children,head = true}) => {
                 {pitem}
             </div>
             <div className="price-card-section">
-                <Text h3>서비스 활용</Text>
+                {head && <Text h3>서비스 활용</Text>}
                 {uitem}
             </div>
             <ProductModal modal={modal} info={info} setModal={setModal}/>

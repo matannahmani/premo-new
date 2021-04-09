@@ -8,7 +8,8 @@ import ProductCard from '../components/productCard';
 import HeroCarousel from '../components/HeroCarousel';
 import AppVideo from '../components/AppVideo';
 import Line from '../components/Line';
-import { IoBrowsers } from 'react-icons/io5';
+import Appstore from '../public/icons/appstore.svg'
+import Playstore from '../public/icons/googleplay.svg'
 
 export default function Home() {
   const [app,] = useContext(AppContext);
@@ -29,7 +30,7 @@ export default function Home() {
         }
         <Grid xs={24} md={10} lg={10} justify="center" alignItems={app.mobile ? 'center' : "flex-start"} className="main-center">
           {/* <Text className={"hero-moto"} p>Care about your moment</Text> */}
-          <Text className={"hero-title"} h1>슈퍼 호스트가 되기 위한 완벽한 준비</Text>
+          <Text className={"hero-title"} h1>Airbnb 슈퍼 호스트가 되기 위한 완벽한 준비</Text>
           <Text className={"hero-description"} p>스마트홈 디바이스와 숙소 관리플랫폼 통합 패키지.</Text>
           <Button onClick={scrollTo} className="learnbtn btn-md hero-btn" auto size="large">더 알아보기</Button>
           {app.mobile &&
@@ -37,11 +38,24 @@ export default function Home() {
           }
         </Grid>
       </Grid.Container>
-      <Grid.Container alignItems="center" justify="center" className="section-partners">
+      <Grid.Container alignItems="center" justify="center" direction="column" className="section-partners">
         <Grid className="partners-box">
           <Text h4>프리모 파트너사</Text>
           <Partners/>
         </Grid>
+        <Grid className="appdownload" direction="column">
+          <h2>All in control with<br/> the Premo App</h2>
+          <div className="premo-app">
+          <img className="premo-app-bg" src="/app/a0.png"/>
+          <img className="premo-app-ab" src="/app/a1.png"/>
+          <img className="premo-app-ap" src="/app/a2.png"/>
+          <img className="premo-app-lk" src="/app/a3.png"/>
+          </div>
+            <button className="store-btn" onClick={() => window.open('https://play.google.com/store/apps/details?id=com.keywe.premo')} ><Playstore/></button>
+            <button className="store-btn" onClick={() => window.open('https://apps.apple.com/app/id1538085877')} ><Appstore/></button>
+            
+        </Grid>
+
       </Grid.Container>
       <div ref={midSec}>
       <Grid.Container alignItems="center" justify="center" className="product-section">
@@ -77,12 +91,7 @@ export default function Home() {
           {/* <Spacer y="1.5"/> */}
         <Grid alignItems="center" direction="column" justify="center" xs={24} md={24} lg={24}>
           <AppVideo style={{margin:'unset'}} title="실시간 모니터링으로 낭비되는 관리 비용을 절감합니다." icon="icons/cash.svg" hide={true} />
-          {/* <Text h3>Get The Premo App</Text> */}
-            <Spacer/>
-            <Button onClick={() => window.open('https://play.google.com/store/apps/details?id=com.keywe.premo')} className="appstore-btn" icon={<Image src="./icons/playstore-logo.png" width={16} height={16}/>} shadow type="secondary">Play Store</Button>
-            <Spacer/>
-            <Button onClick={() => window.open('https://apps.apple.com/app/id1538085877')} className="appstore-btn" icon={<Image src="./icons/apple-logo.png" width={16} height={16}/>} shadow type="secondary">App Store</Button>
-            <Spacer y={3}/>
+          <Spacer y={3}/>
           <Card shadow hoverable className="index-cta">
             <Image className="index-cta-background" src="./app/3.png" height={155} width={295} scale="100%" style={{objectFit: 'cover'}}/>
             <Image className="index-cta-background-p" src="./app/2.png"/>

@@ -1,5 +1,10 @@
+@media (max-width: 900px){
+    .tabs{
+        width: 300px !important;
+    }
+}
 .tabs {
-    width: 300px !important;
+    width: 435px;
     margin: 40px 0px;
     min-height: 60px;
     .tabs-header {

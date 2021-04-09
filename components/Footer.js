@@ -1,5 +1,6 @@
-import { Button, Grid, Image, Spacer, Text } from "@geist-ui/react";
-
+import { Grid, Image, Spacer, Text } from "@geist-ui/react";
+import Appstore from '../public/icons/appstore.svg'
+import Playstore from '../public/icons/googleplay.svg'
 const Footer = () => {
 
     return (
@@ -49,9 +50,9 @@ const Footer = () => {
             <Grid className="footer-links" direction="column">
                     <Text className="footer-text" >Download Premo</Text>
                     <Spacer/>
-                    <Button onClick={() => window.open('https://play.google.com/store/apps/details?id=com.keywe.premo')} className="appstore-btn" icon={<Image src="./icons/playstore-logo.png" width={16} height={16}/>} shadow type="secondary">Play Store</Button>
+                    <button className="store-btn" onClick={() => window.open('https://play.google.com/store/apps/details?id=com.keywe.premo')} ><Playstore/></button>
                     <Spacer/>
-                    <Button onClick={() => window.open('https://apps.apple.com/app/id1538085877')} className="appstore-btn" icon={<Image src="./icons/apple-logo.png" width={16} height={16}/>} shadow type="secondary">App Store</Button>
+                    <button className="store-btn" onClick={() => window.open('https://apps.apple.com/app/id1538085877')} ><Appstore/></button>
                     <Spacer/>
             </Grid>
         </Grid.Container>

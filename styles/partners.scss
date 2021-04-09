@@ -1,6 +1,6 @@
 .section-partners{
     background: #ECF3F6;
-    height: 400px;
+    padding: 40px 0px !important;
 }
 .awssld__content{
     color: #3333 !important;
@@ -44,5 +44,72 @@
         text-align: center;
         user-select: none !important;
         pointer-events: none !important;
+    }
+}
+.appdownload{
+    padding-top: 40px !important;
+    h2{
+        font-weight: bold;
+        font-size: 49px;
+        line-height: 57px;
+        color: #3D5582;
+        text-align: center;
+    }
+}
+.premo-app{
+    position: relative;
+    height: 500px;
+    .premo-app-bg{
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+    }
+    .premo-app-ab{
+        position: absolute;
+        bottom: 168px;
+        left: 20px;
+        z-index: 2;
+        animation-name: appMover;
+        animation-duration: 8s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    .premo-app-ap{
+        position: absolute;
+        right: 80px;
+        top: 16px;
+        z-index: 4;
+        animation-name: appMover;
+        animation-duration: 8s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    .premo-app-lk{
+        position: absolute;
+        z-index: 3;
+        right: 23px;
+        top: 16px;
+        transform: rotate(9.28deg);
+        animation-name: appMover;
+        animation-duration: 8s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+}
+@media (min-width: 900px){
+    .premo-app{
+        transform: scale(1.15);
+    }
+}
+@keyframes appMover{
+    0%{
+        transform: translateY(0px) rotate(9deg);
+    }
+    50%{
+        transform: translateY(10px) rotate(9deg);
+    }
+    100%{
+        transform: translateY(0px) rotate(9deg);
     }
 }
