@@ -26,7 +26,6 @@ const device = () => {
                 <Spacer y={3}/>
                 <Text className="price-section-title" h1>호스트의 시간과 비용을 절약해주고 게스트에게는 높은 만족을 줍니다.</Text>
                 <Spacer y={3}/>
-
                 <Card className="device-card" shadow>
                 <Flicking
                 tag = "div"
@@ -98,6 +97,9 @@ const device = () => {
                 <Spacer y={3}/>
                 <Text className="price-section-title" h3>All in one view</Text>
                 <Spacer y={1.5}/>
+                <div
+                style={{ background: 'white', padding: '16px',borderRadius: '16px',boxShadow: '0 5px 10px rgb(0 0 0 / 12%)' }}
+                >
                 <Pricecard icon="./diamond-i.svg" head={false}>
                 <Pricecard.PItem url="https://drive.google.com/file/d/1pBEDEhl2obP3s8tbvgxlIoYY9Ok8eiKT/view" photo={["./app/smart0.png","./app/smart1.png"]} battery="AA Size * 4" size="102 x 102 x 22.45(mm)"
                 title="푸쉬풀 형태의 편리한 스마트 도어락입니다." subtitle="프리모 도어락">
@@ -123,7 +125,7 @@ const device = () => {
                         활용하세요.
                         </Pricecard.PItem>
                         <Pricecard.PItem title="내부의 온도와 습도를 실시간으로 확인 및 기록할 수 있습니다." subtitle="움직임 감지 센서" size="65 X 65 X 28.5 mm" battery="3V DC (CR123A)" photo={["./app/msensor0.png","./app/msensor1.png"]}>
-                        외부 침입으로부터 동작을 감지하는 보안을 제공하는 센서입니다.<br/>
+                            외부 침입으로부터 동작을 감지하는 보안을 제공하는 센서입니다.<br/>
                         스스로 온도 변화를 감지하고 무선 네트워크를 최적화 하여 작동 오류를
                         최소화할 수 있는 센서입니다.<br/>
                         게스트가 머무는 동안 안심하고 머무를수 있는 보안 모드를 제공합니다.<br/>
@@ -143,13 +145,14 @@ const device = () => {
                         연기 센서를 통해 숙소 내 흡연 및 화재를 예방하세요.<br/>
                         </Pricecard.PItem>
                         <Pricecard.PItem title="가스 누설을 감지하고 안전사고를 예방합니다." subtitle="가스 센서" size="79 X 68 X 31mm" battery="AA Size * 4" photo={["./app/gsensor0.png","./app/gsensor1.png"]}>
-                        가스 누설을 감지하고 안전사고를 예방해주는 센서입니다.<br/>
+                            가스 누설을 감지하고 안전사고를 예방해주는 센서입니다.<br/>
                         노후된 가스의 누수, 가스 렌지 사고, 등 공기 중에 정상범위를 벗어난 유해가스
                         농도를 파악하여 실시간으로 알려줍니다.<br/>
                         현장에서의 알람 안내와 프리모 앱을 통한 실시간 알람을 통해
                         언제 어디서나 문제 발생 시 빠른 확인과 대처가 가능합니다.<br/>
                         </Pricecard.PItem>
                     </Pricecard>
+                </div>
                     <Spacer y={3}/>
             </Grid>
         </Grid.Container>

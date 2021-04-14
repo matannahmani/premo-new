@@ -12,9 +12,9 @@ const Navbarm = (props) => {
         <ActiveLink href="/price">
         <Text>Pricing</Text>
         </ActiveLink>
-        <ActiveLink href="/consult">
+        {/* <ActiveLink href="/consult">
         <Text>Consulting</Text>
-        </ActiveLink>
+        </ActiveLink> */}
         <ActiveLink href="/device">
         <Text>Devices</Text>
         </ActiveLink>
@@ -37,7 +37,7 @@ const Navbarm = (props) => {
         </Menu>
         <Button auto size="small" onClick={props.setCalendly} className="bookbtn">Book Consulation</Button>
         <ActiveLink href="/">
-        <Image src="/logo-main.svg" width="80px" height="70px"/>
+        <Image src="/logo-short.svg" width="80px" height="70px"/>
         </ActiveLink>
         </div>
     )
