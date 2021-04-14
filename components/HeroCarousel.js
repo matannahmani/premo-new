@@ -18,7 +18,7 @@ const Partners = () => {
           >
         {[...Array(3).keys()].map((e) => (
             <div key={`hp${e}`} className="hero-panel">
-                <Image src={`/hero/h${e}.png`} className="partner-icon" style={{objectFit: 'cover'}}/>
+                <Image src={`/hero/h${e}.jpg`} className="partner-icon" style={{objectFit: 'cover'}}/>
             </div>
         ))
         }
