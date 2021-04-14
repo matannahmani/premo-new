@@ -50,9 +50,9 @@ const NavbarD = (props) => {
             <ActiveLink href="/price">
             <Text className="nav-item">Pricing</Text>
             </ActiveLink>
-            <ActiveLink href="/">
+            {/* <ActiveLink href="/">
             <Text className="nav-item">Consulting</Text>
-            </ActiveLink>
+            </ActiveLink> */}
             <ActiveLink href="/device">
             <Text className="nav-item">Devices</Text>
             </ActiveLink>

@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from 'react'
-
+import React,{forwardRef} from 'react'
+const RefFixer = React.forwardRef(function RefFixer(props, ref) {
+    return (
+      props.children
+    );
+  });
 const ActiveLink = ({href, children}) => {
     const router = useRouter();
 
@@ -12,7 +16,9 @@ const ActiveLink = ({href, children}) => {
 
     return (
         <Link href={href}>
-            {React.cloneElement(children, { className })}
+            <RefFixer>
+                {React.cloneElement(children, { className })}
+            </RefFixer>
         </Link>
     )
 }
