@@ -1,43 +1,44 @@
 import { slide as Menu } from 'react-burger-menu'
-import {Card,Button, Link, Text} from '@geist-ui/react'
+import {Card,Button, Text} from '@geist-ui/react'
 import { Menu as MenuIcon } from '@geist-ui/react-icons'
 import Image from 'next/image'
+import ActiveLink from './ActiveLink'
 
 const Navbarm = (props) => {
 
     return (
         <div className="navbar navbar-mobile">
         <Menu width={"240px"} customBurgerIcon={<MenuIcon/>} right pageWrapId={ "page-wrap" } outerContainerId={"__next"}>
-        <Link href="/price">
-        <Text className="bm-item-active">Pricing</Text>
-        </Link>
-        <Link href="/consult">
+        <ActiveLink href="/price">
+        <Text>Pricing</Text>
+        </ActiveLink>
+        <ActiveLink href="/consult">
         <Text>Consulting</Text>
-        </Link>
-        <Link href="/device">
+        </ActiveLink>
+        <ActiveLink href="/device">
         <Text>Devices</Text>
-        </Link>
-        <Link href="/lookbook">
+        </ActiveLink>
+        <ActiveLink href="/lookbook">
         <Text>LookBook</Text>
-        </Link>
-        <Link href="/premozone">
+        </ActiveLink>
+        <ActiveLink href="/premozone">
         <Text>PremoZone</Text>
-        </Link>
+        </ActiveLink>
         <span style={{border: '1px solid #D5D6D5',margin: '16px 0px'}}></span>
-        <Link href="/user/payment">
+        <ActiveLink href="/user/payment">
         <Text>Payment</Text>
-        </Link>
-        <Link href="/user/account">
+        </ActiveLink>
+        <ActiveLink href="/user/account">
         <Text>Account</Text>
-        </Link>
-        <Link href="/">
+        </ActiveLink>
+        <ActiveLink href="/">
         <Text>Logout</Text>
-        </Link>
+        </ActiveLink>
         </Menu>
-        <Button size="small" onClick={props.setCalendly} className="bookbtn">Book Consulation</Button>
-        <Link href="/">
+        <Button auto size="small" onClick={props.setCalendly} className="bookbtn">Book Consulation</Button>
+        <ActiveLink href="/">
         <Image src="/logo-main.svg" width="80px" height="70px"/>
-        </Link>
+        </ActiveLink>
         </div>
     )
 }

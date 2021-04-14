@@ -35,12 +35,13 @@
     height: 370px;
     .image{
         width: 258.03px !important;
-        height: 220px !important;
+        height: 130px !important;
         img{
             object-fit: contain;
         }
     }
     p{
+        width: 85%;
         padding: 16px;
         font-family: 'Roboto',sans-serif;
         font-size: 14px;

@@ -35,7 +35,7 @@ const Pricecard = ({icon, title, oprice, price, children,head = true}) => {
             </>
             )}
             <div className="price-card-section">
-            {head && <Text h3>'패키지 구성'</Text>}
+            {head && <Text h3>패키지 구성</Text>}
                 {pitem}
             </div>
             <div className="price-card-section">

@@ -4,6 +4,7 @@ import { AppContext } from "../context/appcontext"
 import Flicking from "@egjs/react-flicking";
 import { Fade, AutoPlay } from "@egjs/flicking-plugins";
 import Pricecard from '../components/PriceCard';
+import DeviceCard from '../components/DeviceCard';
 
 
 const device = () => {
@@ -58,21 +59,38 @@ const device = () => {
                 gap = {0}
                 moveType = {{type: "snap", count: 1}}
                 >
-                    {[...Array(3).keys()].map((e) => (
-                        <div className="device-card-carousel-item" key={e}>
-                            <Image src={`app/c${e+1}.png`}/>
-                            <Spacer/>
-                            <Text h3>Smoke Sensor</Text>
-                            <Text p>비닐 스트랩을 제거한 본체의 가운데 위치한 네트워킹 센서를
-                                    1.5초내 3회 빠르게 눌러줍니다.
-                                    - 30초 이내 녹색 LED가 깜빡이며 앱 화면에 ‘네트워킹 성공'이표시됩니다.
-                            </Text>
-                        </div>
-                    ))
-                    }
+                    <DeviceCard title="프리모 도어락" img="./app/smart0.png" key={0}>
+                    푸쉬풀 형태의 편리한 스마트 도어락입니다. 언제 어디서나 프리모 앱으로 연결 가능합니다.<br/>
+                    1회용 비밀번호 생성 및 발급으로 간편하고 안전한 게스트 패스워드를<br/>
+                    </DeviceCard>
+                    <DeviceCard title="스마트 허브" img="./app/zwave0.png" key={1}>
+                    모든 센서와 도어락을 연결하고 제어할수 있게 도와주는 기기입니다.<br/>
+                    집안의 다양한 스마트 디바이스를 연결하고 확장하세요.<br/>
+                    </DeviceCard>
+                    <DeviceCard title="도어 센서" img="./app/doorsensor0.png" key={2}>
+                    창문, 문, 서랍 그리고 금고 등에 간편하게 설치하여 열고 닫힘,
+                    비품 관리에 활용할 수 있는 센서입니다.<br/>
+                    </DeviceCard>
+                    <DeviceCard title="움직임 감지 센서" img="./app/msensor0.png" key={3}>
+                    외부 침입으로부터 동작을 감지하는 보안을 제공하는 센서입니다.<br/>
+                    스스로 온도 변화를 감지하고 무선 네트워크를 최적화 하여 작동 오류를.
+                    </DeviceCard>
+                    <DeviceCard title="온습도 센서" img="./app/esensor0.png" key={4}>
+                    실내의 온도와 습도를 실시간으로 확인 및 기록할 수 있는 센서입니다.<br/>
+                    특정 온도 설정을 통해 비정상적인 온도 감지 시 즉시 알람이 가능합니다.<br/>
+                    </DeviceCard>
+                    <DeviceCard title="연기 센서" img="./app/ssensor0.png" key={5}>
+                    실내 연기(화재, 담배 등)를 실시간으로 감지하여 빠른 조치를 할 수 있도록 도와주는 센서입니다.<br/>
+                    프리모 앱을 통해 원격 알람과 제어가 가능하며.
+                    </DeviceCard>
+                    <DeviceCard title="가스 센서" img="./app/gsensor0.png" key={6}>
+                        가스 누설을 감지하고 안전사고를 예방해주는 센서입니다.<br/>
+                        노후된 가스의 누수, 가스 렌지 사고, 등 공기 중에 정상범위를 벗어난 유해가스
+                        농도를 파악하여 실시간으로 알려줍니다.<br/>
+                    </DeviceCard>
                 </Flicking>
                 <div className="device-card-carousel-dotbar">
-                    {[...Array(3).keys()].map((e) => (
+                    {[...Array(7).keys()].map((e) => (
                     <div key={e} onClick={() => carousel.current.moveTo(e)} ref={(element) => dotbar.current[e] = element} className={`device-card-carousel-dot ${e === 0 && 'dot-active'}` }></div>
                     ))}
                 </div>

@@ -21,7 +21,7 @@ const Partners = () => {
     autoResize = {true}  plugins={plugins}
         adaptive = {true} moveType={{ type: "snap", count: 1 }} gap={16} bound={true} circular={false}>
             {[...Array(7).keys()].map((e) => (
-                <div className="panel">
+                <div key={`p${e}`} className="panel">
                     <Image src={`/partners/${e}.png`} style={{objectFit: 'contain',height: '32px'}}/>
                 </div>
                 ))

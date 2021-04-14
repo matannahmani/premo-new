@@ -1,9 +1,8 @@
-import Image from 'next/image'
-import {Avatar,Card,Popover,Text,Button} from "@geist-ui/react"
+import {Avatar,Card,Popover,Text,Button, Image} from "@geist-ui/react"
 import {useState,useRef, useEffect} from 'react'
 import {IoPersonCircleSharp} from 'react-icons/io5'
 import { ChevronDown } from '@geist-ui/react-icons'
-import Link from 'next/link'
+import ActiveLink from './ActiveLink'
 
 const NavbarD = (props) => {
   // ghost navbar in future
@@ -28,59 +27,46 @@ const NavbarD = (props) => {
             <span>User Settings</span>
           </Popover.Item>
           <Popover.Item>
-            <Link href="#">Payment</Link>
+            <ActiveLink href="#">Payment</ActiveLink>
           </Popover.Item>
           <Popover.Item>
-            <Link color href="#">Account</Link>
+            <ActiveLink color href="#">Account</ActiveLink>
           </Popover.Item>
           <Popover.Item>
-            <Link color href="#">Logout</Link>
+            <ActiveLink color href="#">Logout</ActiveLink>
           </Popover.Item>
         </>
       )
-    const content2 = () => (
-        <>
-        <Popover.Item>
-        <Link href="#">Photo Book</Link>
-        </Popover.Item>
-        <Popover.Item>
-        <Link href="#">Premo Zone</Link>
-        </Popover.Item>
-        </>
-    )
+
     return (
         <div className={`navbar navbar-desktop ${sticky ? 'nav-sticky' : ''}`}>
         <div className="nav-item navbar-icon">
-          <Link href="/">
-            <Image src="/logo-main.svg" width="120px" height="80px"/>
-          </Link>
+          <ActiveLink href="/">
+            <Image src="/logo-main.svg" width="120" height="80"/>
+          </ActiveLink>
         </div>
         <div className="navbar-content">
-            <Button size="small" onClick={props.setCalendly} className="nav-item bookbtn">Book Consulation</Button>
-            <Link href="/price">
+            <Button auto size="small" onClick={props.setCalendly} className="nav-item bookbtn">Book Consulation</Button>
+            <ActiveLink href="/price">
             <Text className="nav-item">Pricing</Text>
-            </Link>
-            <Link href="/">
+            </ActiveLink>
+            <ActiveLink href="/">
             <Text className="nav-item">Consulting</Text>
-            </Link>
-            <Link href="/device">
+            </ActiveLink>
+            <ActiveLink href="/device">
             <Text className="nav-item">Devices</Text>
-            </Link>
-            <Popover className="child-flex nav-item" content={content2}><Text>Protoflio<ChevronDown/></Text></Popover>
+            </ActiveLink>
+            <ActiveLink href="#">
+            <Text className="nav-item">Premo Zone</Text>
+            </ActiveLink>
+            <ActiveLink href="#">
+            <Text className="nav-item">Look Book</Text>
+            </ActiveLink>
             <Popover portalClassName="portal-lg" className="child-flex nav-item" content={content}>
             <IoPersonCircleSharp style={{width:"30px",height:"30px"}} />
             <ChevronDown/>
             </Popover>
         </div>
-        {/* <div className="dropdown-icon" onClick={dropHandler}>
-            <Avatar src="./person.svg" />
-            {drop && 
-                <Card className="dropdown-card">
-                TEST
-                </Card>
-            }
-        </div> */}
-
         </div>
     )
 }

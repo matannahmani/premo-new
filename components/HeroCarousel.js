@@ -17,7 +17,7 @@ const Partners = () => {
             bullets={false}
           >
         {[...Array(3).keys()].map((e) => (
-            <div className="hero-panel">
+            <div key={`hp${e}`} className="hero-panel">
                 <Image src={`/hero/h${e}.png`} className="partner-icon" style={{objectFit: 'cover'}}/>
             </div>
         ))

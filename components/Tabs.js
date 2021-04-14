@@ -18,10 +18,10 @@ const Tabs = () => {
                 (
                     <motion.div
                     key="tab1"
-                    style={{ overflow: "hidden" }}
-                    initial={{ height: 0 }}
+                    style={{ overflow: "hidden",borderRadius: '16px',boxShadow: '0 5px 10px rgb(0 0 0 / 12%)' }}
+                    initial={{ height: 20 }}
                     animate={{ height: "auto" }}
-                    exit={{ height: 0 }}
+                    exit={{ height: 20 }}
                     transition={{ duration: 0.5 }}>
                         <Pricecard icon="./diamond-i.svg" title="프리미엄 패키지" oprice="75,000원" price={"월 44,900원 / 2년"}>
                         <Pricecard.PItem url="https://drive.google.com/file/d/1pBEDEhl2obP3s8tbvgxlIoYY9Ok8eiKT/view" photo={["./app/smart0.png","./app/smart1.png"]} battery="AA Size * 4" size="102 x 102 x 22.45(mm)" title="프리모 도어락">
@@ -87,10 +87,10 @@ const Tabs = () => {
                 (
                     <motion.div
                     key="tab2"
-                    style={{ overflow: "hidden" }}
-                    initial={{ height: 0 }}
+                    style={{ overflow: "hidden",borderRadius: '16px',boxShadow: '0 5px 10px rgb(0 0 0 / 12%)' }}
+                    initial={{ height: 20 }}
                     animate={{ height: "auto" }}
-                    exit={{ height: 0 }}
+                    exit={{ height: 20 }}
                     transition={{ duration: 0.5 }}>
                         <Pricecard icon={"./king-i.svg"} title="스탠다드 패키지" oprice="40,000원" price={"월 24,900원 / 1년"}>
                         <Pricecard.PItem url="https://drive.google.com/file/d/1pBEDEhl2obP3s8tbvgxlIoYY9Ok8eiKT/view" photo={["./app/smart0.png","./app/smart1.png"]} battery="AA Size * 4" size="102 x 102 x 22.45(mm)" title="프리모 도어락">
