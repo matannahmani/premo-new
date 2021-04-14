@@ -19,6 +19,8 @@
     cursor: pointer;
     background: none;
     transition: all 0.25s ease-in-out;
+    width: 100%;
+    height: auto;
 }
 .store-btn:hover{
     transform: translateY(-5px);

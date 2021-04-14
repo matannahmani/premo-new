@@ -47,7 +47,8 @@
     top: 0px;
     z-index: 999;
     flex-direction: row-reverse;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 8px;
 }
 .bm-burger-button {
     position: relative;

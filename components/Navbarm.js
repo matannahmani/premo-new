@@ -36,7 +36,7 @@ const Navbarm = (props) => {
         </Menu>
         <Button size="small" onClick={props.setCalendly} className="bookbtn">Book Consulation</Button>
         <Link href="/">
-        <Image src="/logo-short.svg" width="40px" height="40px"/>
+        <Image src="/logo-main.svg" width="80px" height="70px"/>
         </Link>
         </div>
     )

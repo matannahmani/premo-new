@@ -43,7 +43,7 @@ export default function Home() {
           <Text h4>프리모 파트너사</Text>
           <Partners/>
         </Grid>
-        <Grid className="appdownload" direction="column">
+        <Grid xs className="appdownload" alignItems="center" justify="center" direction="column">
           <h2>All in control with<br/> the Premo App</h2>
           <div className="premo-app">
           <img className="premo-app-bg" src="/app/a0.png"/>
@@ -51,9 +51,10 @@ export default function Home() {
           <img className="premo-app-ap" src="/app/a2.png"/>
           <img className="premo-app-lk" src="/app/a3.png"/>
           </div>
-            <button className="store-btn" onClick={() => window.open('https://play.google.com/store/apps/details?id=com.keywe.premo')} ><Playstore/></button>
-            <button className="store-btn" onClick={() => window.open('https://apps.apple.com/app/id1538085877')} ><Appstore/></button>
-            
+          <Grid xs style={{width: '100%'}} justify="space-evenly">
+            <button className="store-btn" onClick={() => window.open('https://play.google.com/store/apps/details?id=com.keywe.premo')} ><Playstore viewBox="0 0 180 52"  width={null} height={null}/></button>
+            <button className="store-btn" onClick={() => window.open('https://apps.apple.com/app/id1538085877')} ><Appstore viewBox="0 0 180 52"  width={null} height={null}/></button>            
+          </Grid>
         </Grid>
 
       </Grid.Container>
@@ -82,9 +83,9 @@ export default function Home() {
       <Grid.Container className="app-video-section" >
         <Grid alignItems="center" direction={app.mobile ? "column" : 'row'} justify="center" xs={24} md={24} lg={24}>
           <div className="app-video-sectionbox">
-          <AppVideo title="게스트에게 비밀번호를 알려주거나 키를 직접 전달할 필요가 없어요." img={'app/0.png'} icon="icons/key.svg" />
+          <AppVideo title="게스트에게 비밀번호를 알려주거나 키를 직접 전달할 필요가 없어요." video="https://www.youtube.com/embed/rb9qYGzsoZY" img={'app/0.png'} icon="icons/key.svg" />
           {!app.mobile && <Line className="app-video-line" /> }
-          <AppVideo title="5성급 호텔 수준의 청소 서비스와 비품 관리를 원클릭으로 만나보세요." img={'app/1.png'} icon="icons/stars.svg" flip={true} />
+          <AppVideo title="5성급 호텔 수준의 청소 서비스와 비품 관리를 원클릭으로 만나보세요." video="https://www.youtube.com/embed/qGradHWnGQA" img={'app/1.png'} icon="icons/stars.svg" flip={true} />
           {!app.mobile && <Line className="app-video-line line-2" /> }
           </div>
         </Grid>
