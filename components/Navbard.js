@@ -27,13 +27,13 @@ const NavbarD = (props) => {
             <span>User Settings</span>
           </Popover.Item>
           <Popover.Item>
-            <ActiveLink href="#">Payment</ActiveLink>
+            <ActiveLink href="/user/payment"><span>Payment</span></ActiveLink>
           </Popover.Item>
           <Popover.Item>
-            <ActiveLink color href="#">Account</ActiveLink>
+            <ActiveLink color href="/user/profile"><span>Account</span></ActiveLink>
           </Popover.Item>
           <Popover.Item>
-            <ActiveLink color href="#">Logout</ActiveLink>
+            <ActiveLink color logout><span>Logout</span></ActiveLink>
           </Popover.Item>
         </>
       )

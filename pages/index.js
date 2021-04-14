@@ -48,7 +48,7 @@ export default function Home() {
           <img className="premo-app-bg" src="/app/a0.png"/>
           <img className="premo-app-ab" src="/app/a1.png"/>
           <img className="premo-app-ap" src="/app/a2.png"/>
-          <img className="premo-app-lk" src="/app/a3.jpg"/>
+          <img className="premo-app-lk" src="/app/a3.png"/>
           </div>
           <Grid xs style={{width: '100%'}} justify="space-evenly">
             <button className="store-btn" onClick={() => window.open('https://play.google.com/store/apps/details?id=com.keywe.premo')} ><Playstore viewBox="0 0 180 52"  width={null} height={null}/></button>
