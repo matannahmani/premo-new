@@ -1,0 +1,42 @@
+.premozone-blog{
+    background: #F9FBFC;
+    min-height: 100vh;
+    width: 100%;
+}
+.premozone-card{
+    width: 240px !important;
+    height: 320px !important;
+    .image{
+        height: 240px !important;
+        width: 240px !important;
+        img{
+            object-fit: cover;
+        }
+    }
+    .content{
+        display: flex !important;
+        flex-direction: column;
+        text-align: center;
+        padding: 0px !important;
+    }
+}
+.premozone-blog-header{
+    padding: 40px;
+    width: 100%;
+    h1{
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 59px;
+        text-align: center;
+    }
+    .post-info{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}

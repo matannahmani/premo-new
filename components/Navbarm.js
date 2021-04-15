@@ -1,7 +1,6 @@
 import { slide as Menu } from 'react-burger-menu'
-import {Card,Button, Text} from '@geist-ui/react'
+import { Button, Text, Image} from '@geist-ui/react'
 import { Menu as MenuIcon } from '@geist-ui/react-icons'
-import Image from 'next/image'
 import ActiveLink from './ActiveLink'
 
 const Navbarm = (props) => {
@@ -37,7 +36,7 @@ const Navbarm = (props) => {
         </Menu>
         <Button auto size="small" onClick={props.setCalendly} className="bookbtn">Book Consulation</Button>
         <ActiveLink href="/">
-        <Image src="/logo-short.svg" width="80px" height="70px"/>
+        <Image src="/logo-short.svg" width={60} height={60}/>
         </ActiveLink>
         </div>
     )
