@@ -4,10 +4,17 @@ import Layout from '../components/Layout'
 import {AppContext} from '../context/appcontext'
 import {useEffect, useState} from 'react'
 import 'react-awesome-slider/dist/styles.css';
+import NProgress from 'nprogress';
+import Router from 'next/router';
+import 'nprogress/nprogress.css'; //styles of nprogress
 
 const MyApp = ({ Component, pageProps }) => {
   const [app,setApp] = useState({mobile: false})
+  NProgress.configure({ showSpinner: true });
 
+  Router.events.on('routeChangeStart', () => NProgress.start());
+  Router.events.on('routeChangeComplete', () => NProgress.done());
+  Router.events.on('routeChangeError', () => NProgress.done());
   const setMobile = (state) => {
     setApp({...app,mobile: state})
   }
