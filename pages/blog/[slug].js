@@ -13,16 +13,15 @@ export default function Post({ post, morePosts, preview }) {
   }
   return (
     <>
+    {router.isFallback ? (null) : (
+      <>
       <Head>
-          {router.isFallback ? (null) : (
               <>
-              <title>Fix IT | {post.title}</title>
+              <title>Premo| {post.title}</title>
               <meta name="description" content={post.seo}/>
               <meta name="keywords" content={post.tags}/>
               <meta name="author" content={post.author.name}/>
               </>
-            )}
-        <meta name="description" content="Test"/>
     </Head>
     <Grid.Container className="premozone-blog" direction="column">
       <Grid xs direction="column">
@@ -43,6 +42,8 @@ export default function Post({ post, morePosts, preview }) {
         </div>
       </Grid>
     </Grid.Container>
+    </>
+    )}
   </>
   )
 }
