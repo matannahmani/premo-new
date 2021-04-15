@@ -7,6 +7,7 @@ import 'react-awesome-slider/dist/styles.css';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 import 'nprogress/nprogress.css'; //styles of nprogress
+import { appWithTranslation } from 'next-i18next'
 
 const MyApp = ({ Component, pageProps }) => {
   const [app,setApp] = useState({mobile: false})
@@ -48,4 +49,5 @@ const MyApp = ({ Component, pageProps }) => {
     </GeistProvider>
     )
 }
-export default MyApp
+export default appWithTranslation(MyApp)
+

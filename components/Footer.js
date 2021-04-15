@@ -1,7 +1,10 @@
-import { Grid, Image, Spacer, Text } from "@geist-ui/react";
+import { Button, Grid, Image, Spacer, Text } from "@geist-ui/react";
+import Link from "next/link";
 import Appstore from '../public/icons/appstore.svg'
 import Playstore from '../public/icons/googleplay.svg'
+import { useRouter } from 'next/router'
 const Footer = () => {
+    const router = useRouter()
 
     return (
         <Grid.Container justify="center" className="footer" direction="row">
@@ -26,6 +29,9 @@ const Footer = () => {
                 <Spacer y={0}/>
                 </Text>
                 </div>
+                <Link href='' locale={router.locale === 'en' ? 'kr' : 'en'}>
+                    <Button style={{width: '50px'}} auto type="secondary" shadow>{router.locale === 'en' ? 'KR' : 'EN'}</Button>
+                </Link>
             </Grid>
             <Grid className="footer-links" direction="column">
                     <Text className="footer-text" >Download Premo</Text>

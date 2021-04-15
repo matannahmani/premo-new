@@ -5,9 +5,11 @@ import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/styles.css';
 import { Minimize2 } from '@geist-ui/react-icons'
+import { useTranslation } from 'next-i18next'
 
 
 const ProductModal = ({modal, setModal,info}) => {
+    const { t } = useTranslation('price')
     const [mobile,] = useContext(AppContext);
     const closeHandler = (event) => {
         setModal(false);
@@ -20,8 +22,8 @@ const ProductModal = ({modal, setModal,info}) => {
         <Minimize2 onClick={closeHandler} className="product-modal-close"/>
         <Modal.Title className="product-modal-title">{info.title}</Modal.Title>
         <Modal.Subtitle className="product-modal-sub">
-                Size : {info.size}<br/>
-                Battery : {info.battery}
+                {t('size')} {info.size}<br/>
+                {t('battery')} {info.battery}
         </Modal.Subtitle>
         <Spacer y={mobile.mobile ? 2 : 1}/>
         <Modal.Content>
@@ -48,8 +50,8 @@ const ProductModal = ({modal, setModal,info}) => {
             </div>
             <Spacer/>
             <div className="product-modal-buttons">
-                <Button className="btn-sm learnbtn">더 알아보기</Button>
-                <Button onClick={() => window.open(info.url)} className="btn-sm bluebtn learnbtn">메뉴얼 다운로드</Button>
+                <Button className="btn-sm learnbtn">{t('learnmore')}</Button>
+                <Button onClick={() => window.open(info.url)} className="btn-sm bluebtn learnbtn">{t('manual')}</Button>
             </div>
         </Modal.Content>
       </Modal>
