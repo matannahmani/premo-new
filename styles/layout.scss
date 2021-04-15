@@ -2,13 +2,13 @@
     width: 100vw;
     overflow-x: hidden;
     margin-top: 70px;
-    // min-height: calc(100vh - 70px + 210px );
+    min-height: calc(100vh - 70px - 244px );
 }
 
 @media (max-width: 900px){
     #page-wrap{
         margin-top: 70px;
-        // min-height: calc(100vh - 70px + 450px );
+        min-height: calc(100vh - 70px - 493px );
 
     }
 }

@@ -1,4 +1,4 @@
-import { Card, Grid, Image } from '@geist-ui/react';
+import { Card, Grid, Image, Spacer, Text } from '@geist-ui/react';
 import Link from 'next/link';
 import { getAllPostsForHome } from '../lib/api'
 
@@ -6,7 +6,9 @@ const PremoZone = ({ allPosts, preview }) => {
     return(
       <>
       <Grid.Container>
-        <Grid xs>
+        <Grid style={{padding: '40px'}} xs direction="column" alignItems="center">
+          <Text h4>Premo Zone</Text>
+          <Spacer y={2}/>
           {allPosts.map((e) => {
             return(
               <Link href={`blog/${e.slug}`}>

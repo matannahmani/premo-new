@@ -3,6 +3,11 @@
     min-height: 100vh;
     width: 100%;
 }
+.premozone-blog-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .premozone-card{
     width: 240px !important;
     height: 320px !important;

@@ -56,7 +56,7 @@ const NavbarD = (props) => {
             <ActiveLink href="/device">
             <Text className="nav-item">Devices</Text>
             </ActiveLink>
-            <ActiveLink href="#">
+            <ActiveLink href="/premozone">
             <Text className="nav-item">Premo Zone</Text>
             </ActiveLink>
             <ActiveLink href="#">
