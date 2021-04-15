@@ -18,7 +18,7 @@ const serializers = {
         return (
         <>
             {props.node.asset !== null &&
-            <div className="d-flex" style={{justifyContent: props.node.pos}}>
+            <div style={{display: 'flex',justifyContent: props.node.pos}}>
             <img style={{objectFit: 'contain',objectPosition: 'center',width: `${props.node.size}%`}} src={props.node.asset.url}/> 
             </div>
             }
