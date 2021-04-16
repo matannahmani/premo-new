@@ -44,3 +44,17 @@
 .image.jsx-4179429641{
     margin: unset !important;
 }
+
+.langchange{
+    display: flex !important;
+    overflow: hidden !important;
+    height: 24px;
+    .globe{
+        color: #78CBEB !important;
+        margin-right: 8px;
+    }
+    span{
+        margin-left: 8px;
+        transition: all 0.25s ease-in-out;
+    }
+}

@@ -3,35 +3,39 @@ import Link from "next/link";
 import Appstore from '../public/icons/appstore.svg'
 import Playstore from '../public/icons/googleplay.svg'
 import { useRouter } from 'next/router'
+import LangChange from "./LangChange";
+import { useContext } from "react";
+import { AppContext } from "../context/appcontext";
 const Footer = () => {
     const router = useRouter()
+    const app = useContext(AppContext);
 
     return (
         <Grid.Container justify="center" className="footer" direction="row">
-            <Grid xs={12} direction="column" justify="space-evenly">
+            <Grid style={{position: 'relative'}} xs={12} direction="column" justify="space-evenly">
             <Spacer/>
             <Image src="/logo-main.svg" width={120} height={24}/>
-                <div>
-                <Text className="footer-premo-loc" p style={{fontSize: '12px'}}>
-                상호 : 주식회사 키위스마트락
-                <Spacer y={0}/>
-                대표자 : 김도현
-                <Spacer y={0}/>
-                전화 : 02-6953-6807
-                <Spacer y={0}/>
-                주소 : 서울특별시 마포구 독막로 15길 21-8
-                <Spacer y={0}/>
-                이메일 : Info@premo.live
-                <Spacer y={0}/>
-                사업자 번호 : 123-87-01244
-                <Spacer y={0}/>
-                Copyright ⓒ premo all right Reserved
-                <Spacer y={0}/>
-                </Text>
+                <div style={{display: 'flex',flexWrap: 'wrap'}}>
+                    <div>
+                    <Text className="footer-premo-loc" p style={{fontSize: '12px'}}>
+                    상호 : 주식회사 키위스마트락
+                    <Spacer y={0}/>
+                    대표자 : 김도현
+                    <Spacer y={0}/>
+                    전화 : 02-6953-6807
+                    <Spacer y={0}/>
+                    주소 : 서울특별시 마포구 독막로 15길 21-8
+                    <Spacer y={0}/>
+                    이메일 : Info@premo.live
+                    <Spacer y={0}/>
+                    사업자 번호 : 123-87-01244
+                    <Spacer y={0}/>
+                    Copyright ⓒ premo all right Reserved
+                    <Spacer y={0}/>
+                    </Text>
+                    </div>
+                    <LangChange/>
                 </div>
-                <Link href='' locale={router.locale === 'en' ? 'kr' : 'en'}>
-                    <Button style={{width: '50px'}} auto type="secondary" shadow>{router.locale === 'en' ? 'KR' : 'EN'}</Button>
-                </Link>
             </Grid>
             <Grid className="footer-links" direction="column">
                     <Text className="footer-text" >Download Premo</Text>
