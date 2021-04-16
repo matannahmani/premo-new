@@ -21,6 +21,7 @@
 // font-family: 'Noto Sans KR', sans-serif;
 *{
     font-family: 'Roboto', sans-serif;
+    white-space: pre-wrap;
 }
 .kr {
     *{
@@ -49,11 +50,17 @@
 .image.jsx-4179429641{
     margin: unset !important;
 }
-
+@media (max-width: 900px){
+    .langchange{
+        padding: 24px 0px;
+        margin: 0px;
+    }
+}
 .langchange{
     display: flex !important;
     overflow: hidden !important;
     height: 24px;
+    margin-left: 40px;
     .globe{
         color: #78CBEB !important;
         margin-right: 8px;

@@ -19,7 +19,7 @@ const LangChange = () => {
     }
     return (
       <>
-    <Popover placement="topEnd" className="langchange" onVisibleChange={changeHandler} content={content}><Globe className="globe"/> Change Langunge <span ref={arrow}><ChevronRight/></span></Popover>
+    <Popover leaveDelay={100} placement="topEnd" className="langchange" onVisibleChange={changeHandler} content={content}><Globe className="globe"/> Change Langunge <span ref={arrow}><ChevronRight/></span></Popover>
       </>
     )
 }
