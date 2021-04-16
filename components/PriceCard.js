@@ -44,7 +44,8 @@ const Pricecard = ({icon, title, oprice, price, children,head = true}) => {
                 {head && <Text h3>{t('tab-t2')}</Text>}
                 {uitem}
             </div>
-            <ProductModal modal={modal} info={info} setModal={setModal}/>
+            {/* if device page change title translation */}
+            <ProductModal modal={modal} head={head} info={info} setModal={setModal}/>
         </div>
     )
 }

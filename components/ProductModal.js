@@ -8,7 +8,7 @@ import { Minimize2 } from '@geist-ui/react-icons'
 import { useTranslation } from 'next-i18next'
 
 
-const ProductModal = ({modal, setModal,info}) => {
+const ProductModal = ({modal, head , setModal,info}) => {
     const { t } = useTranslation('price')
     const [mobile,] = useContext(AppContext);
     const closeHandler = (event) => {
@@ -20,7 +20,7 @@ const ProductModal = ({modal, setModal,info}) => {
     <>
       <Modal wrapClassName="product-modal" width={mobile.mobile ? '90vw' : '840px'} open={modal} onClose={closeHandler}>
         <Minimize2 onClick={closeHandler} className="product-modal-close"/>
-        <Modal.Title className="product-modal-title">{info.title}</Modal.Title>
+        <Modal.Title className="product-modal-title">{head ? info.title : info.subtitle}</Modal.Title>
         <Modal.Subtitle className="product-modal-sub">
                 {t('size')} {info.size}<br/>
                 {t('battery')} {info.battery}

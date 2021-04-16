@@ -22,6 +22,11 @@
 *{
     font-family: 'Roboto', sans-serif;
 }
+.kr {
+    *{
+        word-break: keep-all;
+    }
+}
 .img-avatar{
     border-radius: 25% !important;
 }
