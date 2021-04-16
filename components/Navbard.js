@@ -1,12 +1,15 @@
 import {Avatar,Card,Popover,Text,Button, Image} from "@geist-ui/react"
-import {useState,useRef, useEffect} from 'react'
+import {useState,useRef, useEffect, useContext} from 'react'
 import {IoPersonCircleSharp} from 'react-icons/io5'
 import { ChevronDown } from '@geist-ui/react-icons'
 import ActiveLink from './ActiveLink'
+import firebase from "firebase/app";
+import { UserContext } from "../context/appcontext"
 
 const NavbarD = (props) => {
   // ghost navbar in future
   const [sticky,setSticky] = useState(false);
+  const [user,] = useContext(UserContext)
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -26,15 +29,24 @@ const NavbarD = (props) => {
           <Popover.Item title>
             <span>User Settings</span>
           </Popover.Item>
+          {!user.logged ?
+          <Popover.Item>
+            <ActiveLink  href="/login"><span>Login</span></ActiveLink>
+          </Popover.Item>
+          :
+          <>
           <Popover.Item>
             <ActiveLink href="/user/payment"><span>Payment</span></ActiveLink>
           </Popover.Item>
           <Popover.Item>
-            <ActiveLink color href="/user/profile"><span>Account</span></ActiveLink>
+            <ActiveLink  href="/user/profile"><span>Account</span></ActiveLink>
           </Popover.Item>
+
           <Popover.Item>
-            <ActiveLink color logout><span>Logout</span></ActiveLink>
+            <ActiveLink href="/" logout><span onClick={() => firebase.auth().signOut()}>Logout</span></ActiveLink>
           </Popover.Item>
+          </>
+        }
         </>
       )
 
@@ -62,7 +74,7 @@ const NavbarD = (props) => {
             <ActiveLink href="#">
             <Text className="nav-item">Look Book</Text>
             </ActiveLink>
-            <Popover portalClassName="portal-lg" className="child-flex nav-item" content={content}>
+            <Popover style={{display: 'flex'}} portalClassName="portal-lg" className="child-flex nav-item" content={content}>
             <IoPersonCircleSharp style={{width:"30px",height:"30px"}} />
             <ChevronDown/>
             </Popover>

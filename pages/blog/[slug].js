@@ -48,10 +48,9 @@ export default function Post({ post, morePosts, preview }) {
           <Text b>Latest Articles</Text>
           <div style={{display:'flex',flexDirection: 'column'}}>
             {morePosts.length > 0 && morePosts.map(e => {
-              (console.log(e))
               return(
-                <Link>
-                <Text className="premo-zone-link" s>Post</Text>
+                <Link href={e.slug}>
+                <Text className="premo-zone-link" s>{e.title}</Text>
                 </Link>
               )
             })
@@ -71,9 +70,9 @@ export default function Post({ post, morePosts, preview }) {
         <Card>
           <Text b>Tags</Text>
           <div style={{display:'flex',flexDirection: 'column'}}>
-            <Link href="/">
-            <Text className="premo-zone-link" s>Home</Text>
-            </Link>
+            {post.tags !== null && post.tags.map((e) => (
+                <Text className="premo-zone-link" s>{e}</Text>
+              ))}
           </div>
         </Card>
       </Grid>

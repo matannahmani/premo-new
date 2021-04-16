@@ -52,8 +52,9 @@
 }
 @media (max-width: 900px){
     .langchange{
-        padding: 24px 0px;
-        margin: 0px;
+        padding: 0px;
+        margin-left: unset !important;
+        font-size: 14px;
     }
 }
 .langchange{
