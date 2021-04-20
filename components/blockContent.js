@@ -19,7 +19,7 @@ const serializers = {
         return (
         <>
             {props.node.asset !== null &&
-            <div style={{display: 'flex',justifyContent: props.node.pos,height: '100%',width: '100%'}}>
+            <div style={{display: 'flex',justifyContent: props.node.pos,height: 'auto',width: '100%'}}>
             <img style={{objectFit: 'contain',objectPosition: 'center',width: `${props.node.size}%`}}  src={props.node.asset.url}/> 
             </div>
             }
