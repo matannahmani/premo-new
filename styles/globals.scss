@@ -51,6 +51,19 @@
 .image.jsx-4179429641{
     margin: unset !important;
 }
+
+.logincard{ // login card
+    .content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+.title{
+    color: #333333 !important;
+}
+
 @media (max-width: 900px){
     .langchange{
         padding: 0px;

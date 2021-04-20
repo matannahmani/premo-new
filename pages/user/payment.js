@@ -76,7 +76,7 @@ const Payment = () => {
         }
     },[user.logged])
     return (
-        <Grid.Container direction="column" style={{background: 'rgb(236, 243, 246)',minHeight: '300px',height: '100%'}} alignItems="center">
+        <Grid.Container direction="column" style={{background: 'rgb(236, 243, 246)',minHeight: '600px',height: '100%'}} justify="center" alignItems="center">
             <Grid alignItems="center" direction="column" justify={user.logged ? 'space-between' : 'center'} xs={24} sm={24} md={22} lg={22} xl={14}>
             {!user.logged ?
              <Spinner/>

@@ -7,6 +7,7 @@ import Google from '../public/icons/google.svg';
 import Facebook from '../public/icons/facebook.svg';
 import Apple from '../public/icons/apple.svg';
 import Spinner from '../components/Spinner';
+import Link from 'next/link';
 const AdminLogin = () => {
     const username = useRef(null);
     const password = useRef(null);
@@ -84,13 +85,13 @@ const AdminLogin = () => {
             window.removeEventListener('keypress', keyPressHandler);
         }
     }, [])
-    return (
+    return ( // TO DO FIX THE LAYOUT AS GRID DOSENT WORK!
         <Grid.Container style={{height: '100%',padding: '64px 0px',background: '#ECF3F6'}} gap={2} direction="column"  alignItems="center" justify="center">
             {loading ? <Spinner/>
             :
             <Grid direction="column" alignItems="center" justify="center">
-            <Card style={{borderRadius: '16px'}} shadow type={"lite"}>
-            <Text h3 b>Account Login</Text>
+            <Card className="logincard" style={{borderRadius: '16px'}} shadow type={"lite"}>
+            <Text h3 className="title" b>Account Login</Text>
             <Spacer/>
             <Input ref={username} name="email" autoComplete="on" placeholder="Admin" width="240px">
             <Dot color="black" type="success">Email</Dot>
@@ -100,11 +101,11 @@ const AdminLogin = () => {
             <Dot color="black" type="success">Password</Dot>
             </Input.Password>
             <Spacer/>
-            <Grid style={{display: 'flex'}} xs justify="space-evenly">
-                <Button style={{backgroundColor: '#F3A875',border: 'none'}} shadow size="medium" auto onClick={() => loginHandler(false)} type="secondary">Login</Button>
-                <Button style={{backgroundColor: '#3D5582',border: 'none'}} shadow size="medium" auto onClick={() => loginHandler(true)} type="secondary">Join</Button>
+            <Grid style={{display: 'flex',width: '100%'}} justify="space-evenly">
+                <Button style={{backgroundColor: '#F3A875',border: 'none',width: '120px'}} shadow size="medium" auto onClick={() => loginHandler(false)} type="secondary">Login</Button>
+                <Button style={{backgroundColor: '#3D5582',border: 'none',width: '120px'}} shadow size="medium" auto onClick={() => loginHandler(true)} type="secondary">Join</Button>
             </Grid>
-            <Grid>
+            <Grid style={{display: 'flex',width: '100%'}} justify="space-evenly">
                 <Google className="store-btn google-btn" onClick={() => oauthLogin(new firebase.auth.GoogleAuthProvider())}/>
                 <Facebook className="store-btn facebook-btn" onClick={() => oauthLogin(new firebase.auth.FacebookAuthProvider())}/>
                 <Apple className="store-btn apple-btn" onClick={() => {
@@ -113,6 +114,13 @@ const AdminLogin = () => {
                     appleProvider.addScope('name');
                     oauthLogin(appleProvider);
                 }}/>
+            </Grid>
+            <Grid style={{display: 'flex',flexDirection: 'column'}}>
+                <Link href="/forgotpassword">
+                    <span style={{color: '#56ADE8',textDecoration: 'underline',textAlign: 'center',cursor: 'pointer'}}>Forgot Password</span>
+                </Link>
+                <Spacer/>
+                <span>By using Premo, you agree to Terms of Service and Privacy Policy</span>
             </Grid>
             </Card>
             </Grid>

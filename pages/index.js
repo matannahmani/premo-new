@@ -22,10 +22,6 @@ export default function Home() {
   const router = useRouter();
   return (
     <div>
-      <Head>
-        <title>{router.locale === 'kr' ? '프리모 - 홈' : "Premo"}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Grid.Container className="main-hero">
         {!app.mobile &&
         <Grid xs={0} md={14} lg={14}>

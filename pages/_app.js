@@ -12,9 +12,10 @@ import { FirebaseAuthProvider } from "@react-firebase/auth";
 import firebase from "firebase/app";
 import {firebaseConfig} from '../lib/firebase';
 import { getUserInfo } from '../lib/userapi'
-
+import { hotjar } from 'react-hotjar';
+ 
 const MyApp = ({ Component, pageProps }) => {
-  const [app,setApp] = useState({mobile: false,loading: false})
+  const [app,setApp] = useState({mobile: false,loading: false,scroll: false})
   const [user,setUser] = useState({logged: false})
   const router = useRouter();
   const [,setToast] = useToasts();
@@ -39,6 +40,7 @@ const MyApp = ({ Component, pageProps }) => {
   }
 
   useEffect(async () => {
+    hotjar.initialize(2350733, 6); // hot jar
     firebase.auth().onAuthStateChanged( async (fuser) => {
       if (fuser === null){
         setUser({ logged: false})

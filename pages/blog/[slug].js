@@ -27,7 +27,7 @@ export default function Post({ post, morePosts, preview }) {
     <Grid.Container className="premozone-blog" justify="space-evenly">
       <Grid className="premozone-blog-block" xs={24} sm={24} md={16} lg={14} xl={12} direction="column">
         <div className="premozone-blog-header">
-            <Image src={post.coverImage} height={418}/>
+            <Image src={post.coverImage} height={418} width={418}/>
           <div className="post-info">
             <div className="premo-text">
               <Image className="img-avatar" src={post.author.picture} width={60} height={60}/>
@@ -49,7 +49,7 @@ export default function Post({ post, morePosts, preview }) {
           <div style={{display:'flex',flexDirection: 'column'}}>
             {morePosts.length > 0 && morePosts.map(e => {
               return(
-                <Link href={e.slug}>
+                <Link href={e.slug} key={e.slug}>
                 <Text className="premo-zone-link" s>{e.title}</Text>
                 </Link>
               )

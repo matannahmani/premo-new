@@ -4,12 +4,14 @@ import {IoPersonCircleSharp} from 'react-icons/io5'
 import { ChevronDown } from '@geist-ui/react-icons'
 import ActiveLink from './ActiveLink'
 import firebase from "firebase/app";
-import { UserContext } from "../context/appcontext"
+import { AppContext, UserContext } from "../context/appcontext"
 
 const NavbarD = (props) => {
   // ghost navbar in future
   const [sticky,setSticky] = useState(false);
+  const [popclick,setPop] = useState(false);
   const [user,] = useContext(UserContext)
+  const [app,setApp] = useContext(AppContext);
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -74,10 +76,12 @@ const NavbarD = (props) => {
             <ActiveLink href="#">
             <Text className="nav-item">Look Book</Text>
             </ActiveLink>
-            <Popover style={{display: 'flex'}} portalClassName="portal-lg" className="child-flex nav-item" content={content}>
+            <div>
+            <Popover visible={popclick && !app.scroll} onVisibleChange={(e) => setPop(e)} style={{display: 'flex'}} portalClassName="portal-lg" className="child-flex nav-item" content={content}>
             <IoPersonCircleSharp style={{width:"30px",height:"30px"}} />
             <ChevronDown/>
             </Popover>
+            </div>
         </div>
         </div>
     )
