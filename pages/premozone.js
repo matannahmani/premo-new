@@ -10,7 +10,7 @@ const PremoZone = ({ allPosts, preview }) => {
     if (page === 1) 
       return allPosts.slice(0,4);
     else
-      return allPosts.slice((page - 1) * 5 -1 ,page * 5 - 1)
+      return allPosts.slice((page - 1) * 5 ,page * 5)
   }
     return(
       <>
@@ -35,7 +35,7 @@ const PremoZone = ({ allPosts, preview }) => {
           })}
         </Grid>
         <Grid>
-        <Pagination onChange={(e) => setPage(e)} count={allPosts.length > 4 ? Math.round(allPosts.length / 5.0 + 1) : 1}>
+        <Pagination onChange={(e) => setPage(e)} count={allPosts.length > 4 ? Math.round(allPosts.length / 5.0) : 1}>
         <Pagination.Next><ChevronRight /></Pagination.Next>
         <Pagination.Previous><ChevronLeft /></Pagination.Previous>
         </Pagination>

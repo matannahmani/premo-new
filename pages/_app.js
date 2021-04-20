@@ -1,34 +1,57 @@
 import '../styles/globals.scss'
-import { GeistProvider, CssBaseline } from '@geist-ui/react'
+import { GeistProvider, CssBaseline, useToasts } from '@geist-ui/react'
 import Layout from '../components/Layout'
 import {AppContext,UserContext} from '../context/appcontext'
 import {useEffect, useState} from 'react'
 import 'react-awesome-slider/dist/styles.css';
 import NProgress from 'nprogress';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import 'nprogress/nprogress.css'; //styles of nprogress
 import { appWithTranslation } from 'next-i18next'
 import { FirebaseAuthProvider } from "@react-firebase/auth";
 import firebase from "firebase/app";
 import {firebaseConfig} from '../lib/firebase';
+import { getUserInfo } from '../lib/userapi'
 
 const MyApp = ({ Component, pageProps }) => {
-  const [app,setApp] = useState({mobile: false})
+  const [app,setApp] = useState({mobile: false,loading: false})
   const [user,setUser] = useState({logged: false})
+  const router = useRouter();
+  const [,setToast] = useToasts();
   NProgress.configure({ showSpinner: true });
 
-  Router.events.on('routeChangeStart', () => NProgress.start());
-  Router.events.on('routeChangeComplete', () => NProgress.done());
-  Router.events.on('routeChangeError', () => NProgress.done());
+  useEffect( async() => {
+    router.events.on('routeChangeStart', (e) => {
+      NProgress.start();
+    });
+    router.events.on('routeChangeComplete', () => {
+      NProgress.done();
+    });
+    return () => {
+      router.events.on('routeChangeError', () => {
+        NProgress.done();
+      });
+    }
+  }, [router.route])
+
   const setMobile = (state) => {
     setApp({...app,mobile: state})
   }
+
   useEffect(async () => {
-    firebase.auth().onAuthStateChanged( (fuser) => {
+    firebase.auth().onAuthStateChanged( async (fuser) => {
       if (fuser === null){
-        setUser({logged: false})
+        setUser({ logged: false})
+        if (router.pathname.includes('user')){
+          setToast({type:"error",text: 'Please login'})
+          router.replace('/')
+        }
       }else{
-        setUser({email: fuser.email,name: fuser.displayName,uid: fuser.uid,logged: true})
+        const token = await firebase.auth().currentUser.getIdToken()
+        const pinfo = await getUserInfo({jwt: token});
+        if (pinfo.data.result !== undefined && pinfo.data.result.code === 0){
+          setUser({email: fuser.email,name: fuser.displayName,uid: fuser.uid,pinfo: pinfo.data.payload[0],logged: true,jwt: token})
+        }
       }
       });
     if (typeof window !== 'undefined') {
@@ -48,6 +71,8 @@ const MyApp = ({ Component, pageProps }) => {
       // Remove event listener on cleanup
     }
   }, [])
+
+  
 
   return(
     <GeistProvider>

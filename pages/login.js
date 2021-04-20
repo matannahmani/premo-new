@@ -6,7 +6,7 @@ import firebase from "firebase/app";
 import Google from '../public/icons/google.svg';
 import Facebook from '../public/icons/facebook.svg';
 import Apple from '../public/icons/apple.svg';
-import Spinner from '../components/spinner';
+import Spinner from '../components/Spinner';
 const AdminLogin = () => {
     const username = useRef(null);
     const password = useRef(null);

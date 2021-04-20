@@ -9,7 +9,8 @@ module.exports = {
     storageBucket: process.env.storageBucket,
     messagingSenderId: process.env.messagingSenderId,
     appId: process.env.appId,
-    measurementId: process.env.measurementId
+    measurementId: process.env.measurementId,
+    API_URL: process.env.API_URL
   },
   i18n,
   webpack(config) {
