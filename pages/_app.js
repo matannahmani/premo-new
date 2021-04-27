@@ -1,6 +1,5 @@
 import '../styles/globals.scss'
 import { GeistProvider, CssBaseline, useToasts } from '@geist-ui/react'
-import Layout from '../components/Layout'
 import {AppContext,UserContext} from '../context/appcontext'
 import {useEffect, useState} from 'react'
 import 'react-awesome-slider/dist/styles.css';
@@ -13,7 +12,24 @@ import {firebase} from '../lib/firebase'
 import {firebaseConfig} from '../lib/firebase';
 import { getUserInfo } from '../lib/userapi'
 import { hotjar } from 'react-hotjar';
- 
+import Spinner from '../components/Spinner'
+import dynamic from 'next/dynamic'
+
+
+const LoadingPage = () => {
+
+  return (
+    <div className="loading-page">
+      <Spinner/>
+    </div>
+  )
+}
+
+const DynamicLayoutLoad = dynamic(
+  () => import('../components/Layout'),
+  { loading: () => <LoadingPage/> }
+)
+
 const MyApp = ({ Component, pageProps }) => {
   const [app,setApp] = useState({mobile: false,loading: false,scroll: false})
   const [user,setUser] = useState({logged: false})
@@ -22,7 +38,7 @@ const MyApp = ({ Component, pageProps }) => {
   NProgress.configure({ showSpinner: true });
 
   useEffect( async() => {
-    router.events.on('routeChangeStart', (e) => {
+    router.events.on('routeChangeStart', () => {
       NProgress.start();
     });
     router.events.on('routeChangeComplete', () => {
@@ -82,9 +98,9 @@ const MyApp = ({ Component, pageProps }) => {
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig} >
     <AppContext.Provider value={[app,setApp]}>
     <UserContext.Provider value={[user,setUser]}>
-      <Layout>
+      <DynamicLayoutLoad>
         <Component {...pageProps} />
-      </Layout>
+      </DynamicLayoutLoad>
     </UserContext.Provider>
     </AppContext.Provider> 
     </FirebaseAuthProvider>
