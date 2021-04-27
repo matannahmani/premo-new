@@ -1,10 +1,10 @@
 import Flicking from "@egjs/react-flicking";
-import React, { createRef, useEffect } from "react";
-import { Fade, AutoPlay } from "@egjs/flicking-plugins";
+import { createRef, useEffect } from "react";
+import { Fade } from "@egjs/flicking-plugins";
 import { Image } from "@geist-ui/react";
 
 const Partners = () => {
-    const flicking = React.createRef(<Flicking/>);
+    const flicking = createRef(<Flicking/>);
     const plugins = [new Fade()];
     useEffect( async () => {
         setInterval(() => {

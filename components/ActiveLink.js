@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React,{forwardRef} from 'react'
-const RefFixer = React.forwardRef((props, ref) => (
+import {forwardRef,cloneElement} from 'react'
+const RefFixer = forwardRef((props, ref) => (
     <a ref={ref} {...props}>
       {props.children}
     </a>
@@ -17,7 +17,7 @@ const ActiveLink = ({href, children,logout}) => {
     return (
         <Link href={logout ? '/' : href} passHref>
             <RefFixer ref={href}>
-                {React.cloneElement(children, { className })}
+                {cloneElement(children, { className })}
             </RefFixer>
         </Link>
     )

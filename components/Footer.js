@@ -1,5 +1,4 @@
-import { Button, Grid, Image, Spacer, Text } from "@geist-ui/react";
-import Link from "next/link";
+import { Grid, Image, Spacer, Text } from "@geist-ui/react";
 import Appstore from '../public/icons/appstore.svg'
 import Playstore from '../public/icons/googleplay.svg'
 import { useRouter } from 'next/router'

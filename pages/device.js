@@ -1,4 +1,4 @@
-import {Card, Grid,Spacer,Text,Image} from '@geist-ui/react';
+import {Card, Grid,Spacer,Text} from '@geist-ui/react';
 import { useContext, useRef } from "react"
 import { AppContext } from "../context/appcontext"
 import Flicking from "@egjs/react-flicking";

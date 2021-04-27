@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import 'nprogress/nprogress.css'; //styles of nprogress
 import { appWithTranslation } from 'next-i18next'
 import { FirebaseAuthProvider } from "@react-firebase/auth";
-import firebase from "firebase/app";
+import {firebase} from '../lib/firebase'
 import {firebaseConfig} from '../lib/firebase';
 import { getUserInfo } from '../lib/userapi'
 import { hotjar } from 'react-hotjar';

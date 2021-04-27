@@ -1,4 +1,3 @@
-import { Image } from '@geist-ui/react'
 import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
 

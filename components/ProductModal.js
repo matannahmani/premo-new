@@ -1,5 +1,5 @@
 import { Modal, Text, Image, Spacer, Button } from "@geist-ui/react"
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { AppContext } from "../context/appcontext"
 import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';

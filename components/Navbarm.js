@@ -2,7 +2,7 @@ import { slide as Menu } from 'react-burger-menu'
 import { Button, Text, Image} from '@geist-ui/react'
 import { Menu as MenuIcon } from '@geist-ui/react-icons'
 import ActiveLink from './ActiveLink'
-import firebase from 'firebase';
+import {firebase} from '../lib/firebase'
 import { useContext } from 'react';
 import { UserContext } from '../context/appcontext';
 const Navbarm = (props) => {

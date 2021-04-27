@@ -1,5 +1,5 @@
-import { Text, Button, Grid, Spacer, Card, Image, Link } from '@geist-ui/react'
-import Head from 'next/head'
+import { Text, Button, Grid, Spacer, Card, Image } from '@geist-ui/react'
+import Link from 'next/link';
 import { useContext, useRef } from 'react'
 import { AppContext } from '../context/appcontext';
 import { ChevronsDown } from '@geist-ui/react-icons'
@@ -12,14 +12,12 @@ import Appstore from '../public/icons/appstore.svg'
 import Playstore from '../public/icons/googleplay.svg'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useRouter } from 'next/router';
 
 export default function Home() {
   const [app,] = useContext(AppContext);
   const midSec = useRef(null);
   const scrollTo = () => midSec.current.scrollIntoView({ behavior: 'smooth', block: 'start'})    
   const { t } =  useTranslation(['home', 'price']);
-  const router = useRouter();
   return (
     <div>
       <Grid.Container className="main-hero">

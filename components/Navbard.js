@@ -1,9 +1,9 @@
-import {Avatar,Card,Popover,Text,Button, Image} from "@geist-ui/react"
-import {useState,useRef, useEffect, useContext} from 'react'
+import {Popover,Text,Button, Image} from "@geist-ui/react"
+import {useState, useEffect, useContext} from 'react'
 import {IoPersonCircleSharp} from 'react-icons/io5'
 import { ChevronDown } from '@geist-ui/react-icons'
 import ActiveLink from './ActiveLink'
-import firebase from "firebase/app";
+import {firebase} from '../lib/firebase'
 import { AppContext, UserContext } from "../context/appcontext"
 
 const NavbarD = (props) => {

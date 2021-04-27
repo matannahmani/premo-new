@@ -2,7 +2,7 @@ import {Grid,Button,Card,Spacer,Input,Dot,useToasts, Text} from '@geist-ui/react
 import React,{useState,useEffect,useContext, useRef} from 'react';
 import { useRouter } from 'next/router';
 import { UserContext } from '../context/appcontext';
-import firebase from "firebase/app";
+import {firebase} from '../lib/firebase'
 import Google from '../public/icons/google.svg';
 import Facebook from '../public/icons/facebook.svg';
 import Apple from '../public/icons/apple.svg';

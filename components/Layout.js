@@ -1,5 +1,5 @@
-import {Grid,Text,Modal,useModal} from '@geist-ui/react'
-import {useContext, useEffect,useState} from 'react'
+import {Grid,Modal,useModal} from '@geist-ui/react'
+import {useContext} from 'react'
 import {AppContext} from '../context/appcontext';
 import NavbarM from './Navbarm'
 import NavbarD from './Navbard'
@@ -12,20 +12,7 @@ const Layout = (props) => {
     const [app,setApp] = useContext(AppContext);
     const { visible, setVisible, bindings } = useModal()
     const router = useRouter();
-    // let isScrolling;
 
-    // useEffect(() => {
-    //   window.addEventListener('scroll', ( event ) => {
-    //     !app.scroll && setApp({...app,scroll: true})
-    //     // Clear our timeout throughout the scroll
-    //     window.clearTimeout( isScrolling );
-    //     // Set a timeout to run after scrolling ends
-    //     isScrolling = setTimeout(() => {
-    //       setApp({...app,scroll: false})      
-    //     }, 66);
-      
-    //   }, false);
-    // }, [])
     return (
       <>
       <Head>
