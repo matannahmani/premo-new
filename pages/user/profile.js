@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react"
 import PageLayout from "../../components/PageLayout"
 import { UserContext } from "../../context/appcontext"
 import { changePassword } from "../../lib/userapi"
-import {firebase} from '../lib/firebase'
+import {firebase} from '../../lib/firebase'
 import { useRouter } from "next/router"
 import WithdrawlRead from "../../components/WithdrawlRead"
 import WithdrawlModal from "../../components/WithdrawlModal"

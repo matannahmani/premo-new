@@ -12,6 +12,9 @@ module.exports = {
     measurementId: process.env.measurementId,
     API_URL: process.env.API_URL
   },
+  future: {
+    webpack5: true,
+  },
   i18n,
   webpack(config) {
       config.module.rules.push({
