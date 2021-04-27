@@ -71,9 +71,6 @@ const NavbarD = (props) => {
             <ActiveLink href="/premozone">
             <Text className="nav-item">Premo Zone</Text>
             </ActiveLink>
-            <ActiveLink href="#">
-            <Text className="nav-item">Look Book</Text>
-            </ActiveLink>
             <div>
             <Popover portalClassName="portal-lg" className="child-flex nav-item" content={content}>
             <IoPersonCircleSharp style={{width:"30px",height:"30px"}} />

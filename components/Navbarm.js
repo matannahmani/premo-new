@@ -16,9 +16,6 @@ const Navbarm = (props) => {
         <ActiveLink href="/device">
         <Text>Devices</Text>
         </ActiveLink>
-        <ActiveLink href="/lookbook">
-        <Text>LookBook</Text>
-        </ActiveLink>
         <ActiveLink href="/premozone">
         <Text>PremoZone</Text>
         </ActiveLink>
