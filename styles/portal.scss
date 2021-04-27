@@ -1,3 +1,13 @@
 .portal-lg{
     width: 140px !important;
+    position: fixed !important;
+    top: 62px !important;
+}
+.child-flex{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    p{
+        display: flex;
+    }
 }

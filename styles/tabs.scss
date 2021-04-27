@@ -1,6 +1,16 @@
 @media (max-width: 900px){
-    .tabs{
-        width: 300px !important;
+    .tabs .content{
+        max-width: 435px;
+    }
+}
+@media (max-width: 450px){
+    .tabs .content{
+        max-width: 90vw;
+    }
+}
+@media (max-width: 300px){
+    .premozone-con > div{
+        padding: 0px !important;
     }
 }
 .tabs {

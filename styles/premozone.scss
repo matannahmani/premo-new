@@ -134,3 +134,9 @@
 button.jsx-1674347436{
     color: black !important;
 }
+@media (max-width: 450px){
+    .premozone-card{
+        max-width: 90vw !important;
+        margin: 24px 0px !important;
+    }
+}
