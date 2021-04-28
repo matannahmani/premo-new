@@ -6,7 +6,6 @@
     background: white;
     position: fixed;
     z-index: 998;
-
 }
 .navbar-desktop{
     flex-direction: row;
@@ -20,6 +19,9 @@
     line-height: 32px;
     align-items: center;
     color: #333333 !important;
+}
+.active{
+    color: $premo;
 }
 .navbar-icon{
     display: flex;

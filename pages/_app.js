@@ -67,8 +67,10 @@ const MyApp = ({ Component, pageProps }) => {
       }else{
         const token = await firebase.auth().currentUser.getIdToken()
         const pinfo = await getUserInfo({jwt: token});
-        if (pinfo.data.result !== undefined && pinfo.data.result.code === 0){
+        if (pinfo.data !== undefined && pinfo.data.result.code === 0){
           setUser({email: fuser.email,name: fuser.displayName,uid: fuser.uid,pinfo: pinfo.data.payload[0],logged: true,jwt: token})
+        }else{
+          firebase.auth().signOut();
         }
       }
       });

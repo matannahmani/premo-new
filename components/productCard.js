@@ -1,7 +1,8 @@
 import { Button, Image, Select, Text } from "@geist-ui/react"
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../context/appcontext";
 
 const PriceSelect = ({onChange,disabled}) => (
     <Select disabled={disabled} width="80px" initialValue="1" onChange={onChange}>
@@ -11,6 +12,7 @@ const PriceSelect = ({onChange,disabled}) => (
     </Select>
 )
 const ProductCard = (props) => {
+    const [user,] = useContext(UserContext);
     const router = useRouter();
     const [qty,setQty] = useState(props.qty || 1)
 
@@ -27,7 +29,7 @@ const ProductCard = (props) => {
             {!props.purchase &&
             <>
             <Text className="product-card-description">{props.description}</Text>
-            <Link href={'/purchase?item='+props.title}>
+            <Link href={`${user.logged ? '/purchase?item=' + props.title : '/login'}`}>
             <Button className="learnbtn btn-md" auto size="large">{props.buy}</Button>
             </Link>
             </>

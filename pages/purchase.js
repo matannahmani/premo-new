@@ -94,11 +94,12 @@ const Purchase = () => {
             'buyer-addr': user.address,
             'buyer-post': user.zipcode,
         })
-        console.log(result.data);
+        window.open(result.data);
+        router.push('/user/payment')
     }
     useEffect(() => {
         if(!router.isReady) return;
-        if (router.query.item !== ("Standard") && router.query.item !== ("Premium"))
+        if (router.query.item !== ("Standard") && router.query.item !== ("Premium") || !guser.logged)
             router.push('/')
     },[router.isReady,router.query])
     const subDate = (year) => {

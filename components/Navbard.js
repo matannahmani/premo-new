@@ -73,7 +73,7 @@ const NavbarD = (props) => {
             </ActiveLink>
             <div>
             <Popover portalClassName="portal-lg" className="child-flex nav-item" content={content}>
-            <IoPersonCircleSharp style={{width:"30px",height:"30px"}} />
+            <IoPersonCircleSharp className={`${user.logged ? 'active' : ''}`} style={{width:"30px",height:"30px"}} />
             <ChevronDown/>
             </Popover>
             </div>

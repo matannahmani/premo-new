@@ -1,11 +1,13 @@
 import { Button, Image, Text } from "@geist-ui/react";
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ProductModal from './ProductModal';
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
+import { UserContext } from "../context/appcontext";
 
 const Pricecard = ({icon, title, oprice, price, children,head = true,standard}) => {
     const { t } = useTranslation('price')
+    const [user,] = useContext(UserContext);
     const [modal, setModal] = useState(false)
     const [info,setInfo] = useState({photo: []});
     const pitem = React.Children.map(children, child => child.type.displayName === 'PItem' ? 
@@ -33,7 +35,7 @@ const Pricecard = ({icon, title, oprice, price, children,head = true,standard}) 
             <div className="price-card-header">
                 <Text h2 className="price-card-header-title">{title}</Text>
                 <Text p className="price-card-header-price"><span style={{textDecorationLine: 'line-through'}}>{oprice}</span><br/>{price}</Text>
-                <Link href={`/purchase?item=${standard ? 'Standard' : 'Premium'}`}>
+                <Link href={`${user.logged ? `/purchase?item=${standard ? 'Standard' : 'Premium'}` : '/login'}`}>
                     <Button className="learnbtn btn-md" auto size="large">{t('buy')}</Button>
                 </Link>
             </div>

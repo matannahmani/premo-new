@@ -50,7 +50,7 @@ const ProductModal = ({modal, head , setModal,info}) => {
             </div>
             <Spacer/>
             <div className="product-modal-buttons">
-                <Button className="btn-sm learnbtn">{t('learnmore')}</Button>
+                {/* <Button className="btn-sm learnbtn">{t('learnmore')}</Button> */}
                 <Button onClick={() => window.open(info.url)} className="btn-sm bluebtn learnbtn">{t('manual')}</Button>
             </div>
         </Modal.Content>

@@ -20,7 +20,7 @@ const AdminLogin = () => {
     const [user,setUser] = useContext(UserContext);
     const router = useRouter();
     const loginHandler = async (register) =>{
-        if (!loading && username.current !== null && password.current !== null)
+        if (!loading && username.current !== null && password.current !== null){
             setLoading(true);
             if (username.current.value.length > 4 && password.current.value.length > 4){
                 setLoading(true);
@@ -55,6 +55,7 @@ const AdminLogin = () => {
             else{
                 setToast({type: "warning",text: t('common:loginshort')});
             }
+        }
         setLoading(false);
     }
     const keyPressHandler = (e) => {
@@ -69,25 +70,26 @@ const AdminLogin = () => {
         try{
             await firebase.auth().signInWithPopup(auth).then((userCredential) => {
                 setUser({...userCredential,logged: true})
-                setToast({type: 'success',text: "SUCCESS"})
+                setToast({type: 'success',text: t('common:logged')})
                 router.push('/')
             })
         } catch (error) {
             // failed login
-            setToast({type: 'warning',text: 'ERROR'})
+            setToast({type: 'warning',text: t('common:404')})
         }
         setLoading(false);
     }
 
     useEffect( async () => {
-        window.addEventListener('keypress', keyPressHandler);
+        // if (!loading)
+        //     window.addEventListener('keypress', keyPressHandler);
         if (firebase.auth().currentUser !== null){
             router.push('/');
             setToast({type: "success",text: t('loggedback')});
         }
-        return () => {
-            window.removeEventListener('keypress', keyPressHandler);
-        }
+        // return () => {
+        //     window.removeEventListener('keypress', keyPressHandler);
+        // }
     }, [])
     return ( // TO DO FIX THE LAYOUT AS GRID DOSENT WORK!
         <Grid.Container style={{height: '100%',padding: '64px 0px',background: '#ECF3F6'}} gap={2} direction="column"  alignItems="center" justify="center">
