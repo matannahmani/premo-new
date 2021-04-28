@@ -64,6 +64,10 @@
     border: unset !important;
     box-sizing: border-box !important;
     border-radius: 38px !important;
+    color: $wolf !important;
+}
+.btn-des.disabled{
+    color: rgba(213, 214, 213, 1) !important;
 }
 .learnbtn{
     font-family: 'Montserrat', sans-serif !important;

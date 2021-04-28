@@ -24,10 +24,10 @@ const SubInfo = ({title,sub,style}) => {
 const AnimDiv = ({akey,children}) => (
     <motion.div
     key={akey}
-    style={{width: '100%',maxWidth: '640px', overflow: "hidden",padding: '16px',margin: '40px 0px',borderRadius: '4px',boxShadow: '0 5px 10px rgb(0 0 0 / 12%)' }}
-    initial={{ scale: 0,height: 20 }}
-    animate={{ scale: 1,height: "auto" }}
-    exit={{ scale: 0,height: 20 }}
+    style={{width: '100%',maxWidth: '640px', overflow: "hidden",padding: '16px',margin: '40px 0px',background: 'white',borderRadius: '16px',boxShadow: '0 5px 10px rgb(0 0 0 / 12%)' }}
+    initial={{ opacity: 0,height: 20 }}
+    animate={{ opacity: 1,height: "auto" }}
+    exit={{ opacity: 0,height: 20 }}
     transition={{ duration: 0.5 }}>
     {children}
     </motion.div>
@@ -107,7 +107,7 @@ const Purchase = () => {
         return subDate;
     }
     return (
-        <Grid.Container style={{padding: '40px'}} alignItems="center" direction="column">
+        <Grid.Container style={{padding: '40px',background: '#ECF3F6'}} alignItems="center" direction="column">
             <Grid style={{minHeight: '540px',position: 'relative',width: '540px'}} direction="column" alignItems="center" xs={24} sm={24} md={16} lg={14} xl={12}>
                 <Slider value={step} className="purchase-slider" initialValue={1} min={1} showMarkers={true} disabled max={4}/>
                 <Spacer/>
@@ -189,7 +189,7 @@ const Purchase = () => {
                 </AnimatePresence>
                 <Spacer/>
                 <div className="purchase-nav">
-                    <Button size="small" type="abort" className={!stepHandler(false) ? 'disabled btn-des' : ''} onClick={() => stepHandler(false) && setStep(step -1)}>{t('common:back')}</Button>
+                    <Button size="small" type="abort" className={!stepHandler(false) ? 'disabled btn-des' : 'btn-des'} onClick={() => stepHandler(false) && setStep(step -1)}>{t('common:back')}</Button>
                     <Button size="small" className={!stepHandler(true) ? 'disabled learnbtn' : 'learnbtn'} onClick={() => stepHandler(true) ? step === 4 ? setModal(true) : setStep(step +1) : null}>{ step !== 4 ? t('common:nextStep') : t('common:purchase')}</Button>
                 </div>
             </Grid>

@@ -27,7 +27,7 @@ const PremoZone = ({ allPosts, preview }) => {
   })
     return(
       <>
-      <Grid.Container direction="column" align="center">
+      <Grid.Container style={{background: "#ECF3F6"}} direction="column" align="center">
         <Grid style={{padding: '40px'}} xs justify="center" alignItems="center">
           <TabsAni changeHandler={changeHandler}>
             <TabsAni.Item header="Premo Zone">

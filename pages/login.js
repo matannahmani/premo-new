@@ -8,7 +8,11 @@ import Facebook from '../public/icons/facebook.svg';
 import Apple from '../public/icons/apple.svg';
 import Spinner from '../components/Spinner';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
 const AdminLogin = () => {
+    const { t } =  useTranslation(['common']);
     const username = useRef(null);
     const password = useRef(null);
     const [, setToast] = useToasts();
@@ -24,32 +28,32 @@ const AdminLogin = () => {
                     try{
                         await firebase.auth().signInWithEmailAndPassword(username.current.value, password.current.value)
                         .then((userCredential) => {
-                            setToast({type: 'success',text: 'logged'})
+                            setToast({type: 'success',text: t('common:logged')})
                             setUser({...userCredential,logged: true})
                             router.push('/')
                         })
                     } catch (error) {
                         const errorMessage = error.message;
-                        setToast({type: 'error',text: 'Email or password are wrong'})
+                        setToast({type: 'error',text: t('common:loginerror')})
                     }
                 }
                 else{
                     try{
                         await firebase.auth().createUserWithEmailAndPassword(username.current.value, password.current.value)
                         .then((userCredential) => {
-                            setToast({type: 'success',text: 'Account Created'})
+                            setToast({type: 'success',text: t('accountcreated')})
                             setUser({...userCredential,logged: true})
                             router.push('/')
                         })
                     } catch (error) {
                         const errorMessage = error.message;
-                        setToast({type: 'error',text: 'Email already in use!'})
+                        setToast({type: 'error',text: t('emailinuse')})
                     }
                 }
 
             }
             else{
-                setToast({type: "warning",text: "Email or password are too short"});
+                setToast({type: "warning",text: t('common:loginshort')});
             }
         setLoading(false);
     }
@@ -79,7 +83,7 @@ const AdminLogin = () => {
         window.addEventListener('keypress', keyPressHandler);
         if (firebase.auth().currentUser !== null){
             router.push('/');
-            setToast({type: "success",text: "Logged back succesfully"});
+            setToast({type: "success",text: t('loggedback')});
         }
         return () => {
             window.removeEventListener('keypress', keyPressHandler);
@@ -91,19 +95,19 @@ const AdminLogin = () => {
             :
             <Grid direction="column" alignItems="center" justify="center">
             <Card className="logincard" style={{borderRadius: '16px'}} shadow type={"lite"}>
-            <Text h3 className="title" b>Account Login</Text>
+            <Text h3 className="title" b>{t('common:account')} {t('common:premoLogin')}</Text>
             <Spacer/>
             <Input ref={username} name="email" autoComplete="on" placeholder="Admin" width="240px">
-            <Dot color="black" type="success">Email</Dot>
+            <Dot color="black" type="success">{t('common:email')}</Dot>
             </Input>
             <Spacer/>
             <Input.Password ref={password} name="password" autoComplete="on" width="240px">
-            <Dot color="black" type="success">Password</Dot>
+            <Dot color="black" type="success">{t('common:password')}</Dot>
             </Input.Password>
             <Spacer/>
             <Grid style={{display: 'flex',width: '100%'}} justify="space-evenly">
-                <Button style={{backgroundColor: '#F3A875',border: 'none',width: '120px'}} shadow size="medium" auto onClick={() => loginHandler(false)} type="secondary">Login</Button>
-                <Button style={{backgroundColor: '#3D5582',border: 'none',width: '120px'}} shadow size="medium" auto onClick={() => loginHandler(true)} type="secondary">Join</Button>
+                <Button style={{backgroundColor: '#F3A875',border: 'none',width: '120px'}} shadow size="medium" auto onClick={() => loginHandler(false)} type="secondary">{t('common:premoLogin')}</Button>
+                <Button style={{backgroundColor: '#3D5582',border: 'none',width: '120px'}} shadow size="medium" auto onClick={() => loginHandler(true)} type="secondary">{t('common:signUp')}</Button>
             </Grid>
             <Grid style={{display: 'flex',width: '100%'}} justify="space-evenly">
                 <Google className="store-btn google-btn" onClick={() => oauthLogin(new firebase.auth.GoogleAuthProvider())}/>
@@ -117,10 +121,10 @@ const AdminLogin = () => {
             </Grid>
             <Grid style={{display: 'flex',flexDirection: 'column'}}>
                 <Link href="/forgotpassword">
-                    <span style={{color: '#56ADE8',textDecoration: 'underline',textAlign: 'center',cursor: 'pointer'}}>Forgot Password</span>
+                    <span style={{color: '#56ADE8',textDecoration: 'underline',textAlign: 'center',cursor: 'pointer'}}>{t('common:resetpassword')}</span>
                 </Link>
                 <Spacer/>
-                <span>By using Premo, you agree to Terms of Service and Privacy Policy</span>
+                <span>{t('common:accepttos')}</span>
             </Grid>
             </Card>
             </Grid>
@@ -128,4 +132,9 @@ const AdminLogin = () => {
         </Grid.Container>
     )
 }
+export const getStaticProps = async ({ locale }) => ({
+    props: {
+      ...await serverSideTranslations(locale, ['common']),
+    },
+  })
 export default AdminLogin;

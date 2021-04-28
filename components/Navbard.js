@@ -27,23 +27,23 @@ const NavbarD = (props) => {
     const content = () => (
         <>
           <Popover.Item title>
-            <span>{props.t('common:accountcontrol')}</span>
+            <span>{props.t('accountcontrol')}</span>
           </Popover.Item>
           {!user.logged ?
           <Popover.Item>
-            <ActiveLink  href="/login"><span>{props.t('common:premoLogin')}</span></ActiveLink>
+            <ActiveLink  href="/login"><span>{props.t('premoLogin')}</span></ActiveLink>
           </Popover.Item>
           :
           <>
           <Popover.Item>
-            <ActiveLink href="/user/payment"><span>{props.t('common:payment')}</span></ActiveLink>
+            <ActiveLink href="/user/payment"><span>{props.t('payment')}</span></ActiveLink>
           </Popover.Item>
           <Popover.Item>
-            <ActiveLink  href="/user/profile"><span>{props.t('common:account')}</span></ActiveLink>
+            <ActiveLink  href="/user/profile"><span>{props.t('account')}</span></ActiveLink>
           </Popover.Item>
 
           <Popover.Item>
-            <ActiveLink href="/" logout><span onClick={() => firebase.auth().signOut()}>{props.t('common:logout')}</span></ActiveLink>
+            <ActiveLink href="/" logout><span onClick={() => firebase.auth().signOut()}>{props.t('logout')}</span></ActiveLink>
           </Popover.Item>
           </>
         }
@@ -58,18 +58,18 @@ const NavbarD = (props) => {
           </ActiveLink>
         </div>
         <div className="navbar-content">
-            <Button auto size="small" onClick={props.setCalendly} className="nav-item bookbtn">{props.t('common:bookconsultation')}</Button>
+            <Button auto size="small" onClick={props.setCalendly} className="nav-item bookbtn">{props.t('bookconsultation')}</Button>
             <ActiveLink href="/price">
-            <Text className="nav-item">{props.t('common:pricing')}</Text>
+            <Text className="nav-item">{props.t('pricing')}</Text>
             </ActiveLink>
             {/* <ActiveLink href="/">
             <Text className="nav-item">Consulting</Text>
             </ActiveLink> */}
             <ActiveLink href="/device">
-            <Text className="nav-item">{props.t('common:device')}</Text>
+            <Text className="nav-item">{props.t('device')}</Text>
             </ActiveLink>
             <ActiveLink href="/premozone">
-            <Text className="nav-item">{props.t('common:premozone')}</Text>
+            <Text className="nav-item">{props.t('premozone')}</Text>
             </ActiveLink>
             <div>
             <Popover portalClassName="portal-lg" className="child-flex nav-item" content={content}>

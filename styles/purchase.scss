@@ -20,6 +20,7 @@
     justify-content: center;
     align-items: center;
     button{
+        height: 40px !important;
         margin: 0px 24px !important;
     }
     svg{
@@ -30,7 +31,6 @@
     }
     .disabled{
         cursor: not-allowed !important;
-        background: $wolf !important;
     }
 }
 .purchase-title{

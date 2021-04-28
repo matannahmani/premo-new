@@ -6,7 +6,7 @@ import 'react-awesome-slider/dist/styles.css';
 import NProgress from 'nprogress';
 import { useRouter } from 'next/router';
 import 'nprogress/nprogress.css'; //styles of nprogress
-import { appWithTranslation,useTranslation } from 'next-i18next'
+import { appWithTranslation } from 'next-i18next'
 import { FirebaseAuthProvider } from "@react-firebase/auth";
 import {firebase} from '../lib/firebase'
 import {firebaseConfig} from '../lib/firebase';
@@ -14,7 +14,6 @@ import { getUserInfo } from '../lib/userapi'
 import { hotjar } from 'react-hotjar';
 import Spinner from '../components/Spinner'
 import dynamic from 'next/dynamic'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Layout from '../components/Layout';
 
 const LoadingPage = () => {
@@ -36,7 +35,6 @@ const MyApp = ({ Component, pageProps }) => {
   const [user,setUser] = useState({logged: false})
   const router = useRouter();
   const [,setToast] = useToasts();
-  const { t } =  useTranslation(['common']);
   NProgress.configure({ showSpinner: true });
 
   useEffect( async() => {
@@ -58,7 +56,6 @@ const MyApp = ({ Component, pageProps }) => {
   }
 
   useEffect(async () => {
-    console.log(t('accountcontrol'))
     hotjar.initialize(2350733, 6); // hot jar
     firebase.auth().onAuthStateChanged( async (fuser) => {
       if (fuser === null){
@@ -93,15 +90,13 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, [])
 
-  
-
   return(
     <GeistProvider>
     <CssBaseline />
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig} >
     <AppContext.Provider value={[app,setApp]}>
     <UserContext.Provider value={[user,setUser]}>
-      <Layout t={t}>
+      <Layout>
         <Component {...pageProps} />
       </Layout>
     </UserContext.Provider>
@@ -110,10 +105,5 @@ const MyApp = ({ Component, pageProps }) => {
     </GeistProvider>
     )
 }
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common']),
-  },
-})
 export default appWithTranslation(MyApp)
 

@@ -138,5 +138,15 @@
     "bookconsultation": "Book Consultation",
     "pricing": "Pricing",
     "device": "Devices",
-    "premozone": "Premo Zone"
+    "premozone": "Premo Zone",
+    "loginshort": "Email or password are too short",
+    "logged": "Logged in successfully",
+    "loginerror": "Email or password are wrong.",
+    "accountcreated": "Account created successfully.",
+    "emailinuse": "Email is already been used.",
+    "loggedback": "Logged back successfully.",
+    "accepttos": "By using Premo, you agree to Terms of Service and Privacy Policy.",
+    "resetpasswordnote": "After pressing reset password an email will be sent.",
+    "resetsent": "Reset password email sent.",
+    "404": "Not found"
 } 
