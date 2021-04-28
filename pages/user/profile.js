@@ -8,17 +8,19 @@ import {firebase} from '../../lib/firebase'
 import { useRouter } from "next/router"
 import WithdrawlRead from "../../components/WithdrawlRead"
 import WithdrawlModal from "../../components/WithdrawlModal"
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-const ChangePassword = ({password,setPassword}) => {
+const ChangePassword = ({password,setPassword,t}) => {
     return (
         <>
         <Spacer y={2}/>
         <Input.Password onChange={(e) => setPassword({...password,upassword: e.target.value})} width="240px">
-        Password
+        {t('common:password')}
         </Input.Password>
         <Spacer/>
         <Input.Password onChange={(e) => setPassword({...password,confirmpassword: e.target.value})} width="240px">
-        Confirm Password
+        {t('common:confirmpassword')}
         </Input.Password>
         <Spacer y={2}/>
         </>
@@ -49,6 +51,7 @@ const Profile = () => {
     const [step,setStep] = useState(0);
     const [modal,setModal] = useState(false);
     const router = useRouter();
+    const { t } =  useTranslation(['home', 'price']);
 
     const passwordHandler = async () => {
         setLoading(true);
@@ -82,32 +85,32 @@ const Profile = () => {
                 {pagename === 'Withdrawl' &&
                     <Button loading={step === 2} onClick={stepHandler} style={{width: '140px',margin: '8px'}} type="error">Accept</Button>
                 }
-                <Button disabled={pagename === 'Reset Password' && password.upassword.length < 4 || password.upassword !== password.confirmpassword} 
-                onClick={() => {pagename !== 'Reset Password' ? setPageName('Reset Password') : passwordHandler()}} style={{width: '140px',margin: '8px'}}
-                type="secondary">Change Password</Button>
+                <Button disabled={pagename === t('common:resetpassword') && password.upassword.length < 4 || password.upassword !== password.confirmpassword} 
+                onClick={() => {pagename !== t('common:resetpassword') ? setPageName(t('common:resetpassword')) : passwordHandler()}} style={{width: '140px',margin: '8px'}}
+                type="secondary">{t('common:changepassword')}</Button>
                 {/* {pagename !== 'Withdrawl' &&
                 <Button onClick={() => setPageName('Withdrawl')} style={{width: '140px',margin: '8px'}} type="error">Withdrawal</Button>
                 } */}
                 {pagename !== '' &&
-                <Button onClick={() => setPageName('')} style={{width: '140px',margin: '8px'}} type="abort">Profile</Button>
+                <Button onClick={() => setPageName('')} style={{width: '140px',margin: '8px'}} type="abort">{t('common:back')}</Button>
                 }
             </div>
         )
     }
     return (
         <PageLayout>
-            <h1 className="price-section-title">Account Control</h1>
+            <h1 className="price-section-title">{t('common:accountcontrol')}</h1>
             <Spacer y={2}/>
             <Card shadow style={{borderRadius: '16px'}}>
             <Grid style={{display: 'flex'}} alignItems="center" justify="center" direction="column">
             <AnimatePresence exitBeforeEnter>
-            {pagename === 'Reset Password' &&
+            {pagename === t('common:resetpassword') &&
             <motion.div key={0}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}>
-                <Note type="warning">Account {pagename}.</Note>
-                {ChangePassword({password,setPassword})}
+                <Note type="warning">{t('common:account')} {pagename}.</Note>
+                {ChangePassword({password,setPassword,t})}
                 {navBtn()}
                 </motion.div>
             }
@@ -116,7 +119,7 @@ const Profile = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}>
-                <Note type="warning">Account {pagename}.</Note>
+                <Note type="warning">{t('common:account')} {pagename}.</Note>
                 <AccountQuit step={step}/>
                 {navBtn()}
                 </motion.div>
@@ -129,11 +132,11 @@ const Profile = () => {
             >
                 <Spacer/>
                 <Input disabled value={user.email} width="240px">
-                    Email
+                    {t('common:email')}
                 </Input>
                 <Spacer/>
                 <Input disabled value={user.name} width="240px">
-                    Name
+                    {t('common:name')}
                 </Input>
                 <Spacer y={2}/>
                 {navBtn()}
@@ -147,5 +150,9 @@ const Profile = () => {
         </PageLayout>
     )
 }
-
+export const getStaticProps = async ({ locale }) => ({
+    props: {
+      ...await serverSideTranslations(locale, ['price','common']),
+    },
+  })
 export default Profile

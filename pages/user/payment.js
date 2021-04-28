@@ -5,14 +5,18 @@ import { AppContext, UserContext } from "../../context/appcontext";
 import { getUserPurchase } from "../../lib/userapi";
 import Spinner from "../../components/Spinner";
 import { ChevronLeft, ChevronRight } from '@geist-ui/react-icons';
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const Payment = () => {
     const router = useRouter();
     const [page,setPage] = useState(1);
     const [,setToast] = useToasts();
     const [app,] = useContext(AppContext);
-    const [user,setUser] = useContext(UserContext);
+    const [user,] = useContext(UserContext);
     const [data,setData] = useState([]);
+    const { t } =  useTranslation(['common']);
+
     const pagaitions = () => {
         if (page === 1) 
           return data.slice(0,10);
@@ -22,37 +26,36 @@ const Payment = () => {
 
     // DELIVERY TOAST WITH ACTION
     const action = (url) => ({
-        name: 'alert',
+        name: t('common:shipping'),
         handler: () => window.open(url)
     })
     const click = ({url,tracking}) => setToast({
         text: `Tracking number: ${tracking}`,
-        actions: [action(url)],
+        actions: [action(url)]
     })
 
     // DELIVERY TOAST WITH ACTION END
     
     const operation = (actions, rowData) => {
         const tracking = rowData.rowValue.trackingNo;
-        const url = rowData.rowValue.url;
-        return <Button className="learnbtn" onClick={() => tracking !== null && setToast(click({url,tracking})) }
-        style={{minWidth: '180px'}}>{tracking === null ? 'Before Delivery' : 'Delivery'}</Button>
+        const url = rowData.rowValue.trackingUrl;
+        return <Button className="learnbtn" onClick={() => tracking !== null && click({url,tracking}) }
+        style={{minWidth: '180px'}}>{tracking === null ? t('common:beforeDelivery') : t('common:shipping')}</Button>
     }
     const monthDiff = (d1, d2) => {
         let months;
         if (d1.getYear() >= d2.getYear()){
             let year = d1.getYear() === d2.getYear() ? 0 : (d1.getYear() - d2.getYear()) * 12 - 1
             months =  d1.getMonth() - d2.getMonth() + year
-            return months === 1 ? 'Last Month' : `${months} Months Left`;
+            return months === 1 ? t('common:lmonth') : `${months} ${t('common:monthleft')}`;
         }
         else{
-            return 'Subscription Ended'
+            return t('common:subend')
         }
     }
     useEffect( async () => {
         if (user.logged === true){
             const result = await getUserPurchase({uid: user.pinfo.id,jwt: user.jwt});
-            console.log(result.data.payload)
             const newdata = [];
             const symbol = {"EUR":"€", "USD":"$", "KRW": "₩"};
             result.data.payload.map( (e,index) => {
@@ -83,16 +86,16 @@ const Payment = () => {
             :
             <>
             <div className="payment-container">
-            <h1 className="price-section-title">Account Orders</h1>
+            <h1 className="price-section-title">{t('common:subscriptionInfo')}</h1>
             <Spacer y={2}/>
             <Table data={pagaitions}>
-                <Table.Column prop="prodName" label="Subscription Services" />
-                <Table.Column prop="qty" label="EA" />
-                <Table.Column prop="orderTime" label="Payment Date" />
-                <Table.Column prop="peroid" label="Peroid" />
-                <Table.Column prop="price" label="Price" />
-                <Table.Column prop="total" label="Total" />
-                <Table.Column prop="operation" label="Delivery" />
+                <Table.Column prop="prodName" label={t('common:subscriptionInfo')} />
+                <Table.Column prop="qty" label={t('common:ea')} />
+                <Table.Column prop="orderTime" label={t('common:paymentDay')} />
+                <Table.Column prop="peroid" label={t('common:subscriptionPeriod')} />
+                <Table.Column prop="price" label={t('common:price')} />
+                <Table.Column prop="total" label={t('common:total')} />
+                <Table.Column prop="operation" label={t('common:shipped')} />
             </Table>
             <Spacer y={2}/>
             </div>
@@ -107,5 +110,9 @@ const Payment = () => {
         </Grid.Container>
     )
 }
-
+export const getStaticProps = async ({ locale }) => ({
+    props: {
+      ...await serverSideTranslations(locale, ['common']),
+    },
+  })
 export default Payment;

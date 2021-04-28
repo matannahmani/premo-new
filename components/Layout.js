@@ -20,7 +20,7 @@ const Layout = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Grid.Container className={router.locale === 'en' ? 'en' : 'kr'} >
-          {app.mobile ? <NavbarM setCalendly={() => setVisible(true)}/> : <NavbarD setCalendly={() => setVisible(true)}/>}
+          {app.mobile ? <NavbarM t={props.t} setCalendly={() => setVisible(true)}/> : <NavbarD t={props.t} setCalendly={() => setVisible(true)}/>}
           <div id="page-wrap">
           {props.children}
           </div>

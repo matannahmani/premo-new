@@ -3,8 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const PriceSelect = ({onChange}) => (
-    <Select width="80px" initialValue="1" onChange={onChange}>
+const PriceSelect = ({onChange,disabled}) => (
+    <Select disabled={disabled} width="80px" initialValue="1" onChange={onChange}>
         {[...Array(10)].map((_,i) => 
         <Select.Option key={i} value={`${i+1}`}>{i+1}</Select.Option>
         )}
@@ -35,7 +35,7 @@ const ProductCard = (props) => {
             {props.purchase &&
                 <div style={{display: 'flex',alignItems: 'center',justifyContent: 'space-evenly'}}>
                 <Text className="product-card-description">{qty * props.price} ₩</Text>
-                {props.qtyselect && <PriceSelect onChange={(e) => setQty(e)}/>}
+                {props.qtyselect && <PriceSelect disabled={props.disabled} onChange={(e) => setQty(e)}/>}
                 </div>
             }
             <Image className={`product-card-icon ${props.icon == "./king-i.svg" && 'icon-fix'}`} src={props.icon}/>

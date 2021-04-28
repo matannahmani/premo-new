@@ -2,8 +2,9 @@ import { Button, Image, Text } from "@geist-ui/react";
 import React, { useState } from 'react';
 import ProductModal from './ProductModal';
 import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 
-const Pricecard = ({icon, title, oprice, price, children,head = true}) => {
+const Pricecard = ({icon, title, oprice, price, children,head = true,standard}) => {
     const { t } = useTranslation('price')
     const [modal, setModal] = useState(false)
     const [info,setInfo] = useState({photo: []});
@@ -32,7 +33,9 @@ const Pricecard = ({icon, title, oprice, price, children,head = true}) => {
             <div className="price-card-header">
                 <Text h2 className="price-card-header-title">{title}</Text>
                 <Text p className="price-card-header-price"><span style={{textDecorationLine: 'line-through'}}>{oprice}</span><br/>{price}</Text>
-                <Button className="learnbtn btn-md" auto size="large">{t('buy')}</Button>
+                <Link href={`/purchase?item=${standard ? 'Standard' : 'Premium'}`}>
+                    <Button className="learnbtn btn-md" auto size="large">{t('buy')}</Button>
+                </Link>
             </div>
             </>
             )}

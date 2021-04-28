@@ -66,7 +66,7 @@ const Tabs = ({t}) => {
                     animate={{ height: "auto" }}
                     exit={{ height: 20 }}
                     transition={{ duration: 0.5 }}>
-                        <Pricecard icon={"./king-i.svg"} title={t('tab-btn-s') + ' ' + t('package')} oprice={t('tab-btn-s-price0')} price={t('tab-btn-s-price1')}>
+                        <Pricecard standard icon={"./king-i.svg"} title={t('tab-btn-s') + ' ' + t('package')} oprice={t('tab-btn-s-price0')} price={t('tab-btn-s-price1')}>
                         <Pricecard.PItem url="https://drive.google.com/file/d/1pBEDEhl2obP3s8tbvgxlIoYY9Ok8eiKT/view" photo={["./app/smart0.png","./app/smart1.png"]} battery="AA Size * 4" size="102 x 102 x 22.45(mm)" title="프리모 도어락">
                             {t('tab-p0')}
                         </Pricecard.PItem>

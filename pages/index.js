@@ -94,7 +94,7 @@ export default function Home() {
             </div>
             <Text className="index-cta-background-description" p>{t('cta')}</Text>
             <Link href="/price">
-              <Button className="learnbtn btn-md">{t('buy')}</Button>
+              <Button className="learnbtn btn-md">{t('price:buy')}</Button>
             </Link>
           </Card>
           <Spacer y={3}/>

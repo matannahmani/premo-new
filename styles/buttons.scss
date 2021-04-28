@@ -41,7 +41,7 @@
 }
 .google-btn{
     border: none;
-    background-color: white;
+    background-color: $white;
     padding: 20px;
     height: 68px;
     margin: 0px 10px;
@@ -54,22 +54,33 @@
 .btn > div {
     top: 0px !important;
 }
+.btn-des{
+    font-family: 'Montserrat', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    line-height: 15px !important;
+    mix-blend-mode: normal !important;
+    border: unset !important;
+    box-sizing: border-box !important;
+    border-radius: 38px !important;
+}
 .learnbtn{
     font-family: 'Montserrat', sans-serif !important;
     font-style: normal !important;
     font-weight: 600 !important;
     font-size: 18px !important;
     line-height: 15px !important;
-    background: #F3A875 !important;
+    background: $premo !important;
     mix-blend-mode: normal !important;
     border: unset !important;
     box-sizing: border-box !important;
     border-radius: 38px !important;
-    color: white !important;
+    color: $white !important;
 }
 .bluebtn{
     background: #56ADE8 !important;
-    color: white;
+    color: $white;
 }
 .btn-md{
     width: 180px !important;

@@ -14,11 +14,14 @@
 }
 .purchase-nav{
     position: absolute;
-    bottom: 16px;
+    bottom: 8px;
     width: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
+    button{
+        margin: 0px 24px !important;
+    }
     svg{
         margin: 0px 8px;
         background: $premo;
@@ -26,8 +29,8 @@
         cursor: pointer;
     }
     .disabled{
-        cursor: not-allowed;
-        background: $wolf;
+        cursor: not-allowed !important;
+        background: $wolf !important;
     }
 }
 .purchase-title{
@@ -46,9 +49,19 @@
     justify-content: space-between;
     padding: 16px;
     color: $wolf;
+    .sub{
+        width: 140px;
+        max-width: 80%;
+    }
+}
+.tos-text{
+    color: rgb(136, 136, 136);
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
 }
 .shipping-time{
-    background-image: linear-gradient(rgb(242, 167, 117) 29%, rgb(250, 149, 82));
+    background: $ninja;
     box-shadow: rgb(154 163 175 / 12%) 20px 20px 30px 0px;
     padding: 16px;
     color: $white;
