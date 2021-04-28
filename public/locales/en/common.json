@@ -117,5 +117,9 @@
     "standardPackageComponents":"Premo Door Lock / Smart Hub",
     "premiumPackageComponents":"Premo Door Lock / Smart Hub / Motion Sensor / Door Sensor / Temperature and Humidity Sensor / Smoke Sensor / Gas Sensor",
     "enterDiscountCode": "Enter Discount Code",
-    "subscriptionInfo": "Subscription Services"
+    "subscriptionInfo": "Subscription Services",
+    "VAT0": "Prices is exlucding VAT of",
+    "VAT1": "Total including: ",
+    "paymentDetails": "Payment Details",
+    "orderInfo": "Order Information"
 } 

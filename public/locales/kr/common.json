@@ -117,5 +117,9 @@
     "standardPackageComponents":"프리모 도어락 / 스마트 허브",
     "premiumPackageComponents":"프리모 도어락 / 스마트 허브 / 움직임 감지 센서 / 도어 센서 / 온습도 센서 / 연기 센서 / 가스 센서",
     "enterDiscountCode": "할인코드 입력",
-    "subscriptionInfo": "구독 정보" 
+    "subscriptionInfo": "구독 정보",
+    "VAT0": "",
+    "VAT1": "",
+    "paymentDetails": "결제 세부 정보",
+    "orderInfo": "주문 정보"
   }  

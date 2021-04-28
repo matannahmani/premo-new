@@ -68,8 +68,8 @@ export default function Home() {
           <Text className={`product-header text-left`} h2>{t('packagestitle')}</Text>
           <Text className={`product-description text-left`} h3>{t('packagessub')}</Text>
           <Grid direction="row" className="product-cardbox" xs={24}>
-          <ProductCard title="Standard" description={t('price:tab-btn-s-price1')} icon="./king-i.svg"/>
-          <ProductCard title="Premium" description={t('price:tab-btn-p-price1')} icon="./diamond-i.svg"/>
+          <ProductCard title="Standard" buy={t('price:buy')}  description={t('price:tab-btn-s-price1')} icon="./king-i.svg"/>
+          <ProductCard title="Premium" buy={t('price:buy')} description={t('price:tab-btn-p-price1')} icon="./diamond-i.svg"/>
         </Grid>
         </Grid>
       </Grid.Container>

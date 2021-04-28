@@ -21,10 +21,10 @@ const SubInfo = ({title,sub}) => {
 const AnimDiv = ({akey,children}) => (
     <motion.div
     key={akey}
-    style={{width: '100vw',maxWidth: '640px', overflow: "hidden",padding: '16px',margin: '40px 0px',borderRadius: '4px',boxShadow: '0 5px 10px rgb(0 0 0 / 12%)' }}
-    initial={{ height: 20 }}
-    animate={{ height: "auto" }}
-    exit={{ height: 20 }}
+    style={{width: '100%',maxWidth: '640px', overflow: "hidden",padding: '16px',margin: '40px 0px',borderRadius: '4px',boxShadow: '0 5px 10px rgb(0 0 0 / 12%)' }}
+    initial={{ scale: 0,height: 20 }}
+    animate={{ scale: 1,height: "auto" }}
+    exit={{ scale: 0,height: 20 }}
     transition={{ duration: 0.5 }}>
     {children}
     </motion.div>
@@ -65,10 +65,10 @@ const Purchase = () => {
         return false
     }
     const handleProduct = () =>{
-        if (router.query.item === "Standard")
-            return <ProductCard onChange={(e) => setPrice(e)} qtyselect={true} price={24900} purchase={true} title="Standard" description={t('price:tab-btn-s-price1')} icon="./king-i.svg"/>
+        if (router.query.item === "Standard") // set max height to block card growing in height as animation enters
+            return <ProductCard buy={t('price:buy')} style={{margin: '0px auto 32px auto',maxHeight: '144px',maxWidth: '100%'}} onChange={(e) => setPrice(e)} qtyselect={true} price={24900} purchase={true} title="Standard" description={t('price:tab-btn-s-price1')} icon="./king-i.svg"/>
         if (router.query.item === "Premium")
-            return <ProductCard onChange={(e) => setPrice(e)} qtyselect={true} price={44900} purchase={true} title="Premium" description={t('price:tab-btn-p-price1')} icon="./diamond-i.svg"/>
+            return <ProductCard buy={t('price:buy')} style={{margin: '0px auto 32px auto',maxHeight: '144px',maxWidth: '100%'}} onChange={(e) => setPrice(e)} qtyselect={true} price={44900} purchase={true} title="Premium" description={t('price:tab-btn-p-price1')} icon="./diamond-i.svg"/>
     }
     const subDate = (year) => {
         const subDate = new Date();
@@ -77,55 +77,53 @@ const Purchase = () => {
     }
     return (
         <Grid.Container style={{padding: '40px'}} alignItems="center" direction="column">
-            <Grid style={{minHeight: '540px',position: 'relative'}} direction="column" alignItems="center" xs={24} sm={24} md={16} lg={14} xl={12}>
+            <Grid style={{minHeight: '540px',position: 'relative',width: '540px'}} direction="column" alignItems="center" xs={24} sm={24} md={16} lg={14} xl={12}>
                 <Slider value={step} className="purchase-slider" initialValue={1} min={1} showMarkers={true} disabled max={3}/>
                 <Spacer/>
                 <AnimatePresence exitBeforeEnter>
                 {step === 2 &&
-                <AnimDiv akey="step3">
-                <h2 className="purchase-title">Please enter your order information :</h2>
-                <Input value={user.name} name="name" autoComplete onChange={(e) => setUser({...user, name: e.target.value})}>Name</Input>
+                <AnimDiv key="pstep0" akey="step2">
+                <h2 className="purchase-title">{t('common:ordererInfoEnter')} :</h2>
+                <Input value={user.name} name="name" autoComplete onChange={(e) => setUser({...user, name: e.target.value})}>{t('common:name')}</Input>
                 <Spacer/>
-                <Input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" name="phone" autoComplete value={user.phone} onChange={(e) => setUser({...user, phone: e.target.value})}>Phone Number</Input>
+                <Input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" name="phone" autoComplete value={user.phone} onChange={(e) => setUser({...user, phone: e.target.value})}>{t('common:phone')}</Input>
                 <Spacer/>
-                <Input type="email" name="email" autoComplete value={user.email} onChange={(e) => setUser({...user, email: e.target.value})}>Email</Input>
+                <Input type="email" name="email" autoComplete value={user.email} onChange={(e) => setUser({...user, email: e.target.value})}>{t('common:email')}</Input>
                 <Spacer/>
-                <span>We will notify you of receipts and updates by email.</span>
+                <span>{t('common:emailNotifyComment')}</span>
                 </AnimDiv>
                 }
                 {step === 3 &&
-                <AnimDiv akey="step3">
-                <h2 className="purchase-title">Enter Shipping Info :</h2>
-                <Input disabled value="South Korea">Country</Input>
+                <AnimDiv key="pstep1" akey="step3">
+                <h2 className="purchase-title">{t('common:enterShippingInfo')} :</h2>
+                <Input disabled value={t('common:southKorea')}>{t('common:countryArea')}</Input>
                 <Spacer/>
-                <Input onClick={() => setModal(true)} value={user.address} className="daum-input" readOnly>Address</Input>
+                <Input onClick={() => setModal(true)} value={user.address} className="daum-input" readOnly>{t('common:address')}</Input>
                 <Spacer/>
-                <Input value={user.zipcode} disabled>Zipcode</Input>
+                <Input value={user.zipcode} disabled>{t('common:zipCode')}</Input>
                 <Spacer/>
-                <Input value={user.addressdetailed} onChange={(e) => setUser({...user, addressdetailed: e.target.value})}>Detailed Address</Input>
+                <Input value={user.addressdetailed} onChange={(e) => setUser({...user, addressdetailed: e.target.value})}>{t('common:detailedAddress')}</Input>
                 </AnimDiv>
                 }
                 {step === 1 &&
-                <AnimDiv akey="step1">
-                <h2 className="purchase-title">Order Info :</h2>
+                <AnimDiv key="pstep2" akey="step1">
+                <h2 className="purchase-title">{t('common:orderInfo')} :</h2>
                 {handleProduct()}
                 <div className="shipping-time">
                     <Truck/>
-                    <span>
-                    It will take 2-3 days from the date when the order is made.
-                    </span>
+                    <span>{t('common:orderShippingInfo')}</span>
                     <Spacer/>
                 </div>
                 <Spacer/>
-                    <h2 className="purchase-title">Subscription Details:</h2>
-                    <SubInfo title="Peroid" sub={`${new Date().toLocaleDateString()} ~  ${subDate(router.query.item === "Standard" ? 1 : 2).toLocaleDateString()}`}/>
-                    <SubInfo title="Payment Date" sub="27th every month"/>
-                    <SubInfo title="Expiration Date" sub={`${subDate(router.query.item === "Standard" ? 1 : 2).toLocaleDateString()}`}/>
-                    <h2 className="purchase-title">Payment Details:</h2>
-                    <SubInfo title="Order Amount" sub={price}/>
-                    <SubInfo title="Shipping" sub="FREE"/>
+                    <h2 className="purchase-title">{t('common:subscriptionService')} :</h2>
+                    <SubInfo title={t('common:subscriptionPeriod')} sub={`${new Date().toLocaleDateString()} ~  ${subDate(router.query.item === "Standard" ? 1 : 2).toLocaleDateString()}`}/>
+                    <SubInfo title={t('common:monthlySubscriptionDate')} sub={new Date().getDate()}/>
+                    <SubInfo title={t('common:expirationDate')} sub={`${subDate(router.query.item === "Standard" ? 1 : 2).toLocaleDateString()}`}/>
+                    <h2 className="purchase-title">{t('common:paymentDetails')}:</h2>
+                    <SubInfo title={t('common:orderAmount')} sub={price}/>
+                    <SubInfo title={t('common:shipping')} sub={t('common:free')}/>
                     <Spacer/>
-                    <Note label={false} type="secondary">Prices is exlucding VAT of ₩2,263 Total including: {price + 2263}</Note>
+                    <Note label={false} type="secondary">{t('common:VAT0')}₩2,263 {t('common:VAT1')}: <b>₩{price + 2263}</b></Note>
                 </AnimDiv>
                 }
                 </AnimatePresence>
@@ -145,7 +143,7 @@ const Purchase = () => {
 
 export const getStaticProps = async ({ locale }) => ({
     props: {
-      ...await serverSideTranslations(locale, ['price','home']),
+      ...await serverSideTranslations(locale, ['price','common']),
     },
   })
 export default Purchase
