@@ -1,5 +1,6 @@
 import {Popover, Spacer} from '@geist-ui/react';
 import { ChevronRight, Globe } from '@geist-ui/react-icons';
+import { i18n } from 'next-i18next';
 import Link from 'next/link'
 import { useRef } from 'react';
 
@@ -10,6 +11,8 @@ const LangChange = () => {
           <Link href='' locale='en'><span style={{color: '#333333',cursor: 'pointer'}}>English</span></Link>
           <Spacer y={.5} />
           <Link href='' locale='kr'><span style={{color: '#333333',cursor: 'pointer'}}>한글</span></Link>
+          <Spacer y={.5} />
+          <span onClick={() => i18n.changeLanguage('cimode')}>CIMODE</span>
         </div>
       )
     const changeHandler = (e) => {

@@ -32,10 +32,10 @@
     font-family: 'Roboto', sans-serif;
     white-space: pre-wrap;
 }
-.kr {
-    *{
-        word-break: keep-all;
-    }
+.kr{
+    h1,h2,h3,h4,h5,h6,div,p,span {
+    word-break: keep-all !important;
+}
 }
 .img-avatar{
     border-radius: 25% !important;

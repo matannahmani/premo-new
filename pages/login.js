@@ -1,7 +1,7 @@
 import {Grid,Button,Card,Spacer,Input,Dot,useToasts, Text} from '@geist-ui/react';
 import React,{useState,useEffect,useContext, useRef} from 'react';
 import { useRouter } from 'next/router';
-import { AppContext, UserContext } from '../context/appcontext';
+import { UserContext } from '../context/appcontext';
 import {firebase} from '../lib/firebase'
 import Google from '../public/icons/google.svg';
 import Facebook from '../public/icons/facebook.svg';
@@ -117,11 +117,11 @@ const AdminLogin = () => {
         <Card className="logincard" style={{borderRadius: '16px'}} shadow type={"lite"}>
         <Text h3 className="title" b>{t('common:account')} {t('common:premoLogin')}</Text>
         <Spacer/>
-        <Input ref={username} name="email" autoComplete="on" placeholder="Admin" width="240px">
+        <Input ref={username} name="email" placeholder="Admin" width="240px">
         <Dot color="black" type="success">{t('common:email')}</Dot>
         </Input>
         <Spacer/>
-        <Input.Password ref={password} name="password" autoComplete="on" width="240px">
+        <Input.Password ref={password} name="password" width="240px">
         <Dot color="black" type="success">{t('common:password')}</Dot>
         </Input.Password>
         <Spacer/>
