@@ -6,7 +6,11 @@ import {firebase} from '../lib/firebase'
 import { useContext } from 'react';
 import { UserContext } from '../context/appcontext';
 const Navbarm = (props) => {
-    const [user,] = useContext(UserContext);
+    const [user,setUser] = useContext(UserContext);
+    const logoutHandler = () => {
+        firebase.auth().signOut();
+        setUser(({logged: false,triedLog: true,jwt: ''}))
+      }
     return (
         <div className="navbar navbar-mobile">
         <Menu width={"240px"} customBurgerIcon={<MenuIcon/>} right pageWrapId={ "page-wrap" } outerContainerId={"__next"}>
@@ -30,7 +34,7 @@ const Navbarm = (props) => {
             <ActiveLink href="/user/account">
             <Text>Account</Text>
             </ActiveLink>
-            <ActiveLink href="/" logout><span onClick={() => firebase.auth().signOut()}>Logout</span></ActiveLink>
+            <ActiveLink href="/" logout><span onClick={logoutHandler}>Logout</span></ActiveLink>
         </>
         }
         </Menu>

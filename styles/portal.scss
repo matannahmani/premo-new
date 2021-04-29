@@ -2,6 +2,8 @@
     width: 140px !important;
     position: fixed !important;
     top: 62px !important;
+    left: unset !important;
+    right: -77px;
 }
 .child-flex{
     display: flex !important;

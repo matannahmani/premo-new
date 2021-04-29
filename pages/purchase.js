@@ -10,6 +10,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { purchaseLink } from "../lib/userapi";
 import { UserContext } from "../context/appcontext";
+import { AnimDiv } from "../components/AnimDiv";
 
 
 const SubInfo = ({title,sub,style}) => {
@@ -20,18 +21,6 @@ const SubInfo = ({title,sub,style}) => {
         </div>
     )
 }
-
-const AnimDiv = ({akey,children}) => (
-    <motion.div
-    key={akey}
-    style={{width: '100%',maxWidth: '640px', overflow: "hidden",padding: '16px',margin: '40px 0px',background: 'white',borderRadius: '16px',boxShadow: '0 5px 10px rgb(0 0 0 / 12%)' }}
-    initial={{ opacity: 0,height: 20 }}
-    animate={{ opacity: 1,height: "auto" }}
-    exit={{ opacity: 0,height: 20 }}
-    transition={{ duration: 0.5 }}>
-    {children}
-    </motion.div>
-)
 
 const Purchase = () => {
     const [modal,setModal]= useState(false);

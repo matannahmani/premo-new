@@ -9,7 +9,7 @@ import { UserContext } from "../context/appcontext"
 const NavbarD = (props) => {
   // ghost navbar in future
   const [sticky,setSticky] = useState(false);
-  const [user,] = useContext(UserContext)
+  const [user,setUser] = useContext(UserContext)
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -23,7 +23,10 @@ const NavbarD = (props) => {
       setSticky(false);
     }
   }
-
+  const logoutHandler = () => {
+    firebase.auth().signOut();
+    setUser(({logged: false,triedLog: true,jwt: ''}))
+  }
     const content = () => (
         <>
           <Popover.Item title>
@@ -43,7 +46,7 @@ const NavbarD = (props) => {
           </Popover.Item>
 
           <Popover.Item>
-            <ActiveLink href="/" logout><span onClick={() => firebase.auth().signOut()}>{props.t('logout')}</span></ActiveLink>
+            <ActiveLink href="/" logout><span onClick={logoutHandler}>{props.t('logout')}</span></ActiveLink>
           </Popover.Item>
           </>
         }

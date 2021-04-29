@@ -31,8 +31,8 @@ const DynamicLayoutLoad = dynamic(
 )
 
 const MyApp = ({ Component, pageProps }) => {
-  const [app,setApp] = useState({mobile: false,loading: false,scroll: false})
-  const [user,setUser] = useState({logged: false})
+  const [app,setApp] = useState({mobile: false,loading: false,scroll: false,signUp: false})
+  const [user,setUser] = useState({logged: false,triedLog: false,jwt: ''})
   const router = useRouter();
   const [,setToast] = useToasts();
   NProgress.configure({ showSpinner: true });
@@ -57,20 +57,19 @@ const MyApp = ({ Component, pageProps }) => {
 
   useEffect(async () => {
     hotjar.initialize(2350733, 6); // hot jar
-    firebase.auth().onAuthStateChanged( async (fuser) => {
-      if (fuser === null){
-        setUser({ logged: false})
-        if (router.pathname.includes('user')){
+    firebase.auth().onAuthStateChanged( async (fuser) => { // listen to fire base user changes
+      if (fuser === null){ // if not logged
+        if (router.pathname.includes('user')){ // protects route
           setToast({type:"error",text: 'Please login'})
           router.replace('/')
         }
-      }else{
+      }else{ // if user is logged
         const token = await firebase.auth().currentUser.getIdToken()
-        const pinfo = await getUserInfo({jwt: token});
+        const pinfo = await getUserInfo({jwt: token}); // fetches user info from server
         if (pinfo.data !== undefined && pinfo.data.result.code === 0){
-          setUser({email: fuser.email,name: fuser.displayName,uid: fuser.uid,pinfo: pinfo.data.payload[0],logged: true,jwt: token})
-        }else{
-          firebase.auth().signOut();
+          setUser({triedLog: true,email: fuser.email,name: fuser.displayName,uid: fuser.uid,pinfo: pinfo.data.payload[0],logged: true,jwt: token})
+        }else if (pinfo.result.code === -1){ // user didn't finish sign up
+          setUser({...user,logged: true,jwt: token});
         }
       }
       });
