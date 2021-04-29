@@ -1,7 +1,7 @@
 import {Grid,Button,Card,Spacer,Input,Dot,useToasts, Text} from '@geist-ui/react';
-import React,{useState,useEffect,useContext, useRef} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import { useRouter } from 'next/router';
-import { UserContext } from '../context/appcontext';
+import { AppContext, UserContext } from '../context/appcontext';
 import {firebase} from '../lib/firebase'
 import Google from '../public/icons/google.svg';
 import Facebook from '../public/icons/facebook.svg';
@@ -15,19 +15,18 @@ import { getUserInfo } from '../lib/userapi';
 
 const AdminLogin = () => {
     const { t } =  useTranslation(['common']);
-    const username = useRef(null);
-    const password = useRef(null);
+    const [account,setAccount] = useState({username: '',password: ''})
     const [, setToast] = useToasts();
-    const [loading,setLoading] = useState(false);
+    const [loading,setLoading] = useState(true);
     const [user,setUser] = useContext(UserContext);
-    const [signUp,setSignUp] = useState(false);
+    const [app,setApp] = useContext(AppContext);
     const router = useRouter();
     const loginHandler = async (register) =>{
-        if (!loading && username.current !== null && password.current !== null){
+        if (!loading){
             setLoading(true);
-            if (username.current.value.length > 4 && password.current.value.length > 4){
+            if (account.username.length > 4 && account.password.length > 4){
                 if (!register){ // new register
-                        await firebase.auth().signInWithEmailAndPassword(username.current.value, password.current.value)
+                        await firebase.auth().signInWithEmailAndPassword(account.username, account.password)
                         .then(async (userCredential) => { // for some reason if i call a function inside a then it triggers catch
                             firebaseLogHandler(userCredential);
                         }). catch (error => {
@@ -38,7 +37,7 @@ const AdminLogin = () => {
             }
                 else{
                     try{
-                        await firebase.auth().createUserWithEmailAndPassword(username.current.value, password.current.value)
+                        await firebase.auth().createUserWithEmailAndPassword(account.username, account.password)
                         .then((userCredential) => {
                             setToast({type: 'success',text: t('accountcreated')})
                             firebaseLogHandler(userCredential);
@@ -49,7 +48,6 @@ const AdminLogin = () => {
                         setLoading(false);
                     }
                 }
-
             }
             else{
                 setToast({type: "warning",text: t('common:loginshort')});
@@ -62,7 +60,8 @@ const AdminLogin = () => {
         try {
             const pinfo = await getUserInfo({jwt: userCredential.user.za});
             if (pinfo.data === undefined && pinfo.result.code === -1){
-                setSignUp(true);
+                console.log('test')
+                setApp({...app,signUp: true});
                 setUser({triedLog: true,logged: false,jwt: userCredential.user.za,displayName: userCredential.user.displayName})
                 setLoading(false);
             }
@@ -72,18 +71,12 @@ const AdminLogin = () => {
                 router.replace('/')
             }
         } catch (error) {
-            setSignUp(true);
+            setApp({...app,signUp: true});
             setUser({triedLog: true,logged: false,jwt: userCredential.user.za,displayName: userCredential.user.displayName})
             setLoading(false);
         }
     }
 
-    const keyPressHandler = (e) => {
-        if (e.repeat) { return }
-        if ( e.key === "Enter"){
-            loginHandler();
-        }
-    }
     const oauthLogin = async (auth) => {
         setLoading(true);
         try{
@@ -98,18 +91,22 @@ const AdminLogin = () => {
     }
 
     useEffect( async () => {
-        // if (!loading)
-        //     window.addEventListener('keypress', keyPressHandler);
-        if (firebase.auth().currentUser !== null){
+        if (!app.signUp && await firebase.auth().currentUser !== null){
             router.push('/');
             setToast({type: "success",text: t('loggedback')});
+        }else if (app.signUp){
+            setLoading(false);
         }
-        // return () => {
-        //     window.removeEventListener('keypress', keyPressHandler);
-        // }
     }, [])
-
-    const LoginPage = () => (
+    useEffect(() => {
+        if (user.triedLog){
+            setLoading(false);
+        }
+    }, [user.triedLog])
+    return ( // TO DO FIX THE LAYOUT AS GRID DOSENT WORK!
+        app.signUp ?
+        <Signup/>
+        :
         <Grid.Container style={{height: '100%',padding: '64px 0px',background: '#ECF3F6'}} gap={2} direction="column"  alignItems="center" justify="center">
         {loading ? <Spinner/>
         :
@@ -117,11 +114,11 @@ const AdminLogin = () => {
         <Card className="logincard" style={{borderRadius: '16px'}} shadow type={"lite"}>
         <Text h3 className="title" b>{t('common:account')} {t('common:premoLogin')}</Text>
         <Spacer/>
-        <Input ref={username} name="email" placeholder="Admin" width="240px">
+        <Input onChange={(e) => setAccount({...account,username: e.target.value})} name="email" placeholder="birito@naver.com" width="240px">
         <Dot color="black" type="success">{t('common:email')}</Dot>
         </Input>
         <Spacer/>
-        <Input.Password ref={password} name="password" width="240px">
+        <Input.Password onChange={(e) => setAccount({...account,password: e.target.value})} name="password" width="240px">
         <Dot color="black" type="success">{t('common:password')}</Dot>
         </Input.Password>
         <Spacer/>
@@ -150,13 +147,6 @@ const AdminLogin = () => {
         </Grid>
         }
     </Grid.Container>
-    )
-
-    return ( // TO DO FIX THE LAYOUT AS GRID DOSENT WORK!
-        signUp ?
-        <Signup/>
-        :
-        <LoginPage/>
     )
 }
 export const getStaticProps = async ({ locale }) => ({

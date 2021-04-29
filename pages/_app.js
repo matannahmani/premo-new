@@ -59,6 +59,8 @@ const MyApp = ({ Component, pageProps }) => {
     hotjar.initialize(2350733, 6); // hot jar
     firebase.auth().onAuthStateChanged( async (fuser) => { // listen to fire base user changes
       if (fuser === null){ // if not logged
+        setApp({mobile: false,loading: false,scroll: false,signUp: false});
+        setUser({...user,triedLog: true});
         if (router.pathname.includes('user')){ // protects route
           setToast({type:"error",text: 'Please login'})
           router.replace('/')
@@ -70,6 +72,11 @@ const MyApp = ({ Component, pageProps }) => {
           setUser({triedLog: true,email: fuser.email,name: fuser.displayName,uid: fuser.uid,pinfo: pinfo.data.payload[0],logged: true,jwt: token})
         }else if (pinfo.result.code === -1){ // user didn't finish sign up
           setUser({...user,logged: true,jwt: token});
+          setApp({...app,signUp: true})
+          if (router.pathname.includes('user')){ // protects route
+            setToast({type:"error",text: 'Please finish sign up'})
+            router.replace('/login')
+          }
         }
       }
       });
