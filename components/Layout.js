@@ -1,4 +1,4 @@
-import {Grid,Modal,useModal, User} from '@geist-ui/react'
+import {Grid,Modal,useModal} from '@geist-ui/react'
 import {useContext} from 'react'
 import {AppContext, UserContext} from '../context/appcontext';
 import NavbarM from './Navbarm'
@@ -8,6 +8,7 @@ import { InlineWidget } from "react-calendly";
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import {firebase} from '../lib/firebase'
+import { X } from '@geist-ui/react-icons';
 
 
 const Layout = (props) => {
@@ -61,7 +62,7 @@ const Layout = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Grid.Container className={router.locale === 'en' ? 'en' : 'kr'} >
-          {app.mobile ? <NavbarM user={user} logoutHandler={logoutHandler} setCalendly={() => setVisible(true)}/> : <NavbarD  t={lang} user={user} logoutHandler={logoutHandler} setCalendly={() => setVisible(true)}/>}
+          {app.mobile ? <NavbarM user={user} logoutHandler={logoutHandler} t={lang} setCalendly={() => setVisible(true)}/> : <NavbarD  t={lang} user={user} logoutHandler={logoutHandler} setCalendly={() => setVisible(true)}/>}
           <div id="page-wrap">
           {props.children}
           </div>
@@ -70,7 +71,7 @@ const Layout = (props) => {
           <Modal.Content style={{overflow: 'hidden',height: '630px'}}>
           <InlineWidget url="https://calendly.com/premo-consulting/15min" />
           </Modal.Content>
-          <Modal.Action passive onClick={() => setVisible(false)}>Cancel</Modal.Action>
+          <Modal.Action passive onClick={() => setVisible(false)}><X/></Modal.Action>
           </Modal>
         </Grid.Container>
       </>
