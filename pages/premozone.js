@@ -25,10 +25,18 @@ const PremoZone = ({ allPosts, preview }) => {
     setPage(1);
     setTab(e);
   })
+
+  const scrollTo = () => {
+    const div = document.getElementById('premozone');
+    if (div !== null){
+      div.scrollIntoView({block: "start"});
+    }
+  }
     return(
       <>
-      <Grid.Container style={{background: "#ECF3F6"}} direction="column" align="center">
-        <Grid style={{padding: '40px'}} xs justify="center" alignItems="center">
+      <div id='premozone' style={{position: 'absolute',top: '-24px',width: '0px',height: '0px'}}></div>
+      <Grid.Container  style={{background: "#ECF3F6"}} direction="column" align="center">
+        <Grid  xs justify="center" alignItems="center">
           <TabsAni changeHandler={changeHandler}>
             <TabsAni.Item header="Premo Zone">
             {pagaitions().map((e) => {
@@ -69,7 +77,7 @@ const PremoZone = ({ allPosts, preview }) => {
 
         </Grid>
         <Grid>
-        <Pagination onChange={(e) => setPage(e)} count={posts().length > 4 ? Math.round(posts().length / 4.0) + 1 : 1}>
+        <Pagination onChange={(e) => {setPage(e); scrollTo()}} count={posts().length > 4 ? Math.round(posts().length / 4.0) + 1 : 1}>
         <Pagination.Next><ChevronRight /></Pagination.Next>
         <Pagination.Previous><ChevronLeft /></Pagination.Previous>
         </Pagination>

@@ -24,3 +24,19 @@
         margin: 0 auto;
     }
 }
+
+@media (max-width: 300px){
+    .logincard{
+        .content{
+            padding: 8pt !important;
+        }
+        button{
+            margin: 8px;
+        }
+        .store-btn{
+            height: 100% !important;
+            padding: 8px !important;
+
+        }
+    }
+}

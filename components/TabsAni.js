@@ -1,5 +1,5 @@
 import { Button } from '@geist-ui/react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m, motion } from 'framer-motion';
 import React,{useEffect, useState} from 'react';
 
 const TabsAni = ({children,changeHandler}) => {
@@ -20,13 +20,16 @@ const TabsAni = ({children,changeHandler}) => {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            transition={{ duration: 0.5 }}>
+            transition={{
+                scale: { type: "spring", stiffness: 50 },
+                default: { duration: 0.5 },
+            }}>
                 {cchild}
             </motion.div>
         )
     : null);
     return (
-        <div style={{width: '100%'}} className="tabs">
+        <div style={{width: '100%',maxWidth: '100%'}} className="tabs">
             <header style={{maxWidth: '435px'}} className="tabs-header">
                 {buttons}
             </header>

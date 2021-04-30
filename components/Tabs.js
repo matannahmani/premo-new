@@ -4,9 +4,8 @@ import {useState} from 'react';
 import Pricecard from './PriceCard';
 const Tabs = ({t}) => {
     const [tab,setTab] = useState(0);
-
     return (
-        <div className="tabs">
+        <div id='tabs' className="card-tabs tabs">
             <header className="tabs-header">
             <Button onClick={() => setTab(0)} size="small" className={`${tab === 0 && 'tab-active'} tab-btn`}>{t('tab-btn-p')}</Button>
             <Button onClick={() => setTab(1)} size="small" className={`${tab === 1 && 'tab-active'} tab-btn`}>{t('tab-btn-s')}</Button>

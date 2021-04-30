@@ -93,7 +93,7 @@ const device = () => {
                 <Text className="price-section-title" h3>{t('allinone')}</Text>
                 <Spacer y={1.5}/>
                 <div
-                style={{ background: 'white', padding: '16px',borderRadius: '16px',boxShadow: '0 5px 10px rgb(0 0 0 / 12%)' }}
+                style={{ background: 'white',margin: '16px', padding: '16px',borderRadius: '16px',boxShadow: '0 5px 10px rgb(0 0 0 / 12%)' }}
                 >
                 <Pricecard icon="./diamond-i.svg" head={false}>
                         <Pricecard.PItem title={t('tab-p0').split('\n')[0]} url="https://drive.google.com/file/d/1pBEDEhl2obP3s8tbvgxlIoYY9Ok8eiKT/view" photo={["./app/smart0.png","./app/smart1.png"]} battery="AA Size * 4" size="102 x 102 x 22.45(mm)" subtitle={t('tab-sb0')}>

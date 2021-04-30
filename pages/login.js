@@ -13,7 +13,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Signup from '../components/Signup';
 import { getUserInfo } from '../lib/userapi';
 
-const AdminLogin = () => {
+const Login = () => {
     const { t } =  useTranslation(['common']);
     const [account,setAccount] = useState({username: '',password: ''})
     const [, setToast] = useToasts();
@@ -109,8 +109,8 @@ const AdminLogin = () => {
         app.signUp ?
         <Signup/>
         :
-        <Grid.Container style={{height: '100%',minHeight: '300px',padding: '64px 0px',background: '#ECF3F6'}} gap={2} direction="column"  alignItems="center" justify="center">
-        <Grid direction="column" alignItems="center" justify="center">
+        <Grid.Container style={{height: '100%',minHeight: '300px',width:'100%',margin: '0px',padding: '64px 0px',background: '#ECF3F6'}} gap={2} direction="column"  alignItems="center" justify="center">
+        <Grid style={{maxWidth: '100%'}} direction="column" alignItems="center" justify="center">
         <Card className="logincard" style={{borderRadius: '16px'}} shadow type={"lite"}>
         {loading ? <Spinner/>
         :
@@ -158,4 +158,4 @@ export const getStaticProps = async ({ locale }) => ({
       ...await serverSideTranslations(locale, ['common']),
     },
   })
-export default AdminLogin;
+export default Login;

@@ -49,8 +49,8 @@ export default function Home() {
           <img className="premo-app-lk" src="/app/a3.png"/>
           </div>
           <Grid xs style={{width: '100%'}} justify="space-evenly">
-            <button className="store-btn" onClick={() => window.open('https://play.google.com/store/apps/details?id=com.keywe.premo')} ><Playstore viewBox="0 0 180 52" width={null} height={null}/></button>
-            <button className="store-btn" onClick={() => window.open('https://apps.apple.com/app/id1538085877')} ><Appstore viewBox="0 0 180 52" width={null} height={null}/></button>            
+            <button className="store-btn" onClick={() => window.open('https://play.google.com/store/apps/details?id=com.keywe.premo')} ><Playstore viewBox="0 0 180 52" style={{width:'100%'}} width={null} height={null}/></button>
+            <button className="store-btn" onClick={() => window.open('https://apps.apple.com/app/id1538085877')} ><Appstore viewBox="0 0 180 52" style={{width:'100%'}} width={null} height={null}/></button>            
           </Grid>
         </Grid>
 
@@ -68,8 +68,8 @@ export default function Home() {
           <Text className={`product-header text-left`} h2>{t('packagestitle')}</Text>
           <Text className={`product-description text-left`} h3>{t('packagessub')}</Text>
           <Grid direction="row" className="product-cardbox" xs={24}>
-          <ProductCard title="Standard" buy={t('price:buy')}  description={t('price:tab-btn-s-price1')} icon="./king-i.svg"/>
-          <ProductCard title="Premium" buy={t('price:buy')} description={t('price:tab-btn-p-price1')} icon="./diamond-i.svg"/>
+          <ProductCard title={t('price:tab-btn-s')} buy={t('price:buy')}  description={t('price:tab-btn-s-price1')} icon="./king-i.svg"/>
+          <ProductCard title={t('price:tab-btn-p')} buy={t('price:buy')} description={t('price:tab-btn-p-price1')} icon="./diamond-i.svg"/>
         </Grid>
         </Grid>
       </Grid.Container>

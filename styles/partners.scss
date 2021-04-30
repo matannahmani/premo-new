@@ -60,6 +60,7 @@
     position: relative;
     height: 500px;
     width: 100%;
+    max-width: 420px;
     .premo-app-bg{
         position: absolute;
         top: 0;
@@ -69,7 +70,7 @@
     .premo-app-ab{
         position: absolute;
         bottom: 168px;
-        // left: 20px;
+        left: -8px;
         z-index: 2;
         animation-name: appMover;
         animation-duration: 8s;
@@ -78,7 +79,6 @@
     }
     .premo-app-ap{
         position: absolute;
-        right: 80px;
         top: 16px;
         z-index: 4;
         animation-name: appMover;
@@ -90,7 +90,7 @@
         position: absolute;
         z-index: 3;
         right: 23px;
-        top: 16px;
+        top: 0px;
         transform: rotate(9.28deg);
         animation-name: appMover;
         animation-duration: 8s;
@@ -101,6 +101,19 @@
 @media (min-width: 900px){
     .premo-app{
         transform: scale(1.15);
+    }
+}
+@media (max-width: 300px){
+    .premo-app .premo-app-ab{
+        left: -18px;
+        bottom: 155px;
+    }
+    .premo-app .premo-app-lk{
+        right: 10px;
+    }
+    .premo-app .premo-app-ap{
+        right: 53px;
+        top: 16px;
     }
 }
 @keyframes appMover{

@@ -12,7 +12,7 @@ const Pricing = () => {
             <div className="product-one-shape-5 top left"></div>
             <div className="product-one-shape-5 bottom left"></div>
             <div className="product-one-shape-5 bottom right"></div>
-            <Grid xs style={{minHeight: '940px'}} align="center" direction="column">
+            <Grid xs style={{minHeight: '940px'}} alignItems="center" direction="column">
             <Spacer y={3}/>
                 <Text className="price-section-title" h1>{t('title')}</Text>
             <div>
