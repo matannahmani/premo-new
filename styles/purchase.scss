@@ -2,6 +2,7 @@
     .dot{
         background-color: $premo !important;
         color: $white !important;
+        transition: left 1s ease-in;
     }
     max-width: 800px;
 }
@@ -15,13 +16,15 @@
 .purchase-nav{
     position: absolute;
     bottom: 8px;
-    width: 80px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     button{
         height: 40px !important;
-        margin: 0px 24px !important;
+        width: 100% !important;
+        max-width: 140px !important;
+        min-width: unset !important;
     }
     svg{
         margin: 0px 8px;

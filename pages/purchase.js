@@ -96,9 +96,27 @@ const Purchase = () => {
         subDate.setFullYear(subDate.getFullYear() + year);
         return subDate;
     }
+    const NavClickHandler = (move) => {
+        if (move){
+            stepHandler(true) ? step === 4 ? setModal(true) : setStep(step +1) : null
+            scrollTo()
+        }
+        else{
+            stepHandler(false) && setStep(step -1)
+            scrollTo()
+        }
+        
+    }
+    const scrollTo = () => {
+        const div = document.getElementById('premozone');
+        if (div !== null){
+          div.scrollIntoView({block: "start"});
+        }
+      }
     return (
-        <Grid.Container style={{padding: '40px',background: '#ECF3F6'}} alignItems="center" direction="column">
-            <Grid style={{minHeight: '540px',position: 'relative',width: '540px'}} direction="column" alignItems="center" xs={24} sm={24} md={16} lg={14} xl={12}>
+        <Grid.Container style={{padding: '40px 16px',background: '#ECF3F6'}} alignItems="center" direction="column">
+            <div id='premozone' style={{position: 'absolute',top: '-24px',width: '0px',height: '0px'}}></div>
+            <Grid style={{minHeight: '540px',position: 'relative',width: '100%',maxWidth: '540px'}} direction="column" alignItems="center" xs={24} sm={24} md={16} lg={14} xl={12}>
                 <Slider value={step} className="purchase-slider" initialValue={1} min={1} showMarkers={true} disabled max={4}/>
                 <Spacer/>
                 <AnimatePresence exitBeforeEnter>
@@ -179,8 +197,8 @@ const Purchase = () => {
                 </AnimatePresence>
                 <Spacer/>
                 <div className="purchase-nav">
-                    <Button size="small" type="abort" className={!stepHandler(false) ? 'disabled btn-des' : 'btn-des'} onClick={() => stepHandler(false) && setStep(step -1)}>{t('common:back')}</Button>
-                    <Button size="small" className={!stepHandler(true) ? 'disabled learnbtn' : 'learnbtn'} onClick={() => stepHandler(true) ? step === 4 ? setModal(true) : setStep(step +1) : null}>{ step !== 4 ? t('common:nextStep') : t('common:purchase')}</Button>
+                    <Button size="small" type="abort" className={!stepHandler(false) ? 'disabled btn-des' : 'btn-des'} onClick={() => NavClickHandler(false)}>{t('common:back')}</Button>
+                    <Button size="small" className={!stepHandler(true) ? 'disabled learnbtn' : 'learnbtn'} onClick={() => NavClickHandler(true)}>{ step !== 4 ? t('common:nextStep') : t('common:purchase')}</Button>
                 </div>
             </Grid>
             <Modal open={modal} onClose={() => setModal(false)}>
