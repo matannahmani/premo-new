@@ -29,7 +29,7 @@ const ProductCard = (props) => {
             {!props.purchase &&
             <>
             <Text className="product-card-description">{props.description}</Text>
-            <Link href={`${user.logged ? '/purchase?item=' + props.title : '/login'}`}>
+            <Link href={router.pathname === '/' ? `/price` :`${user.logged ? '/purchase?item=' + props.title : '/login'}`}>
             <Button className="learnbtn btn-md" auto size="large">{props.buy}</Button>
             </Link>
             </>

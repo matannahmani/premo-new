@@ -18,7 +18,8 @@
     outline: none;
     cursor: pointer;
     background: none;
-    width: auto;
+    width: 180px;
+    z-index: 3;
     transition: all 0.25s ease-in-out;
 }
 .apple-btn{
