@@ -60,7 +60,6 @@ const AdminLogin = () => {
         try {
             const pinfo = await getUserInfo({jwt: userCredential.user.za});
             if (pinfo.data === undefined && pinfo.result.code === -1){
-                console.log('test')
                 setApp({...app,signUp: true});
                 setUser({triedLog: true,logged: false,jwt: userCredential.user.za,displayName: userCredential.user.displayName})
                 setLoading(false);
@@ -99,26 +98,30 @@ const AdminLogin = () => {
         }
     }, [])
     useEffect(() => {
-        if (user.triedLog){
+        if (!user.triedLog) return;
+        if (user.triedLog && user.pinfo === undefined){
             setLoading(false);
+        }else{
+            router.push('/')
         }
     }, [user.triedLog])
     return ( // TO DO FIX THE LAYOUT AS GRID DOSENT WORK!
         app.signUp ?
         <Signup/>
         :
-        <Grid.Container style={{height: '100%',padding: '64px 0px',background: '#ECF3F6'}} gap={2} direction="column"  alignItems="center" justify="center">
-        {loading ? <Spinner/>
-        :
+        <Grid.Container style={{height: '100%',minHeight: '300px',padding: '64px 0px',background: '#ECF3F6'}} gap={2} direction="column"  alignItems="center" justify="center">
         <Grid direction="column" alignItems="center" justify="center">
         <Card className="logincard" style={{borderRadius: '16px'}} shadow type={"lite"}>
+        {loading ? <Spinner/>
+        :
+        <>
         <Text h3 className="title" b>{t('common:account')} {t('common:premoLogin')}</Text>
         <Spacer/>
-        <Input onChange={(e) => setAccount({...account,username: e.target.value})} name="email" placeholder="birito@naver.com" width="240px">
+        <Input value={account.username.length > 0 ? account.username : ''} onChange={(e) => setAccount({...account,username: e.target.value})} name="email" placeholder="birito@naver.com" width="240px">
         <Dot color="black" type="success">{t('common:email')}</Dot>
         </Input>
         <Spacer/>
-        <Input.Password onChange={(e) => setAccount({...account,password: e.target.value})} name="password" width="240px">
+        <Input.Password value={account.password.length > 0 ? account.password : ''} onChange={(e) => setAccount({...account,password: e.target.value})} name="password" width="240px">
         <Dot color="black" type="success">{t('common:password')}</Dot>
         </Input.Password>
         <Spacer/>
@@ -143,9 +146,10 @@ const AdminLogin = () => {
             <Spacer/>
             <span>{t('common:accepttos')}</span>
         </Grid>
+        </>
+        }
         </Card>
         </Grid>
-        }
     </Grid.Container>
     )
 }

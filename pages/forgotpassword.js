@@ -1,15 +1,18 @@
 import { Button, Card, Grid, Input, Note, Spacer, useToasts } from "@geist-ui/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PageLayout from "../components/PageLayout";
 import { resetPassword } from "../lib/userapi";
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { UserContext } from "../context/appcontext";
+import Spinner from "../components/Spinner";
 
 const ForgotPassword = () => {
 
     const [email,setEmail] = useState('')
-    const [loading,setLoading] = useState(false)
+    const [loading,setLoading] = useState(true)
+    const [user,] = useContext(UserContext);
     const [,setToast] = useToasts();
     const router = useRouter();
     const { t } =  useTranslation(['common']);
@@ -32,8 +35,22 @@ const ForgotPassword = () => {
         }
         setLoading(false);
     }
+    useEffect(() => {
+        if (!user.triedLog) return;
+        if (user.triedLog && user.pinfo === undefined){
+            setLoading(false);
+        }else{
+            router.push('/')
+        }
+    }, [user.triedLog])
     return (
         <PageLayout>
+        {!loading.triedLog && loading ?
+        <Grid style={{display: 'flex',height: '100%'}} alignItems="center" justify="center" direction="column">
+            <Spinner/>
+        </Grid>
+        :
+        <>
             <h1 className="price-section-title">{t('common:resetpassword')}</h1>
             <Spacer y={2}/>
             <Card shadow style={{borderRadius: '16px'}}>
@@ -47,6 +64,8 @@ const ForgotPassword = () => {
                 <Button disabled={validateEmail()} onClick={resetHandler} className="learnbtn" loading={loading} auto>{t('common:resetpassword')}</Button>
             </Grid>
             </Card>
+        </>
+        }
         </PageLayout>
     )
 }

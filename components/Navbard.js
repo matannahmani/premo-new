@@ -1,15 +1,12 @@
 import {Popover,Text,Button, Image} from "@geist-ui/react"
-import {useState, useEffect, useContext} from 'react'
+import {useState, useEffect} from 'react'
 import {IoPersonCircleSharp} from 'react-icons/io5'
 import { ChevronDown } from '@geist-ui/react-icons'
 import ActiveLink from './ActiveLink'
-import {firebase} from '../lib/firebase'
-import { UserContext } from "../context/appcontext"
 
 const NavbarD = (props) => {
   // ghost navbar in future
   const [sticky,setSticky] = useState(false);
-  const [user,setUser] = useContext(UserContext)
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -23,16 +20,12 @@ const NavbarD = (props) => {
       setSticky(false);
     }
   }
-  const logoutHandler = () => {
-    firebase.auth().signOut();
-    setUser(({logged: false,triedLog: true,jwt: ''}))
-  }
     const content = () => (
         <>
           <Popover.Item title>
             <span>{props.t('accountcontrol')}</span>
           </Popover.Item>
-          {!user.logged ?
+          {!props.user.logged ?
           <Popover.Item>
             <ActiveLink  href="/login"><span>{props.t('premoLogin')}</span></ActiveLink>
           </Popover.Item>
@@ -46,7 +39,7 @@ const NavbarD = (props) => {
           </Popover.Item>
 
           <Popover.Item>
-            <ActiveLink href="/" logout><span onClick={logoutHandler}>{props.t('logout')}</span></ActiveLink>
+            <ActiveLink href="/" logout><span onClick={props.logoutHandler}>{props.t('logout')}</span></ActiveLink>
           </Popover.Item>
           </>
         }
@@ -65,9 +58,6 @@ const NavbarD = (props) => {
             <ActiveLink href="/price">
             <Text className="nav-item">{props.t('pricing')}</Text>
             </ActiveLink>
-            {/* <ActiveLink href="/">
-            <Text className="nav-item">Consulting</Text>
-            </ActiveLink> */}
             <ActiveLink href="/device">
             <Text className="nav-item">{props.t('device')}</Text>
             </ActiveLink>
@@ -76,7 +66,7 @@ const NavbarD = (props) => {
             </ActiveLink>
             <div>
             <Popover portalClassName="portal-lg" className="child-flex nav-item" content={content}>
-            <IoPersonCircleSharp className={`${user.logged ? 'active' : ''}`} style={{width:"30px",height:"30px"}} />
+            <IoPersonCircleSharp className={`${props.user.logged ? 'active' : ''}`} style={{width:"30px",height:"30px"}} />
             <ChevronDown/>
             </Popover>
             </div>

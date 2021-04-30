@@ -1,18 +1,19 @@
-import { AutoComplete, Button, Grid, Slider, Spacer } from "@geist-ui/react";
+import { AutoComplete, Button, Grid, Slider, Spacer, useToasts } from "@geist-ui/react";
 import { countries } from 'typed-countries';
 import ISO6391 from 'iso-639-1';
 import { useContext, useState } from "react";
 import { AnimDiv } from "./AnimDiv";
 import { finishSignUp, getUserInfo } from "../lib/userapi";
-import { UserContext } from "../context/appcontext";
+import { AppContext, UserContext } from "../context/appcontext";
 import { AnimatePresence } from "framer-motion";
 import Spinner from "./Spinner";
 import { useRouter } from "next/router";
-import {firebase} from '../lib/firebase'
 
 const Signup = () => {
     const [user,setUser] = useContext(UserContext);
+    const [app,setApp] = useContext(AppContext);
     const [loading,setLoading] = useState(false);
+    const [,setToasts] = useToasts();
     const router = useRouter();
     const langs = () => {
         // const result = []
@@ -26,6 +27,23 @@ const Signup = () => {
             return {label: e.name, value: e.name}
         })
     }
+    const checkUser = async (result,tries = 0) => {
+        const pinfo = await getUserInfo({jwt: user.jwt}); // fetches user info from server
+        if (tries > 2) {
+            location.replace('/');
+            return;
+        };
+        if (pinfo.data !== undefined){
+            setUser({triedLog: true,email: result.data.payload.account,name: result.data.payload.user,uid: result.data.payload.id,pinfo: pinfo.data.payload[0],logged: true,jwt: user.jwt});
+            setApp({...app,signUp: false});
+            router.push('/')
+            return;
+        }else{
+            setTimeout(() => {
+                return checkUser(result,tries++);
+            }, 1000);
+        }
+    }
       const [lang, setLangs] = useState()
       const [code, setCodes] = useState()
       const resultHandler = async (submit = false) => {
@@ -36,11 +54,7 @@ const Signup = () => {
                 setLoading(true);
                 const result = await finishSignUp({name: user.displayName,token: user.jwt,languageCode: langcode,countryCode: zonecode.iso});
                 if (result.data.result.code == 0){
-                    const pinfo = await getUserInfo({jwt: user.jwt}); // fetches user info from server
-                    if (pinfo.data !== undefined){
-                        setUser({triedLog: true,email: result.data.payload.account,name: result.data.payload.user,uid: result.data.payload.id,pinfo: pinfo.data.payload[0],logged: true,jwt: user.jwt})
-                        router.push('/')                    
-                    }
+                    await checkUser(result);
                     setLoading(false);
                 }
             }

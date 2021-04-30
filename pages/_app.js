@@ -13,7 +13,6 @@ import {firebaseConfig} from '../lib/firebase';
 import { getUserInfo } from '../lib/userapi'
 import { hotjar } from 'react-hotjar';
 import Spinner from '../components/Spinner'
-import dynamic from 'next/dynamic'
 import Layout from '../components/Layout';
 
 const LoadingPage = () => {
@@ -25,15 +24,11 @@ const LoadingPage = () => {
   )
 }
 
-const DynamicLayoutLoad = dynamic(
-  () => import('../components/Layout'),
-  { loading: () => <LoadingPage/> }
-)
-
 const MyApp = ({ Component, pageProps }) => {
   const [app,setApp] = useState({mobile: false,loading: false,scroll: false,signUp: false})
   const [user,setUser] = useState({logged: false,triedLog: false,jwt: ''})
   const router = useRouter();
+  const [firstLoad,setLoad] = useState(true);
   const [,setToast] = useToasts();
   NProgress.configure({ showSpinner: true });
 
@@ -59,7 +54,6 @@ const MyApp = ({ Component, pageProps }) => {
     hotjar.initialize(2350733, 6); // hot jar
     firebase.auth().onAuthStateChanged( async (fuser) => { // listen to fire base user changes
       if (fuser === null){ // if not logged
-        setApp({mobile: false,loading: false,scroll: false,signUp: false});
         setUser({...user,triedLog: true});
         if (router.pathname.includes('user')){ // protects route
           setToast({type:"error",text: 'Please login'})
@@ -73,7 +67,7 @@ const MyApp = ({ Component, pageProps }) => {
         }else if (pinfo.result.code === -1){ // user didn't finish sign up
           setUser({...user,logged: true,jwt: token});
           setApp({...app,signUp: true})
-          if (router.pathname.includes('user')){ // protects route
+          if (router.pathname.includes('user') || router.pathname.includes('forgotpassword')){ // protects route
             setToast({type:"error",text: 'Please finish sign up'})
             router.replace('/login')
           }
@@ -98,15 +92,24 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, [])
 
+  useEffect(() => {
+    if (!user.triedLog) return;
+    setLoad(false);
+  }, [user.triedLog])
+
   return(
     <GeistProvider>
     <CssBaseline />
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig} >
     <AppContext.Provider value={[app,setApp]}>
     <UserContext.Provider value={[user,setUser]}>
+      {firstLoad ?
+      <LoadingPage/>
+      :
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      }
     </UserContext.Provider>
     </AppContext.Provider> 
     </FirebaseAuthProvider>

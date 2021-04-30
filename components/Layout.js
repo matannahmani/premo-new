@@ -1,16 +1,18 @@
-import {Grid,Modal,useModal} from '@geist-ui/react'
+import {Grid,Modal,useModal, User} from '@geist-ui/react'
 import {useContext} from 'react'
-import {AppContext} from '../context/appcontext';
+import {AppContext, UserContext} from '../context/appcontext';
 import NavbarM from './Navbarm'
 import NavbarD from './Navbard'
 import Footer from './Footer';
 import { InlineWidget } from "react-calendly";
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import {firebase} from '../lib/firebase'
 
 
 const Layout = (props) => {
     const [app,setApp] = useContext(AppContext);
+    const [user,setUser] = useContext(UserContext);
     const { visible, setVisible, bindings } = useModal()
     const router = useRouter();
     const lang = (i) => {
@@ -24,7 +26,7 @@ const Layout = (props) => {
           "accountcontrol": "Account Settings",
           "payment": "Payment",
           "account": "Account",
-          "logout": "logout",
+          "logout": "Logout",
     
     
         },
@@ -45,6 +47,13 @@ const Layout = (props) => {
       else
         return dic["kr"][i]
     }
+
+    const logoutHandler = () => {
+      firebase.auth().signOut();
+      setApp({...app,signUp: false});
+      setUser({logged: false,triedLog: false,jwt: ''});
+    }
+
     return (
       <>
       <Head>
@@ -52,7 +61,7 @@ const Layout = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Grid.Container className={router.locale === 'en' ? 'en' : 'kr'} >
-          {app.mobile ? <NavbarM setCalendly={() => setVisible(true)}/> : <NavbarD t={lang} setCalendly={() => setVisible(true)}/>}
+          {app.mobile ? <NavbarM user={user} logoutHandler={logoutHandler} setCalendly={() => setVisible(true)}/> : <NavbarD  t={lang} user={user} logoutHandler={logoutHandler} setCalendly={() => setVisible(true)}/>}
           <div id="page-wrap">
           {props.children}
           </div>
