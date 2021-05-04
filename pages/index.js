@@ -12,6 +12,7 @@ import Appstore from '../public/icons/appstore.svg'
 import Playstore from '../public/icons/googleplay.svg'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import AnimView from '../components/AnimView';
 
 export default function Home() {
   const [app,] = useContext(AppContext);
@@ -30,9 +31,7 @@ export default function Home() {
           <Text className={"hero-title"} h1>{t('indextitle')}</Text>
           <Text className={"hero-description"} p>{t('indexsubtitle')}</Text>
           <Button onClick={scrollTo} className="learnbtn btn-md hero-btn" auto size="large">{t('price:learnmore')}</Button>
-          {app.mobile &&
-          <ChevronsDown onClick={scrollTo} className="hero-hover"/>
-          }
+          <ChevronsDown onClick={scrollTo} className={`hero-hover ${app.mobile ? '' : 'mobile-arrow'}`}/>
         </Grid>
       </Grid.Container>
       <Grid.Container alignItems="center" justify="center" direction="column" className="section-partners">
@@ -88,14 +87,17 @@ export default function Home() {
           <AppVideo style={{margin:'unset'}} title={t('video3')} icon="icons/cash.svg" hide={true} />
           <Spacer y={3}/>
           <Card shadow hoverable className="index-cta">
-            <div style={{position: 'relative'}}>
-            <Image className="index-cta-background" src="./app/3.png" height={155} width={295} scale="100%" style={{objectFit: 'cover'}}/>
+            <div style={{position: 'relative',display: 'flex',flexDirection: 'column'}}>
+            <Image className="index-cta-background" src="./app/3.png" height={200} width={295} scale="100%" style={{objectFit: 'cover'}}/>
             <Image className="index-cta-background-p" src="./app/2.png"/>
             </div>
+            <div style={{position: 'relative'}}>
+            <Image height={24} width={24} className="security" src="./icons/security.png"/>
             <Text className="index-cta-background-description" p>{t('cta')}</Text>
             <Link href="/price">
               <Button className="learnbtn btn-md">{t('price:buy')}</Button>
             </Link>
+            </div>
           </Card>
           <Spacer y={3}/>
         </Grid>

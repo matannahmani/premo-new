@@ -99,3 +99,8 @@
 .appstore-btn{
     border-radius: 26px !important;
 }
+@media (min-width: 900px){
+    .store-btn{
+        transform: scale(0.8);
+    }
+}

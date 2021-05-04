@@ -14,6 +14,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: left;
+    position: relative;
 }
 .hero-panel, .hero-panel >div{
     height: 100% !important;
@@ -84,9 +85,14 @@
 }
 .index-cta-background-p{
     position: absolute !important;
-    bottom: -8px;
-    left: 50%;
-    transform: translate(-50%,0);
+    bottom: 16px;
+    align-self: center;
+    transform: scale(1.5);
+}
+.security{
+    position: absolute !important;
+    right: -16px;
+    transform: scale(1.5);
 }
 .index-cta-description{
     font-family: 'Roboto',sans-serif;
@@ -138,9 +144,17 @@
           animation: hover-bottom 1.25s infinite;
       }
 }
+.mobile-arrow{
+    position: absolute;
+    transform: scale(3);
+    z-index: 3;
+    animation: hover-bottom 2s infinite;
+    align-self: center;
+    filter: drop-shadow( 0px 0px 1px $premo);
+}
 @keyframes hover-bottom {
-    0% {bottom: 24px;}
-    50% {bottom: 16px;}
-    100% {bottom: 24px;}
+    0% {bottom: 32px;}
+    50% {bottom: 24px;}
+    100% {bottom: 32px;}
 
   }
