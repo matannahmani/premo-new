@@ -43,6 +43,9 @@ html {
 .flicking{
     z-index: 1;
 }
+.m0{
+    margin: 0 !important;
+}
 .w-100{
     width: 100% !important;
     // img{ // blocks user select for images inside carousel
@@ -60,7 +63,9 @@ html {
 .title{
     color: #333333 !important;
 }
-
+.link{
+    color: inherit;
+}
 @media (max-width: 900px){
     .langchange{
         padding: 0px;

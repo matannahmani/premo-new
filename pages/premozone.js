@@ -1,5 +1,6 @@
 import { Card, Grid, Image, Pagination, Spacer } from '@geist-ui/react';
 import { ChevronLeft, ChevronRight } from '@geist-ui/react-icons';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -36,11 +37,15 @@ const PremoZone = ({ allPosts, preview }) => {
   }
     return(
       <>
+        <Head>
+        <title>{router.locale === 'en' ? "Premo | Premo Life" : "프리모 | Premo Life" }</title>
+        <meta name="description" content="프리모를 실제 활용하고 있는 호스트와 그 숙소에 대한 이야기를 전해드립니다. 이외에도 프리모 패키지 별 제품이미지와 신제품을 만나볼 수 있습니다."/>
+        </Head>
       <div id='premozone' style={{position: 'absolute',top: '-24px',width: '0px',height: '0px'}}></div>
       <Grid.Container  style={{background: "#ECF3F6"}} direction="column" align="center">
         <Grid  xs justify="center" alignItems="center">
           <TabsAni changeHandler={changeHandler}>
-            <TabsAni.Item header={router.locale === 'en' ? 'Premo Zone' : "프리모 존"}>
+            <TabsAni.Item header="Premo Zone">
             {pagaitions().map((e) => {
             return(
               <Link key={e.slug} href={`blog/${e.slug}`}>
@@ -56,7 +61,7 @@ const PremoZone = ({ allPosts, preview }) => {
           )
           })}
             </TabsAni.Item>
-            <TabsAni.Item header={router.locale === 'en' ? 'Look Book' : "룩 북"}>
+            <TabsAni.Item header="Look Book">
             {pagaitions().map((e) => {
             return(
               <Link key={e.slug} href={`blog/${e.slug}`}>

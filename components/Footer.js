@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import LangChange from "./LangChange";
 import { useContext } from "react";
 import { AppContext } from "../context/appcontext";
+import { Facebook, Instagram } from "@geist-ui/react-icons";
 const Footer = () => {
     const router = useRouter()
     const app = useContext(AppContext);
@@ -33,7 +34,21 @@ const Footer = () => {
                     <Spacer y={0}/>
                     </Text>
                     </div>
+                    <div style={{display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
                     <LangChange/>
+                    <Spacer/>
+                    <div style={{display: 'flex',justifyContent: 'space-evenly',width: '100%'}}>
+                    <a className="link" target="_blank" href="https://www.instagram.com/premo.kr/">
+                    <Instagram/>
+                    </a>
+                    <a className="link" target="_blank" href="https://www.facebook.com/Premo.solution">
+                    <Facebook/>
+                    </a>
+                    <a className="link" target="_blank" href="https://keyweshop.imweb.me/">
+                    <Image className="m0" src="keywe-icon.png" width={24} height={24}/>
+                    </a>
+                    </div>
+                    </div>
                 </div>
             </Grid>
             <Grid className="footer-links" direction="column">

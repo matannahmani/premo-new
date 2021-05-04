@@ -12,14 +12,21 @@ import Appstore from '../public/icons/appstore.svg'
 import Playstore from '../public/icons/googleplay.svg'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import AnimView from '../components/AnimView';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const [app,] = useContext(AppContext);
   const midSec = useRef(null);
   const scrollTo = () => midSec.current.scrollIntoView({ behavior: 'smooth', block: 'start'})    
   const { t } =  useTranslation(['home', 'price']);
+  const router = useRouter();
   return (
+    <>
+    <Head>
+    <title>{router.locale === 'en' ? "Premo | Home" : "프리모 | Home" }</title>
+    <meta name="description" content="슈퍼 호스트가 되기 위한 완벽한 준비. 프리모는 에어비앤비 등 임대 숙소를 편리하게 운영할 수 있도록 지원하는 스마트 숙소 관리 플랫폼입니다. 더 많은 숙소를 운영하고 더 많은 수익을 가져가세요."/>
+    </Head>
     <div>
       <Grid.Container className="main-hero">
         {!app.mobile &&
@@ -103,6 +110,7 @@ export default function Home() {
         </Grid>
       </Grid.Container>
       </div>
+      </>
   )
 }
 

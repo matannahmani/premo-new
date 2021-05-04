@@ -7,6 +7,8 @@ import Pricecard from '../components/PriceCard';
 import DeviceCard from '../components/DeviceCard';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'react-i18next';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 
 const device = () => {
@@ -19,7 +21,13 @@ const device = () => {
         dotbar.current.forEach (i => i.classList.remove('dot-active'))
         dotbar.current[e].classList.add('dot-active')
     }
+    const router = useRouter();
     return (
+        <>
+        <Head>
+        <title>{router.locale === 'en' ? "Premo | Device" : "프리모 | Device" }</title>
+        <meta name="description" content="귀찮은 일들은 우리에게 맡기세요! 스마트 디바이스와 숙소관리플랫폼의 통합 패키지 프리모는  월 구독 만으로 스마트한 숙소 환경을 완성합니다."/>
+        </Head>
         <Grid.Container justify="center" className="price-section">
             <div className="product-one-shape-5" ></div>
             <div className="product-one-shape-5 top left"></div>
@@ -123,6 +131,7 @@ const device = () => {
                     <Spacer y={3}/>
             </Grid>
         </Grid.Container>
+        </>
     )
 }
 

@@ -6,7 +6,6 @@ import NavbarD from './Navbard'
 import Footer from './Footer';
 import { InlineWidget } from "react-calendly";
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import {firebase} from '../lib/firebase'
 import { X } from '@geist-ui/react-icons';
 
@@ -22,12 +21,12 @@ const Layout = (props) => {
           "bookconsultation": "Book Consultation",
           "pricing": "Pricing",
           "device": "Devices",
-          "premozone": "Premo Zone",
+          "premozone": "Premo Life",
           "premoLogin": "Login",
           "accountcontrol": "Account Settings",
           "payment": "Payment",
           "account": "Account",
-          "logout": "Logout",
+          "logout": "Log out",
     
     
         },
@@ -35,12 +34,12 @@ const Layout = (props) => {
           "bookconsultation": "북 상담",
           "pricing": "가격결정",
           "device": "장치들",
-          "premozone": "프리모 존",
+          "premozone": "Premo Life",
           "premoLogin": "프리모 로그인",
           "accountcontrol": "계정 컨트롤",
           "payment": "결제",
           "account": "계정",
-          "logout": "서명하다",
+          "logout": "로그아웃",
         }
       }
       if (router.locale == "en")
@@ -57,10 +56,6 @@ const Layout = (props) => {
 
     return (
       <>
-      <Head>
-        <title>{router.locale === 'kr' ? '프리모 - 홈' : "Premo"}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
         <Grid.Container className={router.locale === 'en' ? 'en' : 'kr'} >
           {app.mobile ? <NavbarM user={user} logoutHandler={logoutHandler} t={lang} setCalendly={() => setVisible(true)}/> : <NavbarD  t={lang} user={user} logoutHandler={logoutHandler} setCalendly={() => setVisible(true)}/>}
           <div id="page-wrap">

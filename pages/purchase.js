@@ -11,6 +11,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { purchaseLink } from "../lib/userapi";
 import { UserContext } from "../context/appcontext";
 import { AnimDiv } from "../components/AnimDiv";
+import Head from "next/head";
 
 
 const SubInfo = ({title,sub,style}) => {
@@ -114,6 +115,10 @@ const Purchase = () => {
         }
       }
     return (
+        <>
+        <Head>
+        <title>{router.locale === 'en' ? "Premo | Purchase" : "프리모 | Purchase" }</title>
+        </Head>
         <Grid.Container style={{padding: '40px 16px',background: '#ECF3F6'}} alignItems="center" direction="column">
             <div id='premozone' style={{position: 'absolute',top: '-24px',width: '0px',height: '0px'}}></div>
             <Grid style={{minHeight: '540px',position: 'relative',width: '100%',maxWidth: '540px'}} direction="column" alignItems="center" xs={24} sm={24} md={16} lg={14} xl={12}>
@@ -218,6 +223,7 @@ const Purchase = () => {
                 <Modal.Action loading={loading} passive onClick={() => setModal(false)}>{t('common:back')}</Modal.Action>
             </Modal>
         </Grid.Container>
+        </>
     )
 }
 
