@@ -1,6 +1,7 @@
 import { Card, Grid, Image, Pagination, Spacer } from '@geist-ui/react';
 import { ChevronLeft, ChevronRight } from '@geist-ui/react-icons';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import TabsAni from '../components/TabsAni';
 import { getAllPostsForHome } from '../lib/api'
@@ -8,6 +9,7 @@ import { getAllPostsForHome } from '../lib/api'
 const PremoZone = ({ allPosts, preview }) => {
   const [page,setPage] = useState(1);
   const [tab,setTab] = useState(0);
+  const router = useRouter();
   const posts = () => (allPosts.filter(e => {
     if (tab === 1) 
       return e.lookbook
@@ -38,7 +40,7 @@ const PremoZone = ({ allPosts, preview }) => {
       <Grid.Container  style={{background: "#ECF3F6"}} direction="column" align="center">
         <Grid  xs justify="center" alignItems="center">
           <TabsAni changeHandler={changeHandler}>
-            <TabsAni.Item header="Premo Zone">
+            <TabsAni.Item header={router.locale === 'en' ? 'Premo Zone' : "프리모 존"}>
             {pagaitions().map((e) => {
             return(
               <Link key={e.slug} href={`blog/${e.slug}`}>
@@ -54,7 +56,7 @@ const PremoZone = ({ allPosts, preview }) => {
           )
           })}
             </TabsAni.Item>
-            <TabsAni.Item header="Look Book">
+            <TabsAni.Item header={router.locale === 'en' ? 'Look Book' : "룩 북"}>
             {pagaitions().map((e) => {
             return(
               <Link key={e.slug} href={`blog/${e.slug}`}>

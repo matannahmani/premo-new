@@ -135,9 +135,11 @@ const Profile = () => {
                     {t('common:email')}
                 </Input>
                 <Spacer/>
+                {user.name !== null && 
                 <Input disabled value={user.name} width="240px">
                     {t('common:name')}
                 </Input>
+                }
                 <Spacer y={2}/>
                 {navBtn()}
             </motion.div>
