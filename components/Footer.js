@@ -6,6 +6,7 @@ import LangChange from "./LangChange";
 import { useContext } from "react";
 import { AppContext } from "../context/appcontext";
 import { Facebook, Instagram } from "@geist-ui/react-icons";
+import Link from "next/link";
 const Footer = () => {
     const router = useRouter()
     const app = useContext(AppContext);
@@ -17,7 +18,7 @@ const Footer = () => {
             <Image src="/logo-main.svg" width={120} height={24}/>
                 <div style={{display: 'flex',flexWrap: 'wrap'}}>
                     <div>
-                    <Text className="footer-premo-loc" p style={{fontSize: '12px'}}>
+                    <Text className="footer-premo-loc" p style={{fontSize: '12px',color: "#333333"}}>
                     상호 : 주식회사 키위스마트락
                     <Spacer y={0}/>
                     대표자 : 김도현
@@ -34,10 +35,14 @@ const Footer = () => {
                     <Spacer y={0}/>
                     </Text>
                     </div>
-                    <div style={{display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
+                    <div style={{display: 'flex',flexDirection: 'column',alignItems: 'center',flex: '0 0',width: '100%'}}>
                     <LangChange/>
                     <Spacer/>
-                    <div style={{display: 'flex',justifyContent: 'space-evenly',width: '100%'}}>
+                    <Link href="/faq">
+                    <Text style={{cursor: 'pointer',color: "#333333"}} span b>FAQ</Text>
+                    </Link>
+                    <Spacer/>
+                    <div style={{display: 'flex',justifyContent: 'space-evenly',width: '100%',color: "#333333"}}>
                     <a className="link" target="_blank" href="https://www.instagram.com/premo.kr/">
                     <Instagram/>
                     </a>
@@ -51,7 +56,7 @@ const Footer = () => {
                     </div>
                 </div>
             </Grid>
-            <Grid className="footer-links" direction="column">
+            <Grid className="footer-links" justify="flex-start" direction="column">
                     <Text className="footer-text" >Download Premo</Text>
                     <Spacer/>
                     <button className="store-btn" onClick={() => window.open('https://play.google.com/store/apps/details?id=com.keywe.premo')} ><Playstore/></button>

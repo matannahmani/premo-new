@@ -8,11 +8,6 @@
         margin: 0px 16px;
     }
 }
-@media (max-width: 300px){
-    .premozone-con > div{
-        padding: 0px !important;
-    }
-}
 .tabs {
     width: 100%;
     max-width: 435px;
@@ -35,6 +30,7 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             line-height: 19px;
+            margin: 16px 0px;
             justify-content: center;
         }
         button,button:focus,button:hover{
@@ -46,5 +42,13 @@
             box-shadow: 5px 2px 20px rgba(61, 85, 130, 0.15), inset 0px -1px 1px rgba(61, 85, 130, 0.25);
             opacity: 1;
         }
+    }
+}
+@media (max-width: 320px){
+    .premozone-con > div{
+        padding: 0px !important;
+    }
+    .tabs .tabs-header .tab-btn{
+        width: 100px !important;
     }
 }

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-const Faq = ({q,a,key}) => {
+const Faq = ({q,a}) => {
     const faqt = useRef();
     const handleClick = () => {
         const node = faqt.current;
@@ -15,7 +15,7 @@ const Faq = ({q,a,key}) => {
             }
     }
         return (
-            <div key={key} className="accrodion-grp faq-accrodion" onClick={handleClick}>
+            <div key className="accrodion-grp faq-accrodion" onClick={handleClick}>
                         <div className="accrodion" ref={faqt}>
                         <div className="accrodion-inner">
                             <div className="accrodion-title">

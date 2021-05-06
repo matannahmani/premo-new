@@ -124,7 +124,8 @@ export default function Home({allFaqs}) {
         <Spacer/>
         <div className="faq-container">
         {allFaqs.map((e,key) =>
-          <Faq key="index" q={router.locale === 'en' ? e.question.en : e.question.kr} a={router.locale === 'en' ? e.answer.en : e.answer.kr}/>
+          e.mainpage &&
+          <Faq key={key} q={router.locale === 'en' ? e.question.en : e.question.kr} a={router.locale === 'en' ? e.answer.en : e.answer.kr}/>
         )}
           </div>
           <Spacer y={2}/>

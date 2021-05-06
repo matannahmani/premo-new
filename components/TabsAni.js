@@ -30,7 +30,7 @@ const TabsAni = ({children,changeHandler}) => {
     : null);
     return (
         <div style={{width: '100%',maxWidth: '100%'}} className="tabs">
-            <header style={{maxWidth: '435px'}} className="tabs-header">
+            <header style={{maxWidth: '640px',width: '100%',flexWrap: 'wrap'}} className="tabs-header">
                 {buttons}
             </header>
             <div style={{ overflow: "hidden", display: 'flex',flexWrap: 'wrap',width: '100%',justifyContent: 'center',alignItems: 'space-evenly'}} className="content">

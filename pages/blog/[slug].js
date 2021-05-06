@@ -19,8 +19,8 @@ export default function Post({ post, morePosts, preview }) {
       <Head>
               <>
               <title>Premo| {post.title}</title>
-              <meta name="description" content={post.seo}/>
-              <meta name="keywords" content={post.tags}/>
+              <meta name="description" content={post.seodesc}/>
+              <meta name="keywords" content={post.seokeywords}/>
               <meta name="author" content={post.author.name}/>
               </>
     </Head>
