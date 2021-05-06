@@ -148,5 +148,22 @@
     "accepttos": "By using Premo, you agree to Terms of Service and Privacy Policy.",
     "resetpasswordnote": "After pressing reset password an email will be sent.",
     "resetsent": "Reset password email sent.",
-    "404": "Not found"
+    "404": "Not found",
+    "laststep": "Just one last step before your account is created.",
+    "yourlang": "Your Language",
+    "yourcountry": "Your Country",
+    "enterhere": "Enter Here",
+    "emailorpass": "Enter your email and password to Login or Signup.",
+    "countine": "Continue",
+    "or": "or",
+    "submit": "제출하기",
+    "applebtn": "Continue with Apple",
+    "facebookbtn": "Continue with Facebook",
+    "googlebtn": "Continue with Google",
+    "counter1": "",
+    "counter2": "",
+    "counter3": "",
+    "counter4": "",
+    "statstitle": "",
+    "faq": ""
 } 

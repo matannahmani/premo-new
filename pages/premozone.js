@@ -39,7 +39,7 @@ const PremoZone = ({ allPosts, preview }) => {
       <>
         <Head>
         <title>{router.locale === 'en' ? "Premo | Premo Life" : "프리모 | Premo Life" }</title>
-        <meta name="description" content="프리모를 실제 활용하고 있는 호스트와 그 숙소에 대한 이야기를 전해드립니다. 이외에도 프리모 패키지 별 제품이미지와 신제품을 만나볼 수 있습니다."/>
+        <meta name="description" content="프리모를 실제 활용하고 있는 호스트와 그 숙소에 대한 이야기를 전해드립니다. 이외에도 프리모 패키지 별 제품 이미지와 신제품을 만나볼 수 있습니다."/>
         </Head>
       <div id='premozone' style={{position: 'absolute',top: '-24px',width: '0px',height: '0px'}}></div>
       <Grid.Container  style={{background: "#ECF3F6"}} direction="column" align="center">

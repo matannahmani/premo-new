@@ -26,7 +26,7 @@ const device = () => {
         <>
         <Head>
         <title>{router.locale === 'en' ? "Premo | Device" : "프리모 | Device" }</title>
-        <meta name="description" content="귀찮은 일들은 우리에게 맡기세요! 스마트 디바이스와 숙소관리플랫폼의 통합 패키지 프리모는  월 구독 만으로 스마트한 숙소 환경을 완성합니다."/>
+        <meta name="description" content="귀찮은 일들은 우리에게 맡기세요! 스마트 디바이스와 숙소관리플랫폼의 통합 패키지 프리모는  월 구독 만으로 스마트한 숙소 환경을 완성합니다. 프리모 어플리케이션에서 장치를 등록하여 활용할 수 있습니다."/>
         </Head>
         <Grid.Container justify="center" className="price-section">
             <div className="product-one-shape-5" ></div>

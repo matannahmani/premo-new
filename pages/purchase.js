@@ -91,6 +91,9 @@ const Purchase = () => {
         if(!router.isReady) return;
         if (router.query.item !== ("Standard") && router.query.item !== ("Premium") || !guser.logged)
             router.push('/')
+        if (guser.pinfo === undefined || guser.pinfo === null){
+            router.push('/login')
+        }
     },[router.isReady,router.query])
     const subDate = (year) => {
         const subDate = new Date();

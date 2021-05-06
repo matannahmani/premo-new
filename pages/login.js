@@ -11,7 +11,8 @@ import Link from 'next/link';
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Signup from '../components/Signup';
-import { getUserInfo } from '../lib/userapi';
+import { checkEmail, getUserInfo } from '../lib/userapi';
+import LoginInput from '../components/Logininput';
 
 const Login = () => {
     const { t } =  useTranslation(['common']);
@@ -21,7 +22,15 @@ const Login = () => {
     const [user,setUser] = useContext(UserContext);
     const [app,setApp] = useContext(AppContext);
     const router = useRouter();
-    const loginHandler = async (register) =>{
+    const loginHandler = async () =>{
+        const emailexist = await checkEmail(account.username);
+        console.log(emailexist);
+        let register;
+        if (emailexist.data.result.code !== 0){
+            register = true;
+        }else{
+            register = false;
+        }
         if (!loading){
             setLoading(true);
             if (account.username.length > 4 && account.password.length > 4){
@@ -88,7 +97,12 @@ const Login = () => {
             setLoading(false);
         }
     }
-
+    const appleonclick = () => {
+            const appleProvider = new firebase.auth.OAuthProvider('apple.com');
+            appleProvider.addScope('email');
+            appleProvider.addScope('name');
+            oauthLogin(appleProvider);
+    }
     useEffect( async () => {
         if (!app.signUp && await firebase.auth().currentUser !== null){
             router.push('/');
@@ -107,41 +121,35 @@ const Login = () => {
     }, [user.triedLog])
     return ( // TO DO FIX THE LAYOUT AS GRID DOSENT WORK!
         app.signUp ?
-        <Signup/>
+        <Signup t={t}/>
         :
-        <Grid.Container style={{height: '100%',minHeight: '300px',width:'100%',margin: '0px',padding: '64px 0px',background: '#ECF3F6'}} gap={2} direction="column"  alignItems="center" justify="center">
+        <Grid.Container style={{height: '100%',minHeight: '300px',width:'100%',margin: '0px',paddingBottom: '64px',background: '#ECF3F6'}} gap={2} direction="column" alignItems="center">
         <Grid style={{maxWidth: '100%'}} direction="column" alignItems="center" justify="center">
+        <Spacer/>
+        <Text h1 className="login-title" b>{t('common:account')} {t('common:premoLogin')}</Text>
+        <Spacer y={1}/>
         <Card className="logincard" style={{borderRadius: '16px'}} shadow type={"lite"}>
         {loading ? <Spinner/>
         :
         <>
-        <Text h3 className="title" b>{t('common:account')} {t('common:premoLogin')}</Text>
-        <Spacer/>
-        <Input value={account.username.length > 0 ? account.username : ''} onChange={(e) => setAccount({...account,username: e.target.value})} name="email" placeholder="birito@naver.com" width="240px">
-        <Dot color="black" type="success">{t('common:email')}</Dot>
-        </Input>
-        <Spacer/>
-        <Input.Password value={account.password.length > 0 ? account.password : ''} onChange={(e) => setAccount({...account,password: e.target.value})} name="password" width="240px">
-        <Dot color="black" type="success">{t('common:password')}</Dot>
-        </Input.Password>
-        <Spacer/>
-        <Grid style={{display: 'flex',width: '100%'}} justify="space-evenly">
-            <Button style={{backgroundColor: '#F3A875',border: 'none',width: '120px'}} shadow size="medium" auto onClick={() => loginHandler(false)} type="secondary">{t('common:premoLogin')}</Button>
-            <Button style={{backgroundColor: '#3D5582',border: 'none',width: '120px'}} shadow size="medium" auto onClick={() => loginHandler(true)} type="secondary">{t('common:signUp')}</Button>
-        </Grid>
-        <Grid style={{display: 'flex',width: '100%'}} justify="space-evenly">
-            <Google className="store-btn google-btn" onClick={() => oauthLogin(new firebase.auth.GoogleAuthProvider())}/>
-            <Facebook className="store-btn facebook-btn" onClick={() => oauthLogin(new firebase.auth.FacebookAuthProvider())}/>
-            <Apple className="store-btn apple-btn" onClick={() => {
-                const appleProvider = new Firebase.auth.OAuthProvider('apple.com');
-                appleProvider.addScope('email');
-                appleProvider.addScope('name');
-                oauthLogin(appleProvider);
-            }}/>
-        </Grid>
+        <Button onClick={() => appleonclick()} icon={<Apple viewBox="0 0 30 30" width={null} height={null}/>} className="loginbtn blackbtn" type="abort" size="large">{t('common:applebtn')}</Button>
+        <Spacer y={1}/>
+        <Button onClick={() => oauthLogin(new firebase.auth.FacebookAuthProvider())} icon={<Facebook  viewBox="0 0 30 30" width={null} height={null}/>} className="loginbtn whitebtn" type="abort" size="large">{t('common:facebookbtn')}</Button>
+        <Spacer y={1}/>
+        <Button onClick={() => oauthLogin(new firebase.auth.GoogleAuthProvider())} icon={<Google viewBox="0 0 30 30" width={null} height={null}/>} className="loginbtn whitebtn" type="abort" size="large">{t('common:googlebtn')}</Button>
+        <Spacer y={1.5}/>
+        <span className="minor-wolf">{t('common:or')}</span>
+        <Spacer y={1.5}/>
+        <span className="normal">{t('common:emailorpass')}</span>
+        <Spacer y={1.5}/>
+        <LoginInput label={t('common:email')} value={account.username.length > 0 ? account.username : ''} onChange={(e) => setAccount({...account,username: e.target.value})} name="email" placeholder="birito@naver.com"  />
+        <LoginInput label={t('common:password')} value={account.password.length > 0 ? account.password : ''} onChange={(e) => setAccount({...account,password: e.target.value})} type="password" name="password" placeholder="*****" />
+        <Spacer y={0.5}/>
+        <Button onClick={() => loginHandler()} type="abort" className="learnbtn loginbtn countinebtn">{t('common:countine')}</Button>
+        <Spacer y={0.5}/>
         <Grid style={{display: 'flex',flexDirection: 'column'}}>
             <Link href="/forgotpassword">
-                <span style={{color: '#56ADE8',textDecoration: 'underline',textAlign: 'center',cursor: 'pointer'}}>{t('common:resetpassword')}</span>
+                <span style={{color: '#56ADE8',textAlign: 'center',cursor: 'pointer'}}>{t('common:resetpassword')}</span>
             </Link>
             <Spacer/>
             <span>{t('common:accepttos')}</span>

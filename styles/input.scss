@@ -1,0 +1,105 @@
+.input-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    .input-group {
+        overflow: hidden;
+        display: block;
+        width: 441px;
+        max-width: 90vw;
+        height: 82px;
+        border: 2px solid $ninja;
+        background-color: $white;
+        border-radius: 6px;
+        box-shadow: 0 0px 20px 0 rgba(75, 128, 182, 0.07);
+        margin-bottom: 22px;
+        position: relative;
+        font-size: 17px;
+        color: $white;
+        transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,
+          box-shadow 0.1s ease-in-out;
+      }
+      
+      .input-group:hover {
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.077);
+      }
+      
+      .input-group input {
+        position: absolute;
+        border: 0;
+        box-shadow: none;
+        background-color: rgba(255, 255, 255, 0);
+        top: 0;
+        height: 65px;
+        width: 100%;
+        padding: 0 53px;
+        box-sizing: border-box;
+        z-index: 0;
+        display: block;
+        color: $ninja;
+        font-size: 17px;
+        transition: top 0.1s ease-in-out;
+      }
+      
+      .input-group input::placeholder {
+        color: rgba(0, 0, 0, 0);
+      }
+      
+      .input-group input:focus,
+      .input-group input:not(:placeholder-shown) {
+        top: 17px;
+      }
+      
+      .input-group label {
+        position: absolute;
+        border: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        color: $premo;
+        bottom: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        padding: 0 53px;
+        box-sizing: border-box;
+        transition: all 0.1s ease-in-out;
+        font-weight: bold;
+        cursor: text;
+      }
+      
+      .input-group input:focus + label,
+      .input-group input:not(:placeholder-shown) + label {
+        bottom: 40px;
+        font-size: 13px;
+        opacity: 0.7;
+      }
+      
+      .req-mark {
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        right: 33px;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 22px;
+        color: $ninja;
+        transition: all 0.5s ease-in-out;
+      }
+      .error{
+          color: $premo;
+      }
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus textarea:-webkit-autofill,
+      textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+      select:-webkit-autofill,
+      select:-webkit-autofill:hover,
+      select:-webkit-autofill:focus {
+        background-color: transparent !important;
+        -webkit-box-shadow: 0 0 0 50px white inset;
+      }

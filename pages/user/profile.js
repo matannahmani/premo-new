@@ -2,7 +2,7 @@ import { Button, Card, Grid, Input, Note, Slider, Spacer, useToasts } from "@gei
 import { AnimatePresence, motion } from "framer-motion"
 import { useContext, useEffect, useState } from "react"
 import PageLayout from "../../components/PageLayout"
-import { UserContext } from "../../context/appcontext"
+import { AppContext, UserContext } from "../../context/appcontext"
 import { changePassword } from "../../lib/userapi"
 import {firebase} from '../../lib/firebase'
 import { useRouter } from "next/router"
@@ -44,6 +44,7 @@ const AccountQuit = ({step}) => {
 
 const Profile = () => {
     const [user,] = useContext(UserContext);
+    const [app,] = useContext(AppContext);
     const [pagename,setPageName] = useState('');
     const [loading,setLoading] = useState(false);
     const [password,setPassword] = useState({upassword: '',confirmpassword: ''})
@@ -71,6 +72,12 @@ const Profile = () => {
         else
             setModal(true);
     }
+
+    useEffect(() => {
+        if (app.signUp){
+            router.push('/login')
+        }
+    }, [])
 
     useEffect(() => {
         if (step === 2){

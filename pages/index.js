@@ -14,8 +14,11 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Faq from '../components/Faq';
+import { getAllFaqsForHome } from '../lib/api';
+import Counter from '../components/Counter';
 
-export default function Home() {
+export default function Home({allFaqs}) {
   const [app,] = useContext(AppContext);
   const midSec = useRef(null);
   const scrollTo = () => midSec.current.scrollIntoView({ behavior: 'smooth', block: 'start'})    
@@ -25,7 +28,7 @@ export default function Home() {
     <>
     <Head>
     <title>{router.locale === 'en' ? "Premo | Home" : "프리모 | Home" }</title>
-    <meta name="description" content="슈퍼 호스트가 되기 위한 완벽한 준비. 프리모는 에어비앤비 등 임대 숙소를 편리하게 운영할 수 있도록 지원하는 스마트 숙소 관리 플랫폼입니다. 더 많은 숙소를 운영하고 더 많은 수익을 가져가세요."/>
+    <meta name="description" content="슈퍼호스트가 되기 위한 완벽한 준비. 프리모는 에어비앤비 등 임대숙소를 편리하게 운영할 수 있도록 지원하는 스마트 숙소관리 플랫폼입니다. 더 많은 숙소를 운영하고 더 많은 수익을 가져가세요."/>
     </Head>
     <div>
       <Grid.Container className="main-hero">
@@ -106,7 +109,25 @@ export default function Home() {
             </Link>
             </div>
           </Card>
-          <Spacer y={3}/>
+          <Spacer/>
+        </Grid>
+        <Grid style={{background: '#3D5582',padding: '64px 0px'}} alignItems="center" direction="column" justify="center" xs={24} md={24} lg={24}>
+        <Text className={`product-header text-left`} style={{color: 'white'}} h2>{t('statstitle')}</Text>
+        <div style={{display: 'flex',flexWrap: 'wrap',justifyContent: 'center',alignItems: 'center'}}>
+        <Counter is24 title={t('common:counter1')}/>
+        <Counter is24 title={t('common:counter2')}/>
+        <Counter is24 title={t('common:counter3')}/>
+        <Counter is24 title={t('common:counter4')}/>
+        </div>
+
+        <Text className={`product-header text-left`} style={{color: 'white'}} h2>{t('faq')}</Text>
+        <Spacer/>
+        <div className="faq-container">
+        {allFaqs.map((e,key) =>
+          <Faq key="index" q={router.locale === 'en' ? e.question.en : e.question.kr} a={router.locale === 'en' ? e.answer.en : e.answer.kr}/>
+        )}
+          </div>
+          <Spacer y={2}/>
         </Grid>
       </Grid.Container>
       </div>
@@ -114,8 +135,13 @@ export default function Home() {
   )
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['price','home']),
-  },
-})
+export const getStaticProps = async ({ locale }) => {
+  const allFaqs = await getAllFaqsForHome()
+  return {
+    props: {
+      allFaqs,
+      ...await serverSideTranslations(locale, ['price','home'])
+    },
+    revalidate: 10, // In seconds
+  }
+}

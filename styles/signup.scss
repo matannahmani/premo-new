@@ -24,19 +24,59 @@
         margin: 0 auto;
     }
 }
+.login-title{
+    font-weight: bold;
+    font-size: 49px;
+    line-height: 67px;
+    text-align: center;
+    color: #3D5582 !important;
+}
+.logincard .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+}
+.minor-wolf{
+    font-size: 18px;
+    line-height: 21px;
+    color: $wolf;
+}
+.normal{
+    font-size: 18px;
+    line-height: 25px;
+    color: $ninja;
+    font-weight: 500;
+}
 
-@media (max-width: 300px){
+@media (max-width: 400px) {
+    .normal{
+        font-size: 12px;
+    }
+}
+@media (max-width: 450px) {
+    .normal{
+        font-size: 14px;
+    }
+}
+@media (max-width: 320px){
     .logincard{
         .content{
             padding: 8pt !important;
         }
         button{
             margin: 8px;
+            .icon{
+                max-width: 24px;
+            }
         }
         .store-btn{
             height: 100% !important;
             padding: 8px !important;
-
+        }
+        .normal{
+            font-size: 10px;
         }
     }
 }

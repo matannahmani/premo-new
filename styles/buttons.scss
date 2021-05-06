@@ -53,6 +53,48 @@
 .store-btn:hover{
     transform: translateY(-5px);
 }
+.blackbtn{
+    background: $ninja !important;
+    border-radius: 16px !important;
+    color: $white !important;
+}
+.loginbtn{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    max-width: 435px !important;
+    width: 100% !important;
+    height: 60px !important;
+    .icon{
+        position: unset !important;
+        margin-right: 16px;
+        height: 32px;
+        width: auto;
+        transform: unset !important;
+        svg{
+            height: 100% !important;
+            width: auto !important;
+        }
+    }
+    .text{
+        position: unset !important;
+    }
+}
+.countinebtn{
+    height: 52px !important;
+}
+.whitebtn{
+    background: $white !important;
+    color: $ninja !important;
+    border: 2px solid #56ADE8 !important;
+    border-radius: 16px !important;
+}
+.btnicon { // button with icon
+    svg{
+        width: 24px;
+        height: 24px;
+    }
+}
 .btn > div {
     top: 0px !important;
 }

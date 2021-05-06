@@ -1,7 +1,7 @@
 import '../styles/globals.scss'
 import { GeistProvider, CssBaseline, useToasts } from '@geist-ui/react'
 import {AppContext,UserContext} from '../context/appcontext'
-import {useEffect, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import 'react-awesome-slider/dist/styles.css';
 import NProgress from 'nprogress';
 import { useRouter } from 'next/router';
@@ -26,6 +26,7 @@ const LoadingPage = () => {
 
 const MyApp = ({ Component, pageProps }) => {
   const [app,setApp] = useState({mobile: false,loading: false,scroll: false,signUp: false})
+  const appRef = useRef();
   const [user,setUser] = useState({logged: false,triedLog: false,jwt: ''})
   const router = useRouter();
   const [firstLoad,setLoad] = useState(true);
@@ -45,11 +46,6 @@ const MyApp = ({ Component, pageProps }) => {
       });
     }
   }, [router.route])
-
-  const setMobile = (state) => {
-    setApp({...app,mobile: state})
-  }
-
   useEffect(async () => {
     hotjar.initialize(2350733, 6); // hot jar
     firebase.auth().onAuthStateChanged( async (fuser) => { // listen to fire base user changes
@@ -71,6 +67,8 @@ const MyApp = ({ Component, pageProps }) => {
             setToast({type:"error",text: 'Please finish sign up'})
             router.replace('/login')
           }
+          if (!user.triedLog)
+          setLoad(false);
         }
       }
       });
@@ -78,10 +76,12 @@ const MyApp = ({ Component, pageProps }) => {
       const handleResize = () => {
         // Set window width/height to state
         if (window.innerWidth < 900)
-          setMobile(true)
+        {
+          setApp({...appRef.current,mobile: true})
+        }
         else
         {
-          setMobile(false)
+          setApp({...appRef.current,mobile: false})
         }
       }
       // Add event listener
@@ -91,7 +91,9 @@ const MyApp = ({ Component, pageProps }) => {
       // Remove event listener on cleanup
     }
   }, [])
-
+  useEffect(() => {
+    appRef.current = app;
+  }, [app]);
   useEffect(() => {
     if (!user.triedLog) return;
     setLoad(false);
@@ -125,7 +127,7 @@ const MyApp = ({ Component, pageProps }) => {
     <meta name="msapplication-TileColor" content="#ffffff"/>
     <meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png"/>
     <meta name="theme-color" content="#ffffff"/>
-    <meta name="keywords" content="프리모, premo, 에어비앤비, airbnb, 쉐어하우스, 공유오피스, 숙소관리, 에어비앤비 서울, 스마트홈, smart home, IoT, 단기임대, 숙소임대, 임대숙소"/>
+    <meta name="keywords" content="프리모, premo, 에어비앤비, airbnb, 쉐어하우스, 공유오피스, 숙소관리, 에어비앤비 서울, 추가 수익, 숙소청소, 공간관리, 단기임대, 임대숙소, 슈퍼호스트, 에어비앤비 호스트, 에어비앤비 게스트"/>
     </Head>
     <GeistProvider>
     <CssBaseline />

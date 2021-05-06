@@ -9,7 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import Spinner from "./Spinner";
 import { useRouter } from "next/router";
 
-const Signup = () => {
+const Signup = ({t}) => {
     const [user,setUser] = useContext(UserContext);
     const [app,setApp] = useContext(AppContext);
     const [loading,setLoading] = useState(false);
@@ -81,16 +81,16 @@ const Signup = () => {
                     <Spacer/>
                     <Slider value={2} className="purchase-slider" initialValue={2} min={1} showMarkers disabled max={2}/>
                     <Spacer/>
-                    <h2 style={{textAlign: 'center'}} className="purchase-title">Just one last step before<br/> your account is created :</h2>
+                    <h2 style={{textAlign: 'center'}} className="purchase-title">{t('common:laststep')}</h2>
                     <div className="signnup-title">
-                        <h3>Your Language:</h3>
+                        <h3>{t('common:yourlang')}:</h3>
                     </div>
-                    <AutoComplete clearable options={lang} placeholder="Enter here" onSearch={(e) => searchHandler(langs(),e,setLangs)} />
+                    <AutoComplete clearable options={lang} placeholder={t('common:enterhere')} onSearch={(e) => searchHandler(langs(),e,setLangs)} />
                     <div className="signnup-title">
-                        <h3>Your Country:</h3>
+                        <h3>{t('common:yourcountry')}:</h3>
                     </div>
-                    <AutoComplete clearable options={code} placeholder="Enter here" onSearch={(e) => searchHandler(codes(),e,setCodes)} />
-                    <Button disabled={resultHandler().length === 0} onClick={() => console.log(resultHandler(true))} className="learnbtn">Submit</Button>
+                    <AutoComplete clearable options={code} placeholder={t('common:enterhere')} onSearch={(e) => searchHandler(codes(),e,setCodes)} />
+                    <Button disabled={resultHandler().length === 0} onClick={() => console.log(resultHandler(true))} className="learnbtn">{t('common:submit')}</Button>
                     </AnimDiv>
                 }
            </AnimatePresence>

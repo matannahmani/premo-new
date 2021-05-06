@@ -148,5 +148,22 @@
     "accepttos": "Premo를 사용하면 서비스 약관 및 개인정보보호 정책에 동의하게 됩니다.",
     "resetpasswordnote": "비밀번호 재설정을 누르면, 이메일로 임시 비밀번호가 전송됩니다.",
     "resetsent": "비밀번호 재설정 메일이 전송되었습니다.",
-    "404": "찾을 수 없음"
+    "404": "찾을 수 없음",
+    "laststep": " 계정생성 전 마지막 단계입니다.",
+    "yourlang": "사용 언어",
+    "yourcountry": "거주 국가",
+    "enterhere": "작성해주세요",
+    "emailorpass": "신규회원가입 혹은 이메일과 비밀번호로 로그인해주세요",
+    "countine": "계속",
+    "or": "또는",
+    "submit": "제출하기",
+    "applebtn": "애플 로그인",
+    "facebookbtn": "페이스북 로그인",
+    "googlebtn": "구글 로그인",
+    "counter1": "",
+    "counter2": "",
+    "counter3": "",
+    "counter4": "",
+    "statstitle": "",
+    "faq": ""
   }

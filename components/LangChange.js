@@ -14,7 +14,7 @@ const LangChange = () => {
           <Spacer y={.5} />
           <Link href={{pathname: '',query: router.query}} locale='kr'><span style={{color: '#333333',cursor: 'pointer'}}>한글</span></Link>
           <Spacer y={.5} />
-          {/* <span onClick={() => i18n.changeLanguage('cimode')}>CIMODE</span> */}
+          <span onClick={() => i18n.changeLanguage('cimode')}>CIMODE</span>
         </div>
       )
     const changeHandler = (e) => {
