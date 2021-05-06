@@ -92,7 +92,7 @@ const FaqPage = ({allFaqs,locale}) => {
 
 export default FaqPage;
 
-export const getStaticProps = async ({ locale }) => {
+export const getStaticProps = async ({locale}) => {
     const allFaqs = await getAllFaqsForHome()
     return {
       props: {

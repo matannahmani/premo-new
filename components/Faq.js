@@ -15,7 +15,7 @@ const Faq = ({q,a}) => {
             }
     }
         return (
-            <div key className="accrodion-grp faq-accrodion" onClick={handleClick}>
+            <div className="accrodion-grp faq-accrodion" onClick={handleClick}>
                         <div className="accrodion" ref={faqt}>
                         <div className="accrodion-inner">
                             <div className="accrodion-title">

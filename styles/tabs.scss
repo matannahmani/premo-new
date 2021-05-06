@@ -44,6 +44,11 @@
         }
     }
 }
+@media (max-width: 600px){
+    .tab-btn{
+        flex: 0 0 35%;
+    }
+}
 @media (max-width: 320px){
     .premozone-con > div{
         padding: 0px !important;
