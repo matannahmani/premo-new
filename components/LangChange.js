@@ -14,7 +14,6 @@ const LangChange = () => {
           <Spacer y={.5} />
           <Link href={{pathname: '',query: router.query}} locale='kr'><span style={{color: '#333333',cursor: 'pointer'}}>한글</span></Link>
           <Spacer y={.5} />
-          <span onClick={() => i18n.changeLanguage('cimode')}>CIMODE</span>
         </div>
       )
     const changeHandler = (e) => {
@@ -24,7 +23,7 @@ const LangChange = () => {
     }
     return (
       <>
-    <Popover leaveDelay={100} placement="topEnd" className="langchange" onVisibleChange={changeHandler} content={content}><Globe className="globe"/> Change Langunge <span ref={arrow}><ChevronRight/></span></Popover>
+    <Popover style={{cursor: 'pointer'}} leaveDelay={100} placement="topEnd" className="langchange" onVisibleChange={changeHandler} content={content}><Globe className="globe"/> Change Langunge <span ref={arrow}><ChevronRight/></span></Popover>
       </>
     )
 }

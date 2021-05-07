@@ -72,7 +72,7 @@ html {
 @media (max-width: 900px){
     .langchange{
         padding: 0px;
-        margin-left: unset !important;
+        // margin-left: unset !important;
         font-size: 14px;
     }
 }
@@ -85,7 +85,7 @@ html {
     display: flex !important;
     overflow: hidden !important;
     height: 24px;
-    margin-left: 40px;
+    margin: 0 auto;
     .globe{
         color: #78CBEB !important;
         margin-right: 8px;

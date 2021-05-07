@@ -146,8 +146,8 @@ const Login = () => {
         <Spacer y={1.5}/>
         <span className="normal">{t('common:emailorpass')}</span>
         <Spacer y={1.5}/>
-        <LoginInput label={t('common:email')} value={account.username.length > 0 ? account.username : ''} onChange={(e) => setAccount({...account,username: e.target.value})} name="email" placeholder="birito@naver.com"  />
-        <LoginInput label={t('common:password')} value={account.password.length > 0 ? account.password : ''} onChange={(e) => setAccount({...account,password: e.target.value})} type="password" name="password" placeholder="*****" />
+        <LoginInput id="email" label={t('common:email')} value={account.username.length > 0 ? account.username : ''} onChange={(e) => setAccount({...account,username: e.target.value})} name="email" placeholder="birito@naver.com"  />
+        <LoginInput id="password" label={t('common:password')} value={account.password.length > 0 ? account.password : ''} onChange={(e) => setAccount({...account,password: e.target.value})} type="password" name="password" placeholder="*****" />
         <Spacer y={0.5}/>
         <Button onClick={() => loginHandler()} type="abort" className="learnbtn loginbtn countinebtn">{t('common:countine')}</Button>
         <Spacer y={0.5}/>
