@@ -15,7 +15,7 @@ import { hotjar } from 'react-hotjar';
 import Spinner from '../components/Spinner'
 import Layout from '../components/Layout';
 import Head from 'next/head';
-import * as gtag from "../utils/gtag";
+import * as ga from "../utils/gtag";
 
 const LoadingPage = () => {
 
@@ -53,7 +53,7 @@ const MyApp = ({ Component, pageProps }) => {
       });
     }
   }, [router.events])
-  
+
   useEffect(async () => {
     hotjar.initialize(2350733, 6); // hot jar
     firebase.auth().onAuthStateChanged( async (fuser) => { // listen to fire base user changes
