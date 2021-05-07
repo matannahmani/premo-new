@@ -15,7 +15,7 @@ import { hotjar } from 'react-hotjar';
 import Spinner from '../components/Spinner'
 import Layout from '../components/Layout';
 import Head from 'next/head';
-import * as ga from "../utils/gtag";
+import * as ga from "../lib/gtag";
 
 const LoadingPage = () => {
 
