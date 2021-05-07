@@ -41,42 +41,50 @@ const FaqPage = ({allFaqs,locale}) => {
         div.scrollIntoView({block: "start"});
       }
     }
+    return (
+        <>
     <Head>
     <title>{router.locale === 'en' ? "Premo | Faq" : "프리모 | Faq" }</title>
     <meta name="description" content="프리모가 궁금해요. 하드웨어 패키지, 어플리케이션, 구독, 주문배송, 회원가입, 설치 등에 대한 다양한 궁금증을 해결해드립니다."/>
     </Head>
-    return (
-        <>
-    {/* <div id='faq' style={{position: 'absolute',top: '-24px',width: '0px',height: '0px'}}></div> */}
+    <div id='faq' style={{position: 'absolute',top: '-24px',width: '0px',height: '0px'}}></div>
       <Grid.Container style={{background: "#ECF3F6",minHeight: '100%'}} direction="column" align="center">
         <Grid xs direction="column" alignItems="center">
             <Spacer y={3}/>
-            <Text className="price-section-title" h1>{t('common:faqtitle')}</Text>
+            <Text className="price-section-title" h1>FAQ</Text>
             <div style={{display: 'flex',flexDirection: 'column',height: '100%',width: '100%',justifyContent: 'space-evenly',flex: '1 1 auto'}}>
                 <TabsAni changeHandler={changeHandler}>
                 <TabsAni.Item header={t('common:faqgeneral')}>
-                {pagaitions().map((e,index) => (
-                    e !== null &&
-                    <Faq key={`a${index}`} q={router.locale === "en" ? e.question.en : e.question.kr} a={router.locale === "en" ? e.answer.en : e.answer.kr}/>
-                ))}
+                <div className="faq-container">
+                    {pagaitions().map((e,index) => (
+                        e !== null &&
+                        <Faq key={`a${index}`} q={router.locale === "en" ? e.question.en : e.question.kr} a={router.locale === "en" ? e.answer.en : e.answer.kr}/>
+                    ))}
+                </div>
                 </TabsAni.Item>
                 <TabsAni.Item header={t('common:faqorder')}>
-                {pagaitions().map((e,index) => (
-                    e !== null &&
-                    <Faq key={`b${index}`} q={router.locale === "en" ? e.question.en : e.question.kr} a={router.locale === "en" ? e.answer.en : e.answer.kr}/>
-                ))}
+                <div className="faq-container">
+                    {pagaitions().map((e,index) => (
+                        e !== null &&
+                        <Faq key={`b${index}`} q={router.locale === "en" ? e.question.en : e.question.kr} a={router.locale === "en" ? e.answer.en : e.answer.kr}/>
+                    ))}
+                </div>
                 </TabsAni.Item>
                 <TabsAni.Item header={t('common:faqdoor')}>
-                {pagaitions().map((e,index) => (
-                    e !== null &&
-                    <Faq key={`c${index}`} q={router.locale === "en" ? e.question.en : e.question.kr} a={router.locale === "en" ? e.answer.en : e.answer.kr}/>
-                ))}
+                <div className="faq-container">
+                    {pagaitions().map((e,index) => (
+                        e !== null &&
+                        <Faq key={`c${index}`} q={router.locale === "en" ? e.question.en : e.question.kr} a={router.locale === "en" ? e.answer.en : e.answer.kr}/>
+                    ))}
+                </div>
                 </TabsAni.Item>
                 <TabsAni.Item header={t('common:faqapp')}>
-                {pagaitions().map((e,index) => (
-                    e !== null &&
-                    <Faq key={`d${index}`} q={router.locale === "en" ? e.question.en : e.question.kr} a={router.locale === "en" ? e.answer.en : e.answer.kr}/>
-                ))}
+                <div className="faq-container">
+                    {pagaitions().map((e,index) => (
+                        e !== null &&
+                        <Faq key={`d${index}`} q={router.locale === "en" ? e.question.en : e.question.kr} a={router.locale === "en" ? e.answer.en : e.answer.kr}/>
+                    ))}
+                </div>
                 </TabsAni.Item>
                 </TabsAni>
                 <Pagination onChange={(e) => {setPage(e); scrollTo()}} count={posts().length > 4 ? Math.round(posts().length / 4.0) + 1 : 1}>

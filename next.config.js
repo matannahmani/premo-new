@@ -9,7 +9,8 @@ module.exports = {
     messagingSenderId: process.env.messagingSenderId,
     appId: process.env.appId,
     measurementId: process.env.measurementId,
-    API_URL: process.env.API_URL
+    API_URL: process.env.API_URL,
+    GTAG: process.env.GTAG
   },
   future: {
     webpack5: true,

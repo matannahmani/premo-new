@@ -131,3 +131,11 @@
         stroke-dashoffset: 530;
     }
  }
+ @media (max-width: 320px){
+    .app-video-title{
+        font-size: 12px;
+    }
+    .app-video-img{
+        display: none;
+    }
+ }

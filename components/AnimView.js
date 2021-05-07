@@ -9,7 +9,6 @@ const AnimView = ({children}) => {
     useEffect(() => {
         if (inView && !shown) {
           controls.start('visible');
-          console.log('test');
           setShown(true);
         }
         if (!inView && !shown) {

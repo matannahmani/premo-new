@@ -63,7 +63,9 @@
     }
 }
 .index-cta{
-    width: 295px !important;
+    max-width: 295px !important;
+    width: 90% !important;
+    overflow: hidden;
     display: flex;
     position: relative;
     align-items: center;

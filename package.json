@@ -1,11 +1,12 @@
 {
   "name": "premo-new",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@egjs/flicking-plugins": "^3.3.0",
@@ -18,12 +19,14 @@
     "@sanity/client": "^2.8.0",
     "@sanity/image-url": "^0.140.22",
     "@svgr/webpack": "^5.5.0",
+    "@types/gtag.js": "0.0.4",
     "axios": "^0.21.1",
     "firebase": "^8.4.1",
     "framer-motion": "^4.0.3",
     "iso-639-1": "^2.1.9",
     "next": "^10.1.3",
     "next-i18next": "^8.1.3",
+    "next-sitemap": "^1.6.49",
     "nprogress": "^0.2.0",
     "react": "17.0.2",
     "react-awesome-slider": "^4.1.0",

@@ -90,7 +90,7 @@ const Signup = ({t}) => {
                         <h3>{t('common:yourcountry')}:</h3>
                     </div>
                     <AutoComplete clearable options={code} placeholder={t('common:enterhere')} onSearch={(e) => searchHandler(codes(),e,setCodes)} />
-                    <Button disabled={resultHandler().length === 0} onClick={() => console.log(resultHandler(true))} className="learnbtn">{t('common:submit')}</Button>
+                    <Button disabled={resultHandler().length === 0} onClick={() => resultHandler(true)} className="learnbtn">{t('common:submit')}</Button>
                     </AnimDiv>
                 }
            </AnimatePresence>

@@ -1,5 +1,5 @@
 import { slide as Menu } from 'react-burger-menu'
-import { Button, Text, Image} from '@geist-ui/react'
+import { Text, Image} from '@geist-ui/react'
 import { Menu as MenuIcon } from '@geist-ui/react-icons'
 import ActiveLink from './ActiveLink'
 
@@ -32,7 +32,7 @@ const Navbarm = (props) => {
         </>
         }
         </Menu>
-        <Button auto size="small" onClick={props.setCalendly} className="bookbtn">{props.t('bookconsultation')}</Button>
+        {/* <Button auto size="small" onClick={props.setCalendly} className="bookbtn">{props.t('bookconsultation')}</Button> */}
         <ActiveLink href="/">
         <Image src="/logo-short.svg" width={60} height={60}/>
         </ActiveLink>

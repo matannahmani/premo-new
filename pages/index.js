@@ -16,7 +16,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Faq from '../components/Faq';
 import { getAllFaqsForHome } from '../lib/api';
-import Counter from '../components/Counter';
+// import Counter from '../components/Counter';
 
 export default function Home({allFaqs}) {
   const [app,] = useContext(AppContext);
@@ -109,18 +109,17 @@ export default function Home({allFaqs}) {
             </Link>
             </div>
           </Card>
-          <Spacer/>
+          <Spacer y={4}/>
         </Grid>
         <Grid style={{background: '#3D5582',padding: '64px 0px'}} alignItems="center" direction="column" justify="center" xs={24} md={24} lg={24}>
-        <Text className={`product-header text-left`} style={{color: 'white'}} h2>{t('statstitle')}</Text>
+        {/* <Text className={`product-header text-left`} style={{color: 'white'}} h2>{t('statstitle')}</Text>
         <div style={{display: 'flex',flexWrap: 'wrap',justifyContent: 'center',alignItems: 'center'}}>
         <Counter is24 title={t('common:counter1')}/>
         <Counter is24 title={t('common:counter2')}/>
         <Counter is24 title={t('common:counter3')}/>
         <Counter is24 title={t('common:counter4')}/>
-        </div>
-
-        <Text className={`product-header text-left`} style={{color: 'white'}} h2>{t('faq')}</Text>
+        </div> */}
+        <Text className={`product-header text-left`} style={{color: 'white'}} h2>FAQ</Text>
         <Spacer/>
         <div className="faq-container">
         {allFaqs.map((e,key) =>

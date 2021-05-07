@@ -13,6 +13,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Signup from '../components/Signup';
 import { checkEmail, getUserInfo } from '../lib/userapi';
 import LoginInput from '../components/Logininput';
+import Head from 'next/head';
 
 const Login = () => {
     const { t } =  useTranslation(['common']);
@@ -24,7 +25,6 @@ const Login = () => {
     const router = useRouter();
     const loginHandler = async () =>{
         const emailexist = await checkEmail(account.username);
-        console.log(emailexist);
         let register;
         if (emailexist.data.result.code !== 0){
             register = true;
@@ -120,7 +120,11 @@ const Login = () => {
         }
     }, [user.triedLog])
     return ( // TO DO FIX THE LAYOUT AS GRID DOSENT WORK!
-        app.signUp ?
+        <>
+        <Head>
+        <title>{router.locale === 'en' ? `Premo | ${app.signUp ? 'Sign Up' : 'Login'}` : `프리모 | ${app.signUp ? 'Sign Up' : 'Login'}` }</title>
+        </Head>
+        {app.signUp ?
         <Signup t={t}/>
         :
         <Grid.Container style={{height: '100%',minHeight: '300px',width:'100%',margin: '0px',paddingBottom: '64px',background: '#ECF3F6'}} gap={2} direction="column" alignItems="center">
@@ -158,7 +162,8 @@ const Login = () => {
         }
         </Card>
         </Grid>
-    </Grid.Container>
+    </Grid.Container>}
+    </>
     )
 }
 export const getStaticProps = async ({ locale }) => ({

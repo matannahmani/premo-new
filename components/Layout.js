@@ -1,19 +1,20 @@
-import {Grid,Modal,useModal} from '@geist-ui/react'
+// import {Grid,Modal,useModal} from '@geist-ui/react'
+import {Grid} from '@geist-ui/react'
 import {useContext} from 'react'
 import {AppContext, UserContext} from '../context/appcontext';
 import NavbarM from './Navbarm'
 import NavbarD from './Navbard'
 import Footer from './Footer';
-import { InlineWidget } from "react-calendly";
+// import { InlineWidget } from "react-calendly";
 import { useRouter } from 'next/router';
 import {firebase} from '../lib/firebase'
-import { X } from '@geist-ui/react-icons';
+// import { X } from '@geist-ui/react-icons';
 
 
 const Layout = (props) => {
     const [app,setApp] = useContext(AppContext);
     const [user,setUser] = useContext(UserContext);
-    const { visible, setVisible, bindings } = useModal()
+    // const { visible, setVisible, bindings } = useModal()
     const router = useRouter();
     const lang = (i) => {
       const dic = {
@@ -62,12 +63,12 @@ const Layout = (props) => {
           {props.children}
           </div>
           <Footer/>
-          <Modal {...bindings}>
+          {/* <Modal {...bindings}>
           <Modal.Content style={{overflow: 'hidden',height: '630px'}}>
           <InlineWidget url="https://calendly.com/premo-consulting/15min" />
           </Modal.Content>
           <Modal.Action passive onClick={() => setVisible(false)}><X/></Modal.Action>
-          </Modal>
+          </Modal> */}
         </Grid.Container>
       </>
     )

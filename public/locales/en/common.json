@@ -160,10 +160,8 @@
     "applebtn": "Continue with Apple",
     "facebookbtn": "Continue with Facebook",
     "googlebtn": "Continue with Google",
-    "counter1": "",
-    "counter2": "",
-    "counter3": "",
-    "counter4": "",
-    "statstitle": "",
-    "faq": ""
+    "faqgeneral": "General / Other",
+    "faqorder": "Order / Delivery",
+    "faqdoor": "Door Lock / Sensor (Hardware)",
+    "faqapp": "Premo App (Software)"
 } 

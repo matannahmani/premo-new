@@ -1,4 +1,4 @@
-import {Popover,Text,Button, Image} from "@geist-ui/react"
+import {Popover,Text, Image} from "@geist-ui/react"
 import {useState, useEffect} from 'react'
 import {IoPersonCircleSharp} from 'react-icons/io5'
 import { ChevronDown } from '@geist-ui/react-icons'
@@ -54,7 +54,7 @@ const NavbarD = (props) => {
           </ActiveLink>
         </div>
         <div className="navbar-content">
-            <Button auto size="small" onClick={props.setCalendly} className="nav-item bookbtn">{props.t('bookconsultation')}</Button>
+            {/* <Button auto size="small" onClick={props.setCalendly} className="nav-item bookbtn">{props.t('bookconsultation')}</Button> */}
             <ActiveLink href="/price">
             <Text className="nav-item">{props.t('pricing')}</Text>
             </ActiveLink>

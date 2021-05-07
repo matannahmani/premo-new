@@ -160,11 +160,8 @@
     "applebtn": "애플 로그인",
     "facebookbtn": "페이스북 로그인",
     "googlebtn": "구글 로그인",
-    "counter1": "",
-    "counter2": "",
-    "counter3": "",
-    "counter4": "",
-    "statstitle": "",
-    "faq": "",
-    "faqgeneral": "t"
+    "faqgeneral": "일반 / 기타",
+    "faqorder": "주문 / 배송",
+    "faqdoor": "도어락 / 센서 ( 하드웨어 )",
+    "faqapp": "프리모 앱 ( 소프트웨어 )"
   }

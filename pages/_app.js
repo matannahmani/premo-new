@@ -15,6 +15,8 @@ import { hotjar } from 'react-hotjar';
 import Spinner from '../components/Spinner'
 import Layout from '../components/Layout';
 import Head from 'next/head';
+import * as gtag from "../utils/gtag";
+
 const LoadingPage = () => {
 
   return (
@@ -34,18 +36,24 @@ const MyApp = ({ Component, pageProps }) => {
   NProgress.configure({ showSpinner: true });
 
   useEffect( async() => {
+    const handleRouteChange = (url) => {
+      ga.pageview(url)
+    }
     router.events.on('routeChangeStart', () => {
       NProgress.start();
     });
     router.events.on('routeChangeComplete', () => {
+      handleRouteChange
       NProgress.done();
     });
     return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
       router.events.on('routeChangeError', () => {
         NProgress.done();
       });
     }
-  }, [router.route])
+  }, [router.events])
+  
   useEffect(async () => {
     hotjar.initialize(2350733, 6); // hot jar
     firebase.auth().onAuthStateChanged( async (fuser) => { // listen to fire base user changes
@@ -105,6 +113,8 @@ const MyApp = ({ Component, pageProps }) => {
     <meta charSet="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+    <title>{router.locale === 'en' ? "Premo" : "프리모" }</title>
+    <meta name="description" content="슈퍼호스트가 되기 위한 완벽한 준비. 프리모는 에어비앤비 등 임대숙소를 편리하게 운영할 수 있도록 지원하는 스마트 숙소관리 플랫폼입니다. 더 많은 숙소를 운영하고 더 많은 수익을 가져가세요."/>
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"/>
     <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png"/>
     <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png"/>

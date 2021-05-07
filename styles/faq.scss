@@ -18,8 +18,11 @@
     max-height: 0 !important;
 }
 .faq-container{
-    width: 100%;
+    width: 90%;
     max-width: 600px;
+    > .accrodion-grp{
+        margin: 16px 0px;
+    }
 }
 .faq-accrodion {
     width: 100%;
@@ -52,7 +55,7 @@
         }
 
         &.active {
-            box-shadow: 0px 20px 60px 0px rgba(243, 168, 117, 0.3);
+            box-shadow: 0px 20px 20px 0px rgba(243, 168, 117, 0.3);
             .accrodion-inner {
                 margin: 0 2px;
             }
@@ -85,7 +88,17 @@
             position: relative;
             transition: all .4s ease;
             text-align: left;
-
+            @media(max-width: 320px){
+                .accrodion-title h4{
+                    font-size: 14px;
+                }
+                .accrodion-title::before{
+                    right: 24px;
+                }
+                .accrodion-content p{
+                    font-size: 12px;
+                }
+            }
         }
 
         .accrodion-title {
